@@ -1,0 +1,42 @@
+*{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-size: 20px;
+    color: #DFDFDF;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    
+}
+
+
+
+
+.side-menu{
+    border-radius: 0px 20px 20px 0px;
+    background: #397933;
+    width: 15vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-categories,.bot-categories{
+    display: flex;
+    flex-direction: column;
+}
+
+body{
+    display: flex;
+    background: #CDE3CF;
+}
+
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+

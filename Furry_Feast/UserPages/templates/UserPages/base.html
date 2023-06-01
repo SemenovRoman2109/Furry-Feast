@@ -1,12 +1,37 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'UserPages/css/base-css.css' %}">
+    {% block css %}
+    {% endblock %}
     <title>Document</title>
 </head>
 <body>
-    <h1>Base</h1>
+    <nav class="side-menu">
+        <div class="logo">
+            <a href="{% url 'main' %}">Shop</a>
+        </div>
+        
+        <div class = 'top-categories'>
+            <a href="{% url 'main' %}"><img src="" alt="">Товари</a>
+            <a href="{% url 'cart' %}"><img src="" alt="">Кошик</a>
+            <a href="{% url 'contact' %}"><img src="" alt="">Контакти</a>
+        </div>
+
+        <div class = 'bot-categories'>
+            <a href="{% url 'login' %}"><img src="" alt="">Увійти</a>
+            <a href="{% url 'registration' %}"><img src="" alt="">Реєстрація</a>
+        </div>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
 </body>
 </html>

@@ -21,13 +21,13 @@ from UserPages.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("main/",show_main),
-    path("product/",show_product),
-    path("product_review/",show_product_review),
-    path("contact/",show_contact),
-    path("login/",show_login),
-    path("registration/",show_registration),
-    path("cart/",show_cart),
-    path("order/",show_order)
+    path("main/",show_main,name="main"),
+    path("product/<product_pk>",show_product,name="product"),
+    path("product_review/",show_product_review,name="product_review"),
+    path("contact/",show_contact,name="contact"),
+    path("login/",show_login,name="login"),
+    path("registration/",show_registration, name = 'registration'),
+    path("cart/",show_cart, name = 'cart'),
+    path("order/",show_order, name = 'order')
     
 ]
