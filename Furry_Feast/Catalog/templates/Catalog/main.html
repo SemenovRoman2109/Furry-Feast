@@ -1,5 +1,56 @@
 {% extends 'UserPages/base.html' %}
 
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'Catalog/css/main.css' %}">
+{% endblock %}
+
+{% block js %}
+    <script defer src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script defer src="{% static 'Catalog/js/main.js' %}"></script>
+    
+{% endblock %}
+
 {% block content %}
-    <h1>Main</h1>
+    <div class = 'main'>
+        <h1>Товари</h1>
+        <input class = 'input-field' type="search" placeholder = 'Пошук'>
+        <div class="goods">
+            {% for product in products %}
+                <div class = 'section'>
+                    <div class="img-box">
+                        <img src="{{ product.image.url }}" alt="">
+                    </div>
+                    
+                    <p>{{ product.short_name }} ... | {{ product.price }}$</p>
+                    <button class = 'button-buy'type = "submit">Переглянути</button>
+                    
+                </div>
+            {% endfor %}
+        
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block filter %}
+    <form class="all-filter" method = "POST" action="{% url 'main' %}">
+        {% csrf_token %}
+        <p class="filter-text">Фильтри:</p>
+        <div> 
+            <p>Вид:</p>
+            <ul i>
+                <li class="kind">Сухий</li>
+                <li class="kind">Вологий</li>
+            </ul>
+        </div>
+        <div> 
+            <p>Тварина:</p>
+            <ul>
+                <li class="animal">Кіт</li>
+                <li class="animal">Собака</li>
+            </ul>
+        </div>
+    </form>
 {% endblock %}

@@ -13,10 +13,12 @@ class Review(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=50)
+    short_name = models.CharField(max_length=15,null=True)
+    name = models.CharField(max_length=255)
     price = models.IntegerField()
     info = models.TextField()
     grade = models.FloatField(default=0.0)
+    image = models.ImageField(upload_to="product",null=True)
 
     reviews = models.ManyToManyField(Review, blank=True)
     category = models.ManyToManyField(Category)

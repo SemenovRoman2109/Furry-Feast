@@ -18,10 +18,12 @@ from django.urls import path
 from Catalog.views import *
 from Cart.views import *
 from UserPages.views import *
+from .settings import *
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("main/",show_main,name="main"),
+    path("",show_main,name="main"),
     path("product/<product_pk>",show_product,name="product"),
     path("product_review/",show_product_review,name="product_review"),
     path("contact/",show_contact,name="contact"),
@@ -29,5 +31,8 @@ urlpatterns = [
     path("registration/",show_registration, name = 'registration'),
     path("cart/",show_cart, name = 'cart'),
     path("order/",show_order, name = 'order')
-    
 ]
+
+if DEBUG:
+    urlpatterns += static(MEDIA_URL,document_root = MEDIA_ROOT)
+

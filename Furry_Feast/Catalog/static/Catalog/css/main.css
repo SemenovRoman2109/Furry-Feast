@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+}
+
+
+.input-field{
+    display: flex;
+    width: 50%;
+    border: 1px solid #397933;
+    border-radius: 15px;
+    height: 50px;
+    padding-left: 8px;
+    font-size: 16px;
+}
+
+.goods{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    gap: 4%; 
+    margin: 2%;
+
+}
+
+.button-buy{
+    display: flex;
+    justify-content: center;
+    background:#a68625;
+    width: 70%;
+    border-radius: 15px;
+    border: 1px rgb(50, 42, 161); 
+    transition-property: background-color, border-radius;
+    transition-duration: 0.5s, 1.5s;
+    transition-delay: 2.5s, 0.9s;
+    
+}
+
+.button-buy:hover{
+    background: #b51b1b;
+    border-radius: 0px;
+    
+    /* transform: translate(0px, -5px); */
+    transform: scale(1.12);
+    
+}
+
+.section .img-box{
+    background: #13BB89;
+
+    border: 3px solid #F0F0F0;
+    border-radius: 14px;
+    width: 75%;
+    height: 59%;
+}
+
+.section .img-box img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 210px;
+    width: 180px;
+    background: #397933;
+    margin: 1%;
+    border-radius: 14px;
+    gap: 5%;
+    
+}
+
+ul{
+    padding-left: 15px;
+    list-style-type:none;
+}
+
+.filter-text{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-size: 22px;
+
+    color: #DFDFDF;
+}
+
+.all-filter div{
+    padding: 10px;
+}
+
+.all-filter div p{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-size: 20px;
+    color: #DFDFDF;
+}
+
+.all-filter div li{
+    cursor: pointer;
+    font-family: 'Oswald';
+    font-style: normal;
+    font-size: 20px;
+
+    color: #DFDFDF;
+}
