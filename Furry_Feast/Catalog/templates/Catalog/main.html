@@ -13,25 +13,45 @@
 {% endblock %}
 
 {% block content %}
-    <div class = 'main'>
-        <h1>Товари</h1>
+    <img class='paw1'src="{% static 'Catalog/img/bacground.png' %}" alt="">
+    <img class='paw2'src="{% static 'Catalog/img/bacground.png' %}" alt="">
+    <img class='paw3'src="{% static 'Catalog/img/bacground.png' %}" alt="">
+    <img class='paw4'src="{% static 'Catalog/img/bacground.png' %}" alt="">
+    <img class='paw5'src="{% static 'Catalog/img/bacground.png' %}" alt="">
+    <p class="title">Товари</p>
+    <form class="input-search" method = "POST" action="{% url 'main' %}">
+        {% csrf_token %}
         <input class = 'input-field' type="search" placeholder = 'Пошук'>
-        <div class="goods">
-            {% for product in products %}
-                <div class = 'section'>
-                    <div class="img-box">
-                        <img src="{{ product.image.url }}" alt="">
-                    </div>
-                    
-                    <p>{{ product.short_name }} ... | {{ product.price }}$</p>
-                    <button class = 'button-buy'type = "submit">Переглянути</button>
-                    
+        <button class = 'but-search' type="submit"><img src="{% static 'Catalog/img/search.png' %}" alt=""></button>
+    </form>
+    
+    <div class="goods">
+        {% for product in products %}
+            <div class = 'section' id="section-{{ product.pk }}">
+                <div class="img-box">
+                    <a href="product/{{ product.pk }}"><img src="{{ product.image.url }}" alt=""></a>
                 </div>
-            {% endfor %}
-        
-        </div>
-    </div>
+                
+                    <a href="product/{{ product.pk }}" class = 'description'>{{ product.name }} </a>
+                    
+                <div class = group-button>
+                    <!-- <button class = 'button-buy'><a href="">Переглянути</a></button> -->
+                    <p class ='price'>Ціна: {{ product.price }} грн</p>
+                    <button class = 'button-basket'><img src="{% static 'Catalog/img/button-cart.png' %}"></button>
+                </div>
+                
+            </div>
+        {% endfor %}
 
+    </div>
+    <div class="modal-window-add-cart">
+        <p>Товар успiшно додано</p>
+        <div class="go-to-cart">
+            <img src="{% static 'Catalog/img/modal-window-button-cart.png' %}" alt="">
+            <a href="{% url 'cart' %}">Перейти до кошику</a>
+        </div>
+        
+    </div>
 {% endblock %}
 
 {% block filter %}
