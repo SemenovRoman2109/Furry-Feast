@@ -86,8 +86,11 @@
 .group-button{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    
     gap: 10%;
     width: 80%;
+    height: 12%;
     /* position: absolute; */
     /* margin-top: 10%; */
 
@@ -97,10 +100,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background:#0CFB5D;
+    background:#fbbb0c;
     text-decoration: none;
     border: none;
     width: 30%;
+    height: 100%;
     border-radius: 50px;
     transition-duration: 0.5s;
     cursor: pointer;
@@ -121,7 +125,8 @@
 }
 
 button:hover{
-    background: rgb(175, 131, 207);
+    background: #fb6c0c;
+    transition: all 0.5s;
     transform: scale(1.12);
     
 }
@@ -206,7 +211,7 @@ ul{
     font-family: 'Oswald';
     font-style: normal;
     font-size: 20px;
-
+    
     color: #DFDFDF;
 }
 
@@ -326,7 +331,11 @@ ul{
 }
 
 .group-button .price{
-    color: rgb(170, 21, 11);
+    font-family: 'Oswald';
+    font-style: normal;
+    font-size: 18px;
+
+    color: rgb(5, 82, 52);
     font-weight: bold;
 }
 
