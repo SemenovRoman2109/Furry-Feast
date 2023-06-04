@@ -1,5 +1,43 @@
 {% extends 'UserPages/base.html' %}
 
+{% load static %}
+
+{% block title %}
+Registration
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'UserPages/css/registration.css' %}">
+{% endblock %}
+{% block js %}
+<script defer src="{% static 'UserPages/js/registration.js' %}"></script>
+{% endblock %}
 {% block content %}
-    <h1>Registration</h1>
+<div class = 'registration-card'>
+    <h1 class = 'logo-registration-card'>Реєстрація</h1>
+    <form action="{% url 'registration' %}" method="post" class="registration-form">
+        {% csrf_token %}
+        <p>Логін</p>
+        <input type="text" name="username" required>
+        <p>Електронна адреса</p>
+        <input type="email" name="email" required>
+        <p>Пароль</p>
+        <div class="password">
+            <input type="password" name="password" required>
+            <img class="password-eay" src="{% static 'UserPages/img/password-eay-hide.png' %}" alt="">
+        </div>
+        
+        <p>Підтвердження паролю</p>
+        <div class="confirm-password">
+            <input type="password" name="confirm-password" required>
+            <img class="password-eay" src="{% static 'UserPages/img/password-eay-hide.png' %}" alt="">
+        </div>
+        <button type="submit" class = 'button-registration'>Зареєструватися</button>
+    </form>
+    <p  class = 'has-account'>Вже є акаунт? <a href="{% url 'login' %}">Авторизуватися</a></p>
+    <div class="modal-window">
+        <p class="title">Успiшна реєстрація</p>
+        <p class="message">Користувач з такою електронною адрессою вже iснує!</p>
+    </div>
+</div>
+    
 {% endblock %}

@@ -1,15 +1,22 @@
 let listKind = document.querySelectorAll(".kind");
 let listAnimal = document.querySelectorAll(".animal");
+let listWeight = document.querySelectorAll(".weight");
 
-let selectKind = "none";
-let selectAnimal = "none";
+let listCategories = [listKind,listAnimal,listWeight]
 
-function sendSelectCategory(kind,animal){
+let selectKind = "";
+let selectAnimal = "";
+let selectWeight = "";
+
+let listSelectCategories = [selectKind,selectAnimal,selectWeight]
+
+function sendSelectCategory(){
     $(document).ready(function () {
+        let text =  document.querySelector(".input-field").value;
         $.ajax({
             type: "POST",
             url: $(".all-filter").action,
-            data: { csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,"animal":animal.textContent,"kind":kind.textContent,"text": "none"},
+            data: { csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,"animal":listSelectCategories[1],"kind":listSelectCategories[0],"weight":listSelectCategories[2],"text": text},
             success: function(response){
                 let listAllProduct = document.querySelectorAll(".section")
                 listAllProduct.forEach(function(product,index,listAllProduct){
@@ -27,49 +34,30 @@ function sendSelectCategory(kind,animal){
     });
 }
 
-listKind.forEach(function(kind,index,listKind){
-    kind.addEventListener("click",function(event){
-        if (! kind.classList.contains("select-category")){
-            listKind.forEach(function(anotherKind,index,listKind){
-                anotherKind.style.color = "#DFDFDF";
-                anotherKind.classList.remove("select-category")
-            })
-            kind.style.color = "#FFC700";
-            kind.classList.add("select-category")
-            selectKind = kind;
-            sendSelectCategory(selectKind,selectAnimal)
-        }
-        else{
-            kind.style.color = "#DFDFDF";
-            kind.classList.remove("select-category")
-            selectKind = "none";
-            sendSelectCategory(selectKind,selectAnimal)
-        }
-        
+listCategories.forEach(function(listCategory,indexCategory,listCategories){
+    listCategory.forEach(function(category,index,listCategory){
+        category.addEventListener("click",function(event){
+            if (! category.classList.contains("select-category")){
+                listCategory.forEach(function(anotherCategory,index,listCategory){
+                    anotherCategory.style.color = "#DFDFDF";
+                    anotherCategory.classList.remove("select-category")
+                })
+                category.style.color = "#FFC700";
+                category.classList.add("select-category")
+                listSelectCategories[indexCategory] = category.textContent;
+                sendSelectCategory(selectKind,selectAnimal)
+            }
+            else{
+                category.style.color = "#DFDFDF";
+                category.classList.remove("select-category")
+                listSelectCategories[indexCategory] = "";
+                sendSelectCategory()
+            }
+
+        })
     })
 })
-    
-listAnimal.forEach(function(animal,index,listAnimal){
-    animal.addEventListener("click",function(event){
-        if (! animal.classList.contains("select-category")){
-            listAnimal.forEach(function(anotherAnimal,index,listAnimal){
-                anotherAnimal.style.color = "#DFDFDF";
-                anotherAnimal.classList.remove("select-category")
-            })
-            animal.style.color = "#FFC700";
-            animal.classList.add("select-category")
-            selectAnimal = animal;
-            sendSelectCategory(selectKind,selectAnimal)
-        }
-        else{
-            animal.style.color = "#DFDFDF";
-            animal.classList.remove("select-category")
-            selectAnimal = "none";
-            sendSelectCategory(selectKind,selectAnimal)
-        }
-    })
-    
-})
+
 
 
 $(document).ready(function () {
@@ -79,7 +67,7 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: $(this).action,
-            data: { csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,"animal":"none","kind":"none","text":text},
+            data: { csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,"animal":listSelectCategories[1],"kind":listSelectCategories[0],"text":text,"weight":listSelectCategories[2]},
             success: function(response){
                 let listAllProduct = document.querySelectorAll(".section")
                 listAllProduct.forEach(function(product,index,listAllProduct){

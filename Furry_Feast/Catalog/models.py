@@ -13,8 +13,8 @@ class Review(models.Model):
 
 
 class Product(models.Model):
-    short_name = models.CharField(max_length=15,null=True)
     name = models.CharField(max_length=255)
+    weight = models.FloatField(null=True)
     price = models.IntegerField()
     info = models.TextField()
     grade = models.FloatField(default=0.0)

@@ -1,5 +1,36 @@
 {% extends 'UserPages/base.html' %}
 
+{% load static %}
+
+{% block title %}
+Login
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'UserPages/css/registration.css' %}">
+    <link rel="stylesheet" href="{% static 'UserPages/css/login.css' %}">
+{% endblock %}
+{% block js %}
+<script defer src="{% static 'UserPages/js/login.js' %}"></script>
+{% endblock %}
 {% block content %}
-    <h1>Login</h1>
+<div class = 'registration-card'>
+    <h1>Авторизація</h1>
+    <form action="{% url 'login' %}" method="post" class="registration-form">
+        {% csrf_token %}
+        <p>Логін</p>
+        <input type="text" name="username" required>
+        <p>Пароль</p>
+        <div class="password">
+            <input type="password" name="password"  id="myInput" required>
+            <img class="password-eay" src="{% static 'UserPages/img/password-eay-hide.png' %}" alt="">
+        </div>
+        
+        <button type="submit">Авторизуватися</button>
+    </form>
+    <p class = 'has-account'>Ще немає акаунту?<a href="{% url 'registration' %}"> Зареєструватися!</a></p>
+</div>
+    <div class="modal-window">
+        <p class="title">Успiшна авторизація</p>
+        <p class="message">Користувач з такою електронною адрессою вже iснує!</p>
+    </div>
 {% endblock %}

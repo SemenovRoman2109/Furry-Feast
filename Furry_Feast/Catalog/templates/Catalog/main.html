@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block js %}
-    <script defer src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    
     <script defer src="{% static 'Catalog/js/main.js' %}"></script>
     
 {% endblock %}
@@ -65,6 +65,15 @@
             <ul>
                 <li class="animal">Кіт</li>
                 <li class="animal">Собака</li>
+            </ul>
+        </div>
+        <div> 
+            <p>Вага:</p>
+            <ul>
+                <li class="weight">Менше 500г</li>
+                <li class="weight">500г - 1кг</li>
+                <li class="weight">1кг - 2.5кг</li>
+                <li class="weight">Більше 2.5кг</li>
             </ul>
         </div>
     </form>
