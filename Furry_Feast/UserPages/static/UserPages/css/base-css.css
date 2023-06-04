@@ -88,4 +88,69 @@ main{
     height: auto;
 }
 
+.paw1{
+    position: fixed;
+    z-index: -1;
+    height: 30%;
+    right: 1%;
+    top: 3%;
+    transform: rotate(25deg);
+    
+    
+}
 
+.paw2{
+    position: fixed;
+    z-index: -1;
+    height: 16%;
+    left: 15%;
+    top: 36%;
+    transform: rotate(-25deg);
+    
+}
+
+.paw3{
+    position: fixed;
+    z-index: -1;
+    height: 14%;
+    top: 80%;
+    left: 70%;
+    transform: rotate(4deg);
+}
+
+.paw4{
+    position: fixed;
+    z-index: -1;
+    left: 30.3%;
+    top: 7%;
+    height: 9%;
+    transform: rotate(-30deg);
+    
+}
+
+.paw5{
+    position: fixed;
+    z-index: -1;
+    transform: rotate(14deg);
+    height: 15%;
+    left: 48%;
+    top: 39%;
+}
+
+.paw6{
+    position: fixed;
+    z-index: -1;
+    transform: rotate(-14deg);
+    height: 15%;
+    left: 43%;
+    top: 80%;
+}
+
+.paw7{
+    position: fixed;
+    z-index: -1;
+    transform: rotate(10deg);
+    height: 8%;
+    left: 23%;
+    top: 80%;
+}

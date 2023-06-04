@@ -23,6 +23,7 @@
     border-radius: 15px 0px 0px 15px;
     padding-left: 8px;
     font-size: 16px;
+    background: #A3D5C6;
 }
 
 .input-search button{
@@ -218,7 +219,6 @@ ul{
 .all-filter div li:hover{
     color: #c7cccb;
 }
-
 .cover-div {
     width: 100%;
     height: 100%;
@@ -272,62 +272,13 @@ ul{
     width: auto;
 }
 
-.modal-window-add-cart .go-to-cart a{
+.modal-window-add-cart .go-to-cart .text{
     font-family: 'Oswald';
     font-style: normal;
     font-size: 24px;
+    text-decoration: none;
 
     color: #13BB89;
-}
-
-.paw1{
-    position: fixed;
-    z-index: -1;
-    height: 30%;
-    
-    right: 5%;
-    top: 10%;
-    transform: rotate(25deg);
-    
-    
-}
-
-.paw2{
-    position: fixed;
-    z-index: -1;
-    width: 14%;
-    left: 13%;
-    top: 46%;
-    transform: rotate(3deg);
-    
-}
-
-.paw3{
-    position: fixed;
-    z-index: -1;
-    height: 12%;
-    top: 70%;
-    left: 80%;
-    transform: rotate(40deg);
-}
-
-.paw4{
-    position: fixed;
-    z-index: -1;
-    left: 32%;
-    top: 10%;
-    height: 7%;
-    transform: rotate(-30deg);
-    
-}
-
-.paw5{
-    position: fixed;
-    z-index: -1;
-    transform: rotate(-10deg);
-    height: 20%;
-    left: 48%;
-    top: 50%;
 }
 
 .group-button .price{
