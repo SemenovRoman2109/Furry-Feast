@@ -13,9 +13,9 @@ Login
 <script defer src="{% static 'UserPages/js/login.js' %}"></script>
 {% endblock %}
 {% block content %}
-<div class = 'registration-card'>
-    <h1>Авторизація</h1>
-    <form action="{% url 'login' %}" method="post" class="registration-form">
+<div class = 'card'>
+    <h1 class="title-card">Авторизація</h1>
+    <form action="{% url 'login' %}" method="post" class="form">
         {% csrf_token %}
         <p>Логін</p>
         <input type="text" name="username" required>

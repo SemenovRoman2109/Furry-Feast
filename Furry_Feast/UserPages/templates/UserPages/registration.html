@@ -12,14 +12,14 @@ Registration
 <script defer src="{% static 'UserPages/js/registration.js' %}"></script>
 {% endblock %}
 {% block content %}
-<div class = 'registration-card'>
-    <h1 class = 'logo-registration-card'>Реєстрація</h1>
-    <form action="{% url 'registration' %}" method="post" class="registration-form">
+<div class = 'card'>
+    <h1 class = 'title-card'>Реєстрація</h1>
+    <form action="{% url 'registration' %}" method="post" class="form">
         {% csrf_token %}
         <p>Логін</p>
         <input type="text" name="username" required>
         <p>Електронна адреса</p>
-        <input type="email" name="email" required>
+        <input type="text" name="email" required>
         <p>Пароль</p>
         <div class="password">
             <input type="password" name="password" required>

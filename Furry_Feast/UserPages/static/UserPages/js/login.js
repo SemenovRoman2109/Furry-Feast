@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    $(".login-form").on("submit", function (event) {
+    $(".form").on("submit", function (event) {
+        console.log("работает");
         event.preventDefault();
         $.ajax({
             type: "POST",
@@ -29,3 +30,6 @@ eayPassword.addEventListener("click",function(event){
         eayPassword.src = eayPassword.src.split(".png")[0] + "-hide.png"
         }
 })
+
+
+

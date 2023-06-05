@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.http import JsonResponse
+
 # Create your views here.
 def show_contact(request):
     return render(request, 'UserPages/contact.html')
