@@ -1,3 +1,42 @@
+.modal-window-logout{
+    z-index: 55;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 40%;
+    height: 24%;
+    opacity: 0;
+    transition: all 1s;
+    left: 30%;
+    top: 38%;
+    gap: 10%;
+    background: #F0F0F0;
+    border-radius: 60px;
+    
+}
+
+.modal-window-logout .title{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    
+    color: #13BB89;
+    margin: 0;
+}
+
+.cover-div {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: 49;
+}
+
+
 .side-menu{
     position: fixed;
     border-radius: 0px 20px 20px 0px;
@@ -80,6 +119,16 @@ html,body{
     z-index: -2;
 }
 
+body::-webkit-scrollbar {
+    width: 10px;  
+    background: #5C9886;                /* ширина всей полосы прокрутки */
+}
+  
+
+body::-webkit-scrollbar-thumb {
+    background-color: #13BB89;    /* цвет бегунка */
+    border-radius: 20px;       /* округлось бегунка */
+}
 
 main{
     display: flex;

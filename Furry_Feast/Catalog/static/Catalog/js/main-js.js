@@ -13,11 +13,23 @@ let listSelectCategories = [selectKind,selectAnimal,selectWeight]
 function sendSelectCategory(){
     $(document).ready(function () {
         let text =  document.querySelector(".input-field").value;
+        let minPriceInput = document.querySelector(".price-min").value;
+        let maxPriceInput = document.querySelector(".price-max").value;
         $.ajax({
             type: "POST",
             url: $(".all-filter").action,
-            data: { csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,"animal":listSelectCategories[1],"kind":listSelectCategories[0],"weight":listSelectCategories[2],"text": text},
+            data: { csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,"animal":listSelectCategories[1],"kind":listSelectCategories[0],"weight":listSelectCategories[2],"minPrice":minPriceInput,"maxPrice":maxPriceInput,"text": text},
             success: function(response){
+                let title = document.querySelector(".zero-product");
+                if (response.products.length == 0){
+                    title.style.display = "block";
+                    title.style.top = String(window.screen.height/2) + "px"
+                }
+                else{
+                    title.style.display = "none";
+                }
+
+
                 let listAllProduct = document.querySelectorAll(".section")
                 listAllProduct.forEach(function(product,index,listAllProduct){
                     product.style.display = "flex";
@@ -64,10 +76,12 @@ $(document).ready(function () {
     $(".input-search").on("submit", function (event) {
         event.preventDefault();
         let text =  document.querySelector(".input-field").value;
+        let minPriceInput = document.querySelector(".price-min").value;
+        let maxPriceInput = document.querySelector(".price-max").value;
         $.ajax({
             type: "POST",
             url: $(this).action,
-            data: { csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,"animal":listSelectCategories[1],"kind":listSelectCategories[0],"text":text,"weight":listSelectCategories[2]},
+            data: { csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,"animal":listSelectCategories[1],"kind":listSelectCategories[0],"weight":listSelectCategories[2],"minPrice":minPriceInput,"maxPrice":maxPriceInput,"text": text},
             success: function(response){
                 let listAllProduct = document.querySelectorAll(".section")
                 listAllProduct.forEach(function(product,index,listAllProduct){
@@ -102,4 +116,37 @@ buttonsBasket.forEach(function(buttonBasket,index,buttonsBasket){
         })
         
     })
+})
+
+
+
+
+let minPriceInput = document.querySelector(".price-min");
+let maxPriceInput = document.querySelector(".price-max");
+
+minPriceInput.addEventListener("blur",function(event) {
+    if (Number(minPriceInput.value) < minPriceInput.min){
+        minPriceInput.value = minPriceInput.min
+    }
+    if (minPriceInput.value == ""){
+        minPriceInput.value = minPriceInput.min
+    }
+    if (Number(minPriceInput.value) > Number(maxPriceInput.value)-1){
+        minPriceInput.value = Number(maxPriceInput.value)-1
+    }
+    
+    sendSelectCategory()
+})
+
+maxPriceInput.addEventListener("blur",function(event) {
+    if (Number(maxPriceInput.value) > maxPriceInput.max){
+        maxPriceInput.value = maxPriceInput.max
+    }
+    if (maxPriceInput.value == ""){
+        maxPriceInput.value = maxPriceInput.max
+    }
+    if (Number(maxPriceInput.value) < Number(minPriceInput.value)+1){
+        maxPriceInput.value = Number(minPriceInput.value)+1
+    }
+    sendSelectCategory()
 })

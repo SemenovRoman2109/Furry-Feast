@@ -5,20 +5,42 @@ from django.http import JsonResponse
 
 # Create your views here.
 def show_main(request):
-    context={"products":Product.objects.all()}
+    context={
+        "products":Product.objects.all(),
+        "is_authenticated":request.user.is_authenticated
+    }
+    
+    max_price = 0 
+    min_price = 99999999
+    for product in context["products"]:
+        if product.price > max_price:
+            max_price = product.price
+        if product.price < min_price:
+            min_price = product.price
+    context["max_price"] = max_price
+    context["min_price"] = min_price
     if request.method == 'POST':
         # Получаем данные
         kind = request.POST.get("kind")
         animal = request.POST.get("animal")
         text = request.POST.get("text")
         weight = request.POST.get("weight")
+        max_price = request.POST.get("maxPrice")
+        min_price = request.POST.get("minPrice")
 
 
+        filtered_products = Product.objects.all()
         # Проверка по поиковой строке
-        filtered_products = Product.objects.filter(name__icontains=text)
+        if text != None:
+            filtered_products = Product.objects.filter(name__icontains=text)
+
+        # Фильтр по цене
+        print(max_price,min_price)
+        if max_price != None and min_price != None:
+            filtered_products = filtered_products.filter(price__gte=min_price, price__lte=max_price)
 
         # Проверка по весу
-        if weight != "":
+        if weight != "" and weight != None:
             # Если минимальный вес
             if "Менше" in weight:
                 number = float(weight.split(" ")[-1].split("г")[0]) * 0.001
@@ -44,7 +66,7 @@ def show_main(request):
         # Проверка по категориям
         list_filters_category = [kind,animal]
         for filter in list_filters_category:
-            if filter != "":
+            if filter != "" and filter != None:
                 print(filter)
                 filtered_products = filtered_products.filter(category__name=filter)
         
@@ -59,9 +81,12 @@ def show_main(request):
     return render(request,"Catalog/main.html", context)
 
 def show_product(request, product_pk):
-    context = {'product': get_object_or_404(Product, pk=product_pk)}
+    context = {
+        'product': get_object_or_404(Product, pk=product_pk),
+        "is_authenticated":request.user.is_authenticated
+    }
     return render(request,"Catalog/product.html",context)
 
 def show_product_review(request):
-    return render(request,"Catalog/product-review.html")
+    return render(request,"Catalog/product-review.html",{"is_authenticated":request.user.is_authenticated})
 

@@ -29,8 +29,10 @@ urlpatterns = [
     path("contact/",show_contact,name="contact"),
     path("login/",show_login,name="login"),
     path("registration/",show_registration, name = 'registration'),
+    path("logout/",logout_function, name = 'logout'),
     path("cart/",show_cart, name = 'cart'),
     path("order/",show_order, name = 'order')
+
 ]
 
 if DEBUG:

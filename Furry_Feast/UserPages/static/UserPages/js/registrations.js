@@ -1,9 +1,8 @@
 function eror(result,text,resultText="") {
     let modalWindow = document.querySelector(".modal-window");
-    modalWindow.style.display = "flex"
     let registrationTitle = modalWindow.querySelector(".title");
     if (! result){
-        registrationTitle.textContent = "Не вдала реєстрація"
+        registrationTitle.textContent = "Невдала реєстрація"
     }
     if (result){
         registrationTitle.textContent = "Успiшна реєстрація"
@@ -33,37 +32,36 @@ function eror(result,text,resultText="") {
 }
 
 const bannedWords = [
-    "%","^","&","*","'",".",",",")","(","{","}","[","]","+","!","@",
+    "%","^","&","*","'",".",",",")","(","{","}","[","]","+","!","@","?", "#","№"
 ]
 
 function validation(input) {
     if (input.value == '') {
-        createError(`Поле пустое`);
+        createError(`Поле пусте`);
         return false;
     }
     if (input.name == 'username') {
         for (let symbol of input.value) {
             if (bannedWords.includes(symbol)) {
-                eror(false,`Имя содержит недопустимый символ: ${symbol}`,"Неверный ввод данных");
+                eror(false,`Им\`я містить заборонений символ: ${symbol}`,"Неправильне введення даних");
                 return false;
             }
         }
     }
     else if (input.name == "email"){
         if (!input.value.includes("@")) {
-            eror(false,"Email адресс должен содержать символ @","Неверный ввод данных");
+            eror(false,"Email адреса повинна містити символ @","Неправильне введення даних");
             return false;
         }
     }
     else if (input.name == "password" || input.name == "confirm-password"){
         if (input.value.length < 3 || input.value.length > 16){
-            console.log("пароль");
-            eror(false,`Длина пароля должна быть от 3 до 16 символов`,"Неверный ввод данных");
+            eror(false,`Довжина поролю повинна бути від 3 до 16 символів`,"Неправильне введення даних");
             return false;
         }
         for (let symbol of input.value) {
             if (bannedWords.includes(symbol)) {
-                eror(false,`Пароль содержит недопустимый символ: ${symbol}`,"Неверный ввод данных");
+                eror(false,`Пароль містить заборонений символ: ${symbol}`,"Неправильне введення даних");
                 return false;
             }
         }
@@ -71,29 +69,34 @@ function validation(input) {
     return true
 }
 
-const form = document.querySelector(".form");
 
-form.addEventListener("submit", (event)=>{
-    event.preventDefault();
-    let inputs = form.querySelectorAll('input');
-    let result = true
-    for (let input of inputs){
-        if (validation(input) == false){
-            result = false;
-        }
-    }
-    if (result == true){
-        console.log(result);
-        $.ajax({
-            type: "POST",
-            url: $(this).action,
-            data: $(this).serialize(),
-            success: function(response){
-                eror(response.result,response.text)
+let result = true
+
+$(document).ready(function () {
+    $(".form").on("submit", function (event) {
+        event.preventDefault();
+        let inputs = document.querySelectorAll('input');
+        for (let input of inputs){
+            if (validation(input) == false){
+                result = false;
             }
-        });
-    }
+        }
+        if (result == true){
+            $.ajax({
+                type: "POST",
+                url: $(this).action,
+                data: $(this).serialize(),
+                success: function(response){
+                    eror(response.result,response.text)
+                }
+            });
+        
+        }
+    })
 })
+
+
+
 
 let listEayPassword = document.querySelectorAll(".password-eay");
 listEayPassword.forEach(function(eayPassword,index,listEayPassword){
@@ -106,7 +109,6 @@ listEayPassword.forEach(function(eayPassword,index,listEayPassword){
           } 
         else {
             input.type = "password";
-            console.log(eayPassword.src);
             eayPassword.src = eayPassword.src.split(".png")[0] + "-hide.png"
           }
     })

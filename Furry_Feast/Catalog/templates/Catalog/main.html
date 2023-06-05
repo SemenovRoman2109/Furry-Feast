@@ -8,11 +8,12 @@
 
 {% block js %}
     
-    <script defer src="{% static 'Catalog/js/main.js' %}"></script>
+    <script defer src="{% static 'Catalog/js/main-js.js' %}"></script>
     
 {% endblock %}
 
 {% block content %}
+    <p class="zero-product">Таких товарів ще немає</p>
     <p class="title">Товари</p>
     <form class="input-search" method = "POST" action="{% url 'main' %}">
         {% csrf_token %}
@@ -54,8 +55,15 @@
         {% csrf_token %}
         <p class="filter-text">Фильтри:</p>
         <div> 
+            <p>Ціна:</p>
+            <ul class="price">
+                <li class="price-text">вiд</li>
+                <li class="input"><input min="{{ min_price }}" value="{{ min_price }}" type="number" placeholder="грн" class="price-min"></li>
+                <li class="price-text">до</li>
+                <li class="input"><input max="{{ max_price }}" value="{{ max_price }}" type="number" placeholder="грн" class="price-max"></li>
+            </ul>
             <p>Вид:</p>
-            <ul i>
+            <ul>
                 <li class="kind">Сухий</li>
                 <li class="kind">Вологий</li>
             </ul>

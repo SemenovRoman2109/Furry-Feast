@@ -10,6 +10,7 @@
     {% block css %}
     {% endblock %}
     <script defer src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script defer src="{% static 'UserPages/js/base.js' %}"></script>
     {% block js %}
     {% endblock %}
     <title>Document</title>
@@ -18,6 +19,7 @@
     <nav class="side-menu">
         <a href="{% url 'main' %}" class="logo">
             <p>Furry Feast</p>
+            
         </a>
         
         <div class = 'top-categories'>
@@ -32,10 +34,20 @@
         
 
         <div class = 'bot-categories'>
-            <a href="{% url 'login' %}"><img src="{% static 'UserPages/img/side-menu/login.png' %}" alt="">Увійти</a>
-            <a href="{% url 'registration' %}"><img src="{% static 'UserPages/img/side-menu/registration.png' %}" alt="">Реєстрація</a>
+            {% if is_authenticated %}
+                <form action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <a class="logout" href=""><img src="{% static 'UserPages/img/side-menu/logout.png' %}" alt="">Вийти</a>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}"><img src="{% static 'UserPages/img/side-menu/login.png' %}" alt="">Увійти</a>
+                <a href="{% url 'registration' %}"><img src="{% static 'UserPages/img/side-menu/registration.png' %}" alt="">Реєстрація</a>
+            {% endif %}
         </div>
     </nav>
+    <div class="modal-window-logout">
+        <p class="title">Ви вийшли з акаунту</p>
+    </div>
     <main>
         <img class='paw1'src="{% static 'Catalog/img/bacground.png' %}" alt="">
         <img class='paw2'src="{% static 'Catalog/img/bacground.png' %}" alt="">
@@ -50,3 +62,4 @@
     
 </body>
 </html>
+
