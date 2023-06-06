@@ -15,7 +15,7 @@
 {% block content %}
     <p class="zero-product">Таких товарів ще немає</p>
     <p class="title">Товари</p>
-    <form class="input-search" method = "POST" action="{% url 'main' %}">
+    <form class="input-search" method = "POST" action="{% url 'catalog' %}">
         {% csrf_token %}
         <input class = 'input-field' type="search" placeholder = 'Пошук'>
         <button class = 'but-search' type="submit"><img src="{% static 'Catalog/img/search.png' %}" alt=""></button>
@@ -51,7 +51,7 @@
 {% endblock %}
 
 {% block filter %}
-    <form class="all-filter" method = "POST" action="{% url 'main' %}">
+    <form class="all-filter" method = "POST" action="{% url 'catalog' %}">
         {% csrf_token %}
         <p class="filter-text">Фильтри:</p>
         <div> 

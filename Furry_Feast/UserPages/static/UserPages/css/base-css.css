@@ -1,3 +1,23 @@
+#button-up{
+    width: 3vw;
+    height: 3vw;
+    position: fixed;
+    right: 1vw;
+    bottom: 1vw;
+    display: none;
+}
+
+.user-name{
+    position: fixed;
+    right: 1vw;
+    top: 1vw;
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    
+    color: #0f5741;
+}
 .modal-window-logout{
     z-index: 55;
     display: none;
@@ -34,6 +54,8 @@
     top: 0;
     position: absolute;
     z-index: 49;
+    background: rgba(92, 92, 92,  0.2);
+    backdrop-filter: blur(2px);
 }
 
 
@@ -132,12 +154,11 @@ body::-webkit-scrollbar-thumb {
 
 main{
     display: flex;
-    z-index: -2;
     flex-direction: column;
     align-items: center;
     position: absolute;
     right: 0;
-    width: 87%;
+    width: 85%;
     height: auto;
     min-height: 100%;
 }

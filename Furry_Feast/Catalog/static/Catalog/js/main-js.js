@@ -18,7 +18,7 @@ function sendSelectCategory(){
         $.ajax({
             type: "POST",
             url: $(".all-filter").action,
-            data: { csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,"animal":listSelectCategories[1],"kind":listSelectCategories[0],"weight":listSelectCategories[2],"minPrice":minPriceInput,"maxPrice":maxPriceInput,"text": text},
+            data: { csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,"start-animal":"","animal":listSelectCategories[1],"kind":listSelectCategories[0],"weight":listSelectCategories[2],"minPrice":minPriceInput,"maxPrice":maxPriceInput,"text": text},
             success: function(response){
                 let title = document.querySelector(".zero-product");
                 if (response.products.length == 0){

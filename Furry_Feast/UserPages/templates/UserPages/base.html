@@ -17,13 +17,13 @@
 </head>
 <body>
     <nav class="side-menu">
-        <a href="{% url 'main' %}" class="logo">
+        <a href="{% url 'catalog' %}" class="logo">
             <p>Furry Feast</p>
             
         </a>
         
         <div class = 'top-categories'>
-            <a href="{% url 'main' %}"><img src="{% static 'UserPages/img/side-menu/catalog.png' %}" alt="">Товари</a>
+            <a class="catalog" href="{% url 'catalog' %}"><img src="{% static 'UserPages/img/side-menu/catalog.png' %}" alt="">Товари</a>
             <a href="{% url 'cart' %}"><img src="{% static 'UserPages/img/side-menu/cart.png' %}" alt="">Кошик</a>
             <a href="{% url 'contact' %}"><img src="{% static 'UserPages/img/side-menu/contact.png' %}" alt="">Контакти</a>
         </div>
@@ -59,7 +59,10 @@
         {% block content %}
         {% endblock %}
     </main> 
-    
+    {% if is_authenticated %}
+        <p class="user-name">{{ user_name }}</p>
+    {% endif %}
+    <img id="button-up" src="{% static 'UserPages/img/button-up.png' %}" alt="">
 </body>
 </html>
 

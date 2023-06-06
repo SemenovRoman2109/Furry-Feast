@@ -19,7 +19,8 @@ function eror(result,text,resultText="") {
         coverDiv.href = document.querySelector(".logo").href
     }
     coverDiv.classList.add('cover-div'); 
-    document.body.append(coverDiv);
+    let main = document.querySelector("main");
+    main.append(coverDiv);
     modalWindow.style.display = "flex";
     setTimeout(()=>{modalWindow.style.opacity = 1;},10)
 

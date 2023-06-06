@@ -23,9 +23,27 @@ logout.addEventListener("click",function(event){
                     modalWindow.style.display = "none";
                     location.reload();
                 },1000)
-            },5000)
+            },1000)
 
         }
 
     });
+})
+
+const arrowTopButton = document.querySelector("#button-up")
+window.addEventListener("scroll",()=>{
+    console.log(window.innerHeight);
+    if (window.scrollY > window.innerHeight){
+        arrowTopButton.style.display = "block";
+    }
+    else{
+        arrowTopButton.style.display = "none";
+    }
+})
+
+arrowTopButton.addEventListener("click",(event) => {
+    window.scrollTo({
+        top: 0,
+        behavior : "smooth"
+      });
 })
