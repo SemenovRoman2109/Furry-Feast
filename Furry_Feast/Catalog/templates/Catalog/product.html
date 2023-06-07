@@ -1,8 +1,37 @@
 {% extends 'UserPages/base.html' %}
 
-{% block content %}
-    <h1>Product</h1>
-    <h2>name-obj:{{ product.name }}</h2>
-    <h2>weight:{{ product.weight }}</h2>
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'Catalog/css/product.css' %}">
 {% endblock %}
+
+
+{% block content %}
+    <div class = 'main-product-card-head'>
+        <a id = 'q' href="#">Товар</a>  
+        <a id = 'w' href="{% url 'product_review' %}">Відгуки</a>
+    </div>
+    <div class = 'main-product-card'>
+        <div class = 'main-product-card-img-box'>
+            <img src="{{ product.image.url }}" alt="">
+        </div>
+        <div class = 'main-product-info'>
+            <p>{{ product.name }}</p>
+                <div class="main-product-info-price">
+                    <p>{{ product.price }} грн / {{ product.weight }} кг</p>
+                    <button class = 'main-product-button-buy' type = 'submit'>Купити</button>
+                </div>
+                <button class = 'main-product-add-bascet-button'>Додати до кошику</button>
+        </div>
+    </div>
+    <div class = 'main-product-description'>
+        <p>{{ product.info }}</p>
+    </div>
+
     
+<!-- 
+    <h1>Product</h1>
+    <h2>name-obj:{{ product.name }}</h2> -->
+
+{% endblock %}

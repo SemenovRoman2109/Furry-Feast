@@ -3,86 +3,15 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'Catalog/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'Catalog/main/catalog.css' %}">
 {% endblock %}
 
 {% block js %}
     
-    <script defer src="{% static 'Catalog/js/main-js.js' %}"></script>
+    <script defer src="{% static 'Catalog/js/main.js' %}"></script>
     
 {% endblock %}
 
 {% block content %}
-    <p class="zero-product">Таких товарів ще немає</p>
-    <p class="title">Товари</p>
-    <form class="input-search" method = "POST" action="{% url 'catalog' %}">
-        {% csrf_token %}
-        <input class = 'input-field' type="search" placeholder = 'Пошук'>
-        <button class = 'but-search' type="submit"><img src="{% static 'Catalog/img/search.png' %}" alt=""></button>
-    </form>
-    
-    <div class="goods">
-        {% for product in products %}
-            <div class = 'section' id="section-{{ product.pk }}">
-                <div class="img-box">
-                    <a href="product/{{ product.pk }}"><img src="{{ product.image.url }}" alt=""></a>
-                </div>
-                
-                    <a href="product/{{ product.pk }}" class = 'description'>{{ product.name }} </a>
-                    
-                <div class = group-button>
-                    <!-- <button class = 'button-buy'><a href="">Переглянути</a></button> -->
-                    <p class ='price'>Ціна: {{ product.price }} грн</p>
-                    <button class = 'button-basket'><img src="{% static 'Catalog/img/button-cart.png' %}"></button>
-                </div>
-                
-            </div>
-        {% endfor %}
-
-    </div>
-    <div class="modal-window-add-cart">
-        <p>Товар успiшно додано</p>
-        <div class="go-to-cart">
-            <a href="{% url 'cart' %}"><img src="{% static 'Catalog/img/modal-window-button-cart.png' %}" alt=""></a>
-            <a class="text" href="{% url 'cart' %}">Перейти до кошику</a>
-        </div>
-        
-    </div>
-{% endblock %}
-
-{% block filter %}
-    <form class="all-filter" method = "POST" action="{% url 'catalog' %}">
-        {% csrf_token %}
-        <p class="filter-text">Фильтри:</p>
-        <div> 
-            <p>Ціна:</p>
-            <ul class="price">
-                <li class="price-text">вiд</li>
-                <li class="input"><input min="{{ min_price }}" value="{{ min_price }}" type="number" placeholder="грн" class="price-min"></li>
-                <li class="price-text">до</li>
-                <li class="input"><input max="{{ max_price }}" value="{{ max_price }}" type="number" placeholder="грн" class="price-max"></li>
-            </ul>
-            <p>Вид:</p>
-            <ul>
-                <li class="kind">Сухий</li>
-                <li class="kind">Вологий</li>
-            </ul>
-        </div>
-        <div> 
-            <p>Тварина:</p>
-            <ul>
-                <li class="animal">Кіт</li>
-                <li class="animal">Собака</li>
-            </ul>
-        </div>
-        <div> 
-            <p>Вага:</p>
-            <ul>
-                <li class="weight">Менше 500г</li>
-                <li class="weight">500г - 1кг</li>
-                <li class="weight">1кг - 2.5кг</li>
-                <li class="weight">Більше 2.5кг</li>
-            </ul>
-        </div>
-    </form>
+    <p class="title">Головна</p>
 {% endblock %}

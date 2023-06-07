@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'UserPages/css/base-css.css' %}">
+    <link rel="stylesheet" href="{% static 'UserPages/css/base.css' %}">
     {% block css %}
     {% endblock %}
     <script defer src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
@@ -17,13 +17,13 @@
 </head>
 <body>
     <nav class="side-menu">
-        <a href="{% url 'catalog' %}" class="logo">
+        <a href="{% url 'main' %}" class="logo">
             <p>Furry Feast</p>
             
         </a>
         
         <div class = 'top-categories'>
-            <a class="catalog" href="{% url 'catalog' %}"><img src="{% static 'UserPages/img/side-menu/catalog.png' %}" alt="">Товари</a>
+            <a class="catalog-side-menu" href="/catalog/1"><img src="{% static 'UserPages/img/side-menu/catalog.png' %}" alt="">Товари</a>
             <a href="{% url 'cart' %}"><img src="{% static 'UserPages/img/side-menu/cart.png' %}" alt="">Кошик</a>
             <a href="{% url 'contact' %}"><img src="{% static 'UserPages/img/side-menu/contact.png' %}" alt="">Контакти</a>
         </div>
@@ -34,15 +34,14 @@
         
 
         <div class = 'bot-categories'>
-            {% if is_authenticated %}
-                <form action="{% url 'logout' %}">
-                    {% csrf_token %}
-                    <a class="logout" href=""><img src="{% static 'UserPages/img/side-menu/logout.png' %}" alt="">Вийти</a>
-                </form>
-            {% else %}
-                <a href="{% url 'login' %}"><img src="{% static 'UserPages/img/side-menu/login.png' %}" alt="">Увійти</a>
-                <a href="{% url 'registration' %}"><img src="{% static 'UserPages/img/side-menu/registration.png' %}" alt="">Реєстрація</a>
-            {% endif %}
+            <input class="is-authenticated" type="hidden" value="{{ is_authenticated }}" name="" id="">
+
+            <form action="{% url 'logout' %}">
+                {% csrf_token %}
+                <a class="logout" href=""><img src="{% static 'UserPages/img/side-menu/logout.png' %}" alt="">Вийти</a>
+            </form>
+            <a class="login" href="{% url 'login' %}"><img src="{% static 'UserPages/img/side-menu/login.png' %}" alt="">Увійти</a>
+            <a class="registration" href="{% url 'registration' %}"><img src="{% static 'UserPages/img/side-menu/registration.png' %}" alt="">Реєстрація</a>
         </div>
     </nav>
     <div class="modal-window-logout">

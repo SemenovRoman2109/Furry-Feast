@@ -1,5 +1,23 @@
+let isAuthenticated = document.querySelector(".is-authenticated").value
+
 let logout = document.querySelector(".logout");
 let form = logout.closest("form");
+
+let login = document.querySelector(".login")
+let registration = document.querySelector(".registration")
+
+
+if (isAuthenticated == "True"){
+    login.style.display = "none"
+    registration.style.display = "none"
+    logout.style.display = "flex"
+}
+else{
+    logout.style.display = "none"
+    login.style.display = "flex"
+    registration.style.display = "flex"
+}
+
 
 logout.addEventListener("click",function(event){
     event.preventDefault()
@@ -21,7 +39,9 @@ logout.addEventListener("click",function(event){
                 modalWindow.style.opacity = 0;
                 setTimeout(function(){
                     modalWindow.style.display = "none";
-                    location.reload();
+                    login.style.display = "flex"
+                    registration.style.display = "flex"
+                    logout.style.display = "none"
                 },1000)
             },1000)
 
@@ -32,7 +52,6 @@ logout.addEventListener("click",function(event){
 
 const arrowTopButton = document.querySelector("#button-up")
 window.addEventListener("scroll",()=>{
-    console.log(window.innerHeight);
     if (window.scrollY > window.innerHeight){
         arrowTopButton.style.display = "block";
     }

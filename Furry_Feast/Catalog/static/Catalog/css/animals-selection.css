@@ -1,23 +1,27 @@
-.animals{
+.select-animal{
     display: flex;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     align-items: center;
     justify-content: space-around;
+    position: absolute;
     
 }
 
-.animal {
+.select-animal .start-animal {
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    width: 35%;
-    height: auto;
+    align-items: center;
+    justify-content: center;
+    width: 25vw;
+    height: 25vw;
+    gap: 5%;
     background: #13BB89;
     border-radius: 10px;
 }
 
-p {
+.select-animal p {
     display: flex;
     justify-content: center;
     font-family: 'Oswald';
@@ -26,7 +30,6 @@ p {
     color: #FFFFFF
 }
 
-img {
-    width: auto;
+.select-animal img {
     height: 72%;
 }

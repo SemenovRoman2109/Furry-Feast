@@ -23,5 +23,6 @@ class Product(models.Model):
     reviews = models.ManyToManyField(Review, blank=True)
     category = models.ManyToManyField(Category)
     
+    promotion = models.IntegerField(default=0)
     def __str__(self):
         return self.name

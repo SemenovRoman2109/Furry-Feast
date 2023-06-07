@@ -15,7 +15,7 @@ function eror(result,text,resultText="") {
     registrationMessage.textContent = text
     let coverDiv = document.createElement('a'); 
     if (result){
-        coverDiv.href = document.querySelector(".logo").href
+        coverDiv.href = document.querySelector(".catalog-side-menu").href
     }
     coverDiv.classList.add('cover-div'); 
     let main = document.querySelector("main");
