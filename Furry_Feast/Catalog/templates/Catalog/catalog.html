@@ -13,7 +13,6 @@
 {% endblock %}
 
 {% block content %}
-    <p class="zero-product">Таких товарів ще немає</p>
     <p class="title-page">Товари</p>
     <form class="input-search" method = "POST" action="/catalog/1">
         {% csrf_token %}
@@ -38,10 +37,21 @@
                 
             </div>
         {% endfor %}
-
     </div>
-    <a class="redirect-page" href="/catalog/2">Redirect</a>
-    <a class="redirect-page" href="/catalog/1">Redirect</a>
+    <input type="hidden" class="count-page" value="{{ count_page }}">
+    <div class="pagination">
+        <button class="back-pagination ">&#8592;Назад</button>
+        <div class="number-pagination">
+            <button class="button-pagination">1</button>
+            <button class="button-pagination">2</button>
+            <button class="button-pagination">3</button>
+            <button class="button-pagination select-button-pagination">4</button>
+            <button class="button-pagination">5</button>
+            <button class="button-pagination">6</button>
+            <button class="button-pagination">7</button>
+        </div>
+        <button class="forward-pagination">Вперед&#8594;</button>
+    </div>
     <div class="modal-window-add-cart">
         <p>Товар успiшно додано</p>
         <div class="go-to-cart">

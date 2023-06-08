@@ -1,3 +1,6 @@
+   
+
+
 {% extends 'UserPages/base.html' %}
 
 {% load static %}
@@ -17,12 +20,12 @@
             <img src="{{ product.image.url }}" alt="">
         </div>
         <div class = 'main-product-info'>
-            <p>{{ product.name }}</p>
+            <p class = 'main-product-name' >{{ product.name }}</p>
                 <div class="main-product-info-price">
                     <p>{{ product.price }} грн / {{ product.weight }} кг</p>
-                    <button class = 'main-product-button-buy' type = 'submit'>Купити</button>
+                    <button class = 'main-product-button-buy' type = 'submit'>Купити <img id = 'img_c' src="{% static 'UserPages/img/side-menu/cart.png' %}" alt=""></button>
                 </div>
-                <button class = 'main-product-add-bascet-button'>Додати до кошику</button>
+                <button class = 'main-product-add-bascet-button'>Додати до кошику<img id = 'img_c' src="{% static 'UserPages/img/side-menu/catalog.png' %}" alt=""></button>
         </div>
     </div>
     <div class = 'main-product-description'>
@@ -35,3 +38,4 @@
     <h2>name-obj:{{ product.name }}</h2> -->
 
 {% endblock %}
+

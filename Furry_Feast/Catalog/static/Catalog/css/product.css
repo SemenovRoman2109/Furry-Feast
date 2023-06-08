@@ -33,8 +33,9 @@ main {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+
     width: 98%;
-    height: 40vh;
+    height: 15em;
     gap: 2%;
     
 }
@@ -42,7 +43,8 @@ main {
 
 .main-product-card-img-box {
     display: flex;
-    width: 45%;
+    justify-content: center;
+    width: 35%;
     height: 100%;
     background: #13BB89;
     border-radius: 14px;
@@ -53,13 +55,14 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background:#e4d2a3;
+    background:#fbbb0c;
     border-radius: 14px ;
-
-    font-family: 'Oswald';
+    border: none;
+    font-family: 'Oswald regular', sans-serif;
     font-style: normal;
-    font-weight: bold;
     font-size: 22px;
+    width: 50%;
+    height: 40%;
     transition-duration: 0.5s;
 }
 
@@ -70,11 +73,69 @@ main {
     
 }
 
-/* img {
-    width: 30%;
-    border: 1px solid #000;
-    height: 500px;
-} */
+.main-product-info-price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7%;
+    width: 15em;
+    font-style: bold !important;
+    color: #13097a;
+}
 
+.main-product-add-bascet-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Oswald regular', sans-serif;
+    font-style: normal;
+    font-size: 22px;
+    color: #4B4B4B;
+    background: #0CFB5D;
+    border-radius: 14px ;
+    border: none;
+    width: 65%;
+    height: auto;
+    transition-duration: 0.5s;
 
+}
+
+.main-product-add-bascet-button:hover {
+    background: #1bcb26;
+    transition: all 0.5s;
+    transform: scale(1.08);
     
+}
+
+.main-product-name {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: #0b4a37;
+}
+
+
+.main-product-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 10%;
+
+}
+
+#img_c {
+    display: flex;
+    width: auto;
+    color: #080808;
+    height: 27px;
+    padding: 3% 0% 3% 5%;
+}
+
+.main-product-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0b4a37;
+    width: 97%;
+
+}

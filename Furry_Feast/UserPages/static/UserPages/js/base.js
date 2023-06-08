@@ -6,16 +6,19 @@ let form = logout.closest("form");
 let login = document.querySelector(".login")
 let registration = document.querySelector(".registration")
 
+let userName = document.querySelector(".user-name");
 
 if (isAuthenticated == "True"){
     login.style.display = "none"
     registration.style.display = "none"
     logout.style.display = "flex"
+    userName.style.display = "flex"
 }
 else{
     logout.style.display = "none"
     login.style.display = "flex"
     registration.style.display = "flex"
+    userName.style.display = "none"
 }
 
 
@@ -42,6 +45,7 @@ logout.addEventListener("click",function(event){
                     login.style.display = "flex"
                     registration.style.display = "flex"
                     logout.style.display = "none"
+                    userName.style.display = "none"
                 },1000)
             },1000)
 

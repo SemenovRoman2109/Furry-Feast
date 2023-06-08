@@ -135,7 +135,7 @@
     color: #4B4B4B;
 }
 
-button:hover{
+button:hover:not(.disable){
     background: #fb6c0c;
     transition: all 0.5s;
     transform: scale(1.12);
@@ -345,3 +345,75 @@ ul{
 .but-search{
     transition-duration: 0.5s;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;  
+    
+}
+
+.pagination button {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-size: 20px;
+    transition-duration: 0.18s;
+    background-color: rgb(228, 228, 228);
+}
+
+.number-pagination {
+    display: flex;
+   
+
+}
+
+.button-pagination {
+    width: 3vw;
+    height: 3vw;
+
+}
+
+
+.select-button-pagination {
+    color: #131082;
+    border: 3px solid #131082;
+    font-weight: bold;
+
+}
+
+.forward-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7vw;
+    height: 3vw;
+
+
+}
+
+
+.pagination button:not(.disable):hover{
+    background: rgb(143, 176, 214);
+    transition: all 0.5s;
+    transform: scale(1.12);
+    
+}
+
+.back-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7vw;
+    height: 3vw;
+}
+
+.disable {
+    color: #8C8C8C;
+    
+}
+
+.disable:hover {
+    background-color: rgb(228, 228, 228);
+} 

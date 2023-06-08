@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .models import *
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+from django.template.loader import render_to_string
+
+PRODUCT_IN_ONE_PAGE = 4
 
 def filter_product_function(filter_text,filter_max_price,filter_min_price,filter_weight,filter_kind,filter_animal,filtered_products):
     # Проверка по поиковой строке
@@ -39,7 +42,6 @@ def filter_product_function(filter_text,filter_max_price,filter_min_price,filter
     list_filters_category = [filter_kind,filter_animal]
     for filter in list_filters_category:
         if filter != "" and filter != None:
-            print(filter)
             filtered_products = filtered_products.filter(category__name=filter)
     return filtered_products
 
@@ -70,10 +72,16 @@ def show_catalog(request,page):
     context["max_price"] = max_price
     context["min_price"] = min_price
 
+    if len(context["products"]) // PRODUCT_IN_ONE_PAGE < len(context["products"]) / PRODUCT_IN_ONE_PAGE:
+        context["count_page"] = len(context["products"]) // PRODUCT_IN_ONE_PAGE + 1
+    else:
+        context["count_page"] = len(context["products"]) // PRODUCT_IN_ONE_PAGE
+
+
     new_products = []
-    for index in range(20):
-        if len(context["products"]) > index + 20*(int(page)-1):
-            new_products.append(context["products"][index + 20*(int(page)-1)])
+    for index in range(PRODUCT_IN_ONE_PAGE):
+        if len(context["products"]) > index + PRODUCT_IN_ONE_PAGE*(int(page)-1):
+            new_products.append(context["products"][index + PRODUCT_IN_ONE_PAGE*(int(page)-1)])
         
     context["products"] = new_products
     if request.method == 'POST':
@@ -92,18 +100,26 @@ def show_catalog(request,page):
         
         filtered_products = filter_product_function(filter_text=text,filter_max_price=max_price,filter_min_price=min_price,filter_weight=weight,filter_kind=kind,filter_animal=animal,filtered_products=filtered_products)
         
-        # Получаем pk нужных обектов
-        products_list = []
-        for product in filtered_products:
-            products_list.append(product.pk)
-        
         result = []
-        for i in range(0, len(products_list), 20): 
-            chunk = products_list[i:i + 20]
+        for i in range(0, len(filtered_products), PRODUCT_IN_ONE_PAGE): 
+            chunk = filtered_products[i:i + PRODUCT_IN_ONE_PAGE]
             result.append(chunk)
-        print(result)
 
-        return JsonResponse({"products": products_list})
+        index_page = int(page)-1
+        if len(result) < index_page+1:
+            index_page = 0
+
+        zero_product = False
+        if len(result[index_page]) == 0:
+            zero_product = True
+
+        print(len(result))
+        data = {
+            'html_product_list': render_to_string("Catalog/list_product_filtrer.html", {'products_filter': result[index_page],"zero_product":zero_product}),
+            "count_page":len(result)
+        }
+
+        return JsonResponse(data)
     
 
     return render(request,"Catalog/catalog.html", context)
@@ -129,3 +145,6 @@ def show_animal_selection(request):
         "user_name":request.user.username,
     }
     return render(request,"Catalog/animal_selection.html", context)
+
+
+

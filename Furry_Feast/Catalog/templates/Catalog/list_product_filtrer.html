@@ -1,0 +1,21 @@
+{% load static %}
+
+{% for product in products_filter %}
+    <div class = 'section' id="section-{{ product.pk }}">
+        <div class="img-box">
+            <a href="/product/{{ product.pk }}"><img src="{{ product.image.url }}" alt=""></a>
+        </div>
+        
+            <a href="/product/{{ product.pk }}" class = 'description'>{{ product.name }} </a>
+            
+        <div class = group-button>
+            <!-- <button class = 'button-buy'><a href="">Переглянути</a></button> -->
+            <p class ='price'>Ціна: {{ product.price }} грн</p>
+            <button class = 'button-basket'><img src="{% static 'Catalog/img/button-cart.png' %}"></button>
+        </div>    
+    </div>
+{% endfor %}
+
+{% if zero_product %}
+    <p class="zero-product">Таких товарів ще немає</p>
+{% endif %}
