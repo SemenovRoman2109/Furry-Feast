@@ -2,12 +2,8 @@
     margin: 0;
 }
 
-.all-filter{
-    display: none;
-}
 
 .title-page{
-    display: none;
     font-family: 'Oswald';
     font-style: normal;
     font-weight: 500;
@@ -68,7 +64,6 @@
 
 .input-search{
     display: flex;
-    display: none;
     align-items: center;
     justify-content: center;
     flex-direction: row;
@@ -78,7 +73,6 @@
 
 .goods{
     display: flex;
-    display: none;
     align-items: center;
     position: relative;
     left: 5%;

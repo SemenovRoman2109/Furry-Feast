@@ -197,32 +197,6 @@ maxPriceInput.addEventListener("blur",function(event) {
 })
 
 
-let goods = document.querySelector(".goods");
-let inputSearch = document.querySelector(".input-search");
-let titlePage = document.querySelector(".title-page");
-let allFilter = document.querySelector(".all-filter");
-
-let listStartAnimal = document.querySelectorAll(".start-animal");
-let animals = document.querySelector(".select-animal");
-
-listStartAnimal.forEach(function(standartAnimal,index,listStartAnimal) {
-    standartAnimal.addEventListener("click",function(event) {
-        goods.style.display = "flex";
-        inputSearch.style.display = "flex";
-        titlePage.style.display = "block";
-        allFilter.style.display = "block";
-        animals.style.display = "none";
-
-        
-        
-        listAnimal[index].style.color = "#FFC700";
-        listAnimal[index].classList.add("select-category")
-        listSelectCategories[1] = listAnimal[index].textContent;
-                
-        sendSelectCategory()
-    })
-})
-
 
 const params = new URLSearchParams(window.location.search);
 
@@ -248,11 +222,6 @@ if (window.location.href.split("?")[1] != undefined){
 
 listParam.forEach(function(param,indexSelectCategories,listParam) {
     if (param != null){
-        goods.style.display = "flex";
-        inputSearch.style.display = "flex";
-        titlePage.style.display = "block";
-        allFilter.style.display = "block";
-        animals.style.display = "none";
         
         listCategories.forEach(function(category,index,listCategories){
             category.forEach(function(categoryValue,indexCategory,category) {
@@ -270,11 +239,6 @@ listParam.forEach(function(param,indexSelectCategories,listParam) {
 
 listParamInput.forEach(function(param,index,listParamInput) {
     if (param != null){
-        goods.style.display = "flex";
-        inputSearch.style.display = "flex";
-        titlePage.style.display = "block";
-        allFilter.style.display = "block";
-        animals.style.display = "none";
         
         if (index == 0){
             let inputField =  document.querySelector(".input-field");

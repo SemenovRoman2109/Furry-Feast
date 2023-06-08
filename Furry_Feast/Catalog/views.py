@@ -52,8 +52,7 @@ def show_main(request):
     return render(request,"Catalog/main.html", context)
 
 def show_catalog(request,page):
-    print(request.GET)
-    print(page)
+
     context={
         "products":Product.objects.all(),
         "is_authenticated":request.user.is_authenticated,
@@ -97,7 +96,13 @@ def show_catalog(request,page):
         products_list = []
         for product in filtered_products:
             products_list.append(product.pk)
-        print(products_list)
+        
+        result = []
+        for i in range(0, len(products_list), 20): 
+            chunk = products_list[i:i + 20]
+            result.append(chunk)
+        print(result)
+
         return JsonResponse({"products": products_list})
     
 
@@ -118,3 +123,9 @@ def show_product_review(request):
     }
     return render(request,"Catalog/product-review.html",context)
 
+def show_animal_selection(request):
+    context={
+        "is_authenticated":request.user.is_authenticated,
+        "user_name":request.user.username,
+    }
+    return render(request,"Catalog/animal_selection.html", context)

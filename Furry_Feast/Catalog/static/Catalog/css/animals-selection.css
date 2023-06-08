@@ -19,9 +19,11 @@
     gap: 5%;
     background: #13BB89;
     border-radius: 10px;
+    text-decoration: none;
 }
 
 .select-animal p {
+    margin: 0;
     display: flex;
     justify-content: center;
     font-family: 'Oswald';

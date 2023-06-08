@@ -1,0 +1,23 @@
+{% extends 'UserPages/base.html' %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'Catalog/css/animals-selection.css' %}">
+{% endblock %}
+{% block js %}
+    <script defer src="{% static 'Catalog/js/animal_selection.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="select-animal">
+        <a href="/catalog/1/Тварина:Кiт" class="cat start-animal">
+            <img src="{% static 'Catalog/img/cat.png' %}" alt="">
+            <p>Коти</p>
+        </a>
+        <a href="/catalog/1/Тварина:Собака" class="dog start-animal">
+            <img src="{% static 'Catalog/img/dog.png' %}" alt="">
+            <p>Собаки</p>
+        </a>
+    </div>
+{% endblock %}

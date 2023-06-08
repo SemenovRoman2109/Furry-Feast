@@ -3,8 +3,7 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'Catalog/css/catalog2.css' %}">
-    <link rel="stylesheet" href="{% static 'Catalog/css/animals-selection.css' %}">
+    <link rel="stylesheet" href="{% static 'Catalog/css/catalog.css' %}">
 {% endblock %}
 
 {% block js %}
@@ -48,17 +47,6 @@
         <div class="go-to-cart">
             <a href="{% url 'cart' %}"><img src="{% static 'Catalog/img/modal-window-button-cart.png' %}" alt=""></a>
             <a class="text" href="{% url 'cart' %}">Перейти до кошику</a>
-        </div>
-        
-    </div>
-    <div class="select-animal">
-        <div class="cat start-animal">
-            <img src="{% static 'Catalog/img/cat.png' %}" alt="">
-            <p>Коти</p>
-        </div>
-        <div class="dog start-animal">
-            <img src="{% static 'Catalog/img/dog.png' %}" alt="">
-            <p>Собаки</p>
         </div>
         
     </div>
