@@ -1,4 +1,11 @@
-
+let pageName = "catalog";
+if (window.location.href.includes("catalog")){
+    pageName = "catalog";
+}
+else{
+    pageName = "discount";
+}
+    
 
 let listKind = document.querySelectorAll(".kind");
 let listAnimal = document.querySelectorAll(".animal");
@@ -14,100 +21,111 @@ let listSelectCategories = [selectKind,selectAnimal,selectWeight]
 
 
 function generatePaginationButton(countPage,userPage) {
-    console.log(countPage,userPage);
-    const divNumberButtonPagination = document.querySelector(".number-pagination");
-    divNumberButtonPagination.innerHTML = '';
-    const buutonBackPagination = document.querySelector(".back-pagination");
-    const buutonForwardPagination = document.querySelector(".forward-pagination");
-    if (String(userPage) == "1"){
-        buutonBackPagination.classList.add("disable");
-    }
-    if (String(userPage) == String(countPage)){
-        buutonForwardPagination.classList.add("disable");
-    }
-    
-    buutonBackPagination.addEventListener("click",function(event) {
-        if (! buutonBackPagination.classList.contains("disable")){
-            window.location.href = `/catalog/${Number(window.location.href.split("catalog/")[1].split("/")[0]) - 1}/${window.location.href.split("/")[window.location.href.split("/").length - 1]}`
+    const paginationBlock = document.querySelector(".pagination");
+    paginationBlock.style.display = "flex";
+    if (countPage > 1){
+        console.log(countPage,userPage);
+        const divNumberButtonPagination = document.querySelector(".number-pagination");
+        divNumberButtonPagination.innerHTML = '';
+        const buutonBackPagination = document.querySelector(".back-pagination");
+        const buutonForwardPagination = document.querySelector(".forward-pagination");
+        if (String(userPage) == "1"){
+            buutonBackPagination.classList.add("disable");
+        }
+        if (String(userPage) == String(countPage)){
+            buutonForwardPagination.classList.add("disable");
         }
         
-    })
-    buutonForwardPagination.addEventListener("click",function(event) {
-        if (! buutonForwardPagination.classList.contains("disable")){
-            window.location.href = `/catalog/${Number(window.location.href.split("catalog/")[1].split("/")[0]) + 1}/${window.location.href.split("/")[window.location.href.split("/").length - 1]}`
-        }
-    })
-    
-    if (countPage <= 7){
-        let step;
-        for (step = 1; step <= countPage; step++) {
-            let numberButtonPagination = document.createElement("button");
-            numberButtonPagination.textContent = String(step);
-            if (String(numberButtonPagination.textContent) == String(userPage)){
-                numberButtonPagination.classList.add("select-button-pagination");
-            }
-            numberButtonPagination.classList.add("button-pagination");
-            divNumberButtonPagination.append(numberButtonPagination)
-        }
-    }
-
-    else{
-        let step;
-        for (step = 1; step <= 7; step++) {
-            let numberButtonPagination = document.createElement("button");
-            numberButtonPagination.classList.add("button-pagination");
-            divNumberButtonPagination.append(numberButtonPagination)
-        }
-        const listNumberPaginationButton = document.querySelectorAll(".button-pagination");
-        listNumberPaginationButton[0].textContent = "1";
-        listNumberPaginationButton[6].textContent = String(countPage);
-        if (Number(userPage) >= 4){
-            listNumberPaginationButton[1].textContent = "...";
-            listNumberPaginationButton[1].classList.add("disable");
-            listNumberPaginationButton[2].textContent = String(Number(userPage) - 1);
-            listNumberPaginationButton[3].textContent = String(Number(userPage));
-            listNumberPaginationButton[4].textContent = String(Number(userPage) + 1);
-            if (Number(userPage) > Number(countPage)-3){
-                listNumberPaginationButton[2].textContent = String(Number(countPage)-4);
-                listNumberPaginationButton[3].textContent = String(Number(countPage)-3);
-                listNumberPaginationButton[4].textContent = String(Number(countPage)-2);
-                listNumberPaginationButton[5].textContent = String(Number(countPage)-1);
-            }
-        }
-        if (Number(userPage) <= Number(countPage)-3){
-            listNumberPaginationButton[5].textContent = "...";
-            listNumberPaginationButton[5].classList.add("disable");
-            listNumberPaginationButton[2].textContent = String(Number(userPage) - 1);
-            listNumberPaginationButton[3].textContent = String(Number(userPage));
-            listNumberPaginationButton[4].textContent = String(Number(userPage) + 1);
-            if (Number(userPage) < 4){
-                listNumberPaginationButton[1].textContent = "2";
-                listNumberPaginationButton[2].textContent = "3";
-                listNumberPaginationButton[3].textContent = "4";
-                listNumberPaginationButton[4].textContent = "5";
-            }
-        }
-        listNumberPaginationButton.forEach(function(numberPaginationButton,index,listNumberPaginationButton){
-            if (numberPaginationButton.textContent == String(userPage)){
-                numberPaginationButton.classList.add("select-button-pagination");
-            }
+        buutonBackPagination.addEventListener("click",function(event) {
+            if (! buutonBackPagination.classList.contains("disable")){
+                window.location.href = `/${pageName}/${Number(window.location.href.split(`${pageName}/`)[1].split("/")[0]) - 1}/${window.location.href.split("/")[window.location.href.split("/").length - 1]}`
                 
+            }
+            
         })
+        buutonForwardPagination.addEventListener("click",function(event) {
+            if (! buutonForwardPagination.classList.contains("disable")){
+                window.location.href = `/${pageName}/${Number(window.location.href.split(`${pageName}/`)[1].split("/")[0]) + 1}/${window.location.href.split("/")[window.location.href.split("/").length - 1]}`
+                
+            }
+        })
+        
+        if (countPage <= 7){
+            let step;
+            for (step = 1; step <= countPage; step++) {
+                let numberButtonPagination = document.createElement("button");
+                numberButtonPagination.textContent = String(step);
+                if (String(numberButtonPagination.textContent) == String(userPage)){
+                    numberButtonPagination.classList.add("select-button-pagination");
+                }
+                numberButtonPagination.classList.add("button-pagination");
+                divNumberButtonPagination.append(numberButtonPagination)
+            }
+        }
+    
+        else{
+            let step;
+            for (step = 1; step <= 7; step++) {
+                let numberButtonPagination = document.createElement("button");
+                numberButtonPagination.classList.add("button-pagination");
+                divNumberButtonPagination.append(numberButtonPagination)
+            }
+            const listNumberPaginationButton = document.querySelectorAll(".button-pagination");
+            listNumberPaginationButton[0].textContent = "1";
+            listNumberPaginationButton[6].textContent = String(countPage);
+            if (Number(userPage) >= 4){
+                listNumberPaginationButton[1].textContent = "...";
+                listNumberPaginationButton[1].classList.add("disable");
+                listNumberPaginationButton[2].textContent = String(Number(userPage) - 1);
+                listNumberPaginationButton[3].textContent = String(Number(userPage));
+                listNumberPaginationButton[4].textContent = String(Number(userPage) + 1);
+                if (Number(userPage) > Number(countPage)-3){
+                    listNumberPaginationButton[2].textContent = String(Number(countPage)-4);
+                    listNumberPaginationButton[3].textContent = String(Number(countPage)-3);
+                    listNumberPaginationButton[4].textContent = String(Number(countPage)-2);
+                    listNumberPaginationButton[5].textContent = String(Number(countPage)-1);
+                }
+            }
+            if (Number(userPage) <= Number(countPage)-3){
+                listNumberPaginationButton[5].textContent = "...";
+                listNumberPaginationButton[5].classList.add("disable");
+                listNumberPaginationButton[2].textContent = String(Number(userPage) - 1);
+                listNumberPaginationButton[3].textContent = String(Number(userPage));
+                listNumberPaginationButton[4].textContent = String(Number(userPage) + 1);
+                if (Number(userPage) < 4){
+                    listNumberPaginationButton[1].textContent = "2";
+                    listNumberPaginationButton[2].textContent = "3";
+                    listNumberPaginationButton[3].textContent = "4";
+                    listNumberPaginationButton[4].textContent = "5";
+                }
+            }
+            listNumberPaginationButton.forEach(function(numberPaginationButton,index,listNumberPaginationButton){
+                if (numberPaginationButton.textContent == String(userPage)){
+                    numberPaginationButton.classList.add("select-button-pagination");
+                }
+                    
+            })
+        }
     }
+    else{
+        paginationBlock.style.display = "none";
+    }
+    
 
 
     const listNumberPaginationButton = document.querySelectorAll(".button-pagination");
         listNumberPaginationButton.forEach(function(numberPaginationButton,index,listNumberPaginationButton){
             numberPaginationButton.addEventListener("click",function(event) {
                 if (numberPaginationButton.textContent != "..."){
-                    window.location.href = `/catalog/${numberPaginationButton.textContent}/${window.location.href.split("/")[window.location.href.split("/").length - 1]}`
+                    window.location.href = `/${pageName}/${numberPaginationButton.textContent}/${window.location.href.split("/")[window.location.href.split("/").length - 1]}`
                 }
             })
         })
 
 }
+generatePaginationButton(document.querySelector(".count-page").value,window.location.href.split(`${pageName}/`)[1].split("/")[0])
 
-generatePaginationButton(document.querySelector(".count-page").value,window.location.href.split("catalog/")[1].split("/")[0])
+
 
 
 function sendSelectCategory(){
@@ -123,10 +141,21 @@ function sendSelectCategory(){
                 $(".goods").html(response.html_product_list);
                 let countPage2 = document.querySelector(".count-page");
                 countPage2.value = response.count_page;
-                let page = window.location.href.split("catalog/")[1].split("/")[0];
+                let page = window.location.href.split(`${pageName}/`)[1].split("/")[0];
+                
                 let countPage = response.count_page;
-                if (response.count_page < page){
-                    window.location.href = "/catalog/1/"+window.location.href.split("/")[window.location.href.split("/").length - 1]
+                if (Number(response.count_page) != 0){
+                    if (response.count_page < page){
+                        window.location.href = `/${pageName}/1/`+window.location.href.split("/")[window.location.href.split("/").length - 1]
+                    }
+                }
+                const zeroProduct = document.querySelector(".zero-product");
+                console.log(response.zero_product);
+                if (! response.zero_product){
+                    zeroProduct.style.display = "none";
+                }
+                else{
+                    zeroProduct.style.display = "block";
                 }
                 generatePaginationButton(countPage,page)
             }

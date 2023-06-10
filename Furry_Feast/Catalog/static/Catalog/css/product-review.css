@@ -1,0 +1,180 @@
+*{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    margin: 0px;
+    padding: 0px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 84%;
+    position: absolute;
+}
+
+.main-product_review-card-head {
+    display: flex;
+    flex-direction: row;
+    gap: 8%;
+    width: 40%;
+    margin: 1%;
+}
+
+.main-product_review-card-head a {
+    text-decoration: none;
+    color: #4B4B4B;
+}
+
+.main-product_review-card-head a:hover {
+    color: #080808;
+}
+
+.main-product_review-card-user{
+    height: 100%;
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+
+    color: #4B4B4B;
+}
+
+.main-product_review-card-time{
+    height: 100%;
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #4B4B4B;
+}
+
+.main-product_review-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1%;
+    padding: 1%;
+    background: #DFDFDF;
+    width: 94%;
+    gap: 2%;
+    border: 2px solid #4B4B4B;
+    border-radius: 15px;
+    color: #8C8C8C;
+
+    
+}
+
+.main-product_review-card-info {
+    display: flex;
+    justify-content: space-between;
+    width: 13vw;
+    line-height: 5vw;
+    color: #4B4B4B;
+    
+    
+}
+
+/* 
+.product_review-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background: #DFDFDF;
+    width: 99%;
+    gap: 2%;
+    border: 2px solid #4B4B4B;
+    border-radius: 15px;
+    color: #8C8C8C;
+
+} */
+
+.product_review-card-text {
+    border-radius: 15px;
+    border: 2px solid #4B4B4B;
+    border-radius: 15px;
+    color: #8C8C8C;
+    width: 94%;
+    margin: 1%;
+    padding: 1%;
+    background: #DFDFDF;
+
+}
+
+.product_review-head {
+    display: flex;
+    justify-content: space-between;
+    margin: 1%;
+    width: 94%;
+}
+
+.product_review-block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.product_review-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:#fbbb0c;
+    padding: 9px 0px;
+    color: #4B4B4B;
+    border-radius: 14px ;
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    transition-duration: 0.5s;
+    width: 20%;
+}
+
+
+.product_review-button:hover {
+    background: #fb6c0c;
+    transition: all 0.5s;
+    transform: scale(1.08);
+    
+    
+}
+
+
+#review {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    color: #4B4B4B;
+    
+} 
+
+.main-product_review-card-head p{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 36px;
+
+    color: #4B4B4B;
+    margin: 0;
+}
+
+.main-product_review-card-head a{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 36px;
+
+    color: #8C8C8C;
+    margin: 0;
+    text-decoration: none;
+
+}

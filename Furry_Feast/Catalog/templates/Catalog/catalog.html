@@ -13,6 +13,7 @@
 {% endblock %}
 
 {% block content %}
+    <p class="zero-product">Таких товарів ще немає</p>
     <p class="title-page">Товари</p>
     <form class="input-search" method = "POST" action="/catalog/1">
         {% csrf_token %}
@@ -30,11 +31,22 @@
                     <a href="/product/{{ product.pk }}" class = 'description'>{{ product.name }} </a>
                     
                 <div class = group-button>
-                    <!-- <button class = 'button-buy'><a href="">Переглянути</a></button> -->
-                    <p class ='price'>Ціна: {{ product.price }} грн</p>
+                    {% if product.promotion == 0 %}
+                        <p class ='price'>Ціна: {{ product.discount_price }} грн</p>
+                    {% else %}
+                        <div class="block-price">
+                            <div class="old-price">
+                                <p class ='start-price'>{{ product.price }} грн</p>
+                                <div class="promotion">
+                                    <p class="promotion-percent">{{ product.promotion }}%</p>
+                                </div>
+                            </div>
+                            <p class="price">Ціна: {{ product.discount_price }} грн</p>
+                        </div>
+                        
+                    {% endif %}
                     <button class = 'button-basket'><img src="{% static 'Catalog/img/button-cart.png' %}"></button>
                 </div>
-                
             </div>
         {% endfor %}
     </div>
@@ -42,13 +54,6 @@
     <div class="pagination">
         <button class="back-pagination ">&#8592;Назад</button>
         <div class="number-pagination">
-            <button class="button-pagination">1</button>
-            <button class="button-pagination">2</button>
-            <button class="button-pagination">3</button>
-            <button class="button-pagination select-button-pagination">4</button>
-            <button class="button-pagination">5</button>
-            <button class="button-pagination">6</button>
-            <button class="button-pagination">7</button>
         </div>
         <button class="forward-pagination">Вперед&#8594;</button>
     </div>

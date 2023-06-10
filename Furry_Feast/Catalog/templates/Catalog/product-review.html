@@ -1,6 +1,59 @@
 {% extends 'UserPages/base.html' %}
 
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'Catalog/css/product-review.css' %}">
+{% endblock %}
+
 {% block content %}
-    <h1>Product-review</h1>
+<div class = 'main-product_review-card-head'>
+    <a href="/product/{{ product_pk }}">Товар</a>  
+    <p>Відгуки</p>
+</div>
+
+
+<div class = 'main-product_review-card'>
+    <div class = 'main-product_review-card-info'>
+        <p class = 'main-product_review-card-user'>Роман</p>
+        <p class = 'main-product_review-card-time'>20:50</p>
+    </div>
+  
+    <p class = 'main-product_review-card-text' >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam, et.</p>
+</div>
+
+<div class = 'main-product_review-card'>
+    <div class = 'main-product_review-card-info'>
+        <p class = 'main-product_review-card-user'>Евген</p>
+        <p class = 'main-product_review-card-time'>12:26</p>
+    </div>
+  
+    <p class = 'main-product_review-card-text' >Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi nam quisquam quas atque pariatur similique provident, ut quaerat delectus voluptatibus sapiente numquam vero dolores neque dicta earum! Totam, vitae qui eum doloremque illum voluptate. Praesentium similique cumque deserunt voluptate vel!</p>
+</div>
+
+
+<div class = 'main-product_review-card'>
+    <div class = 'main-product_review-card-info'>
+        <p class = 'main-product_review-card-user'>Евген</p>
+        <p class = 'main-product_review-card-time'>12:26</p>
+    </div>
+  
+    <p class = 'main-product_review-card-text' >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus dolorum cumque explicabo quae quo. Harum, eos consequatur ex, fuga porro voluptatum velit optio amet nobis vitae a itaque tempore quos ab dolores non sint sequi ratione recusandae? Exercitationem dolor soluta corporis ducimus aspernatur commodi temporibus quas? Quod natus dolorum enim molestiae recusandae quisquam sit nulla doloremque fugit, eveniet placeat tempore nemo iste culpa ipsa blanditiis soluta inventore nesciunt. Odio provident molestiae deleniti corrupti voluptas qui deserunt a magnam tempore fugiat perferendis quam perspiciatis soluta reiciendis mollitia, consequuntur exercitationem aut quibusdam quod? Deleniti voluptate quaerat dicta adipisci aliquam porro officia, aspernatur architecto exercitationem magnam recusandae. Asperiores voluptate fuga totam qui laudantium consequatur, eos saepe animi architecto optio hic accusantium ipsa neque vel tempora perspiciatis esse quia. Quidem exercitationem consectetur quo!</p>
+</div>
+
+
+<div class = 'product_review-block'>
+    <div class = 'product_review-head'>
+        <p id = 'review'>Залиште відгук:</p>
+        <button class = 'product_review-button'>Надіслати відгук</button>
+    </div>
+    <textarea class = "product_review-card-text" id="" cols="86" rows="5" placeholder = 'Повідомлення...'></textarea>
+
+
+
+        
+</div>
+
+    
 {% endblock %}
     

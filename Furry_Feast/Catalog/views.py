@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 
-PRODUCT_IN_ONE_PAGE = 4
+PRODUCT_IN_ONE_PAGE = 20
 
 def filter_product_function(filter_text,filter_max_price,filter_min_price,filter_weight,filter_kind,filter_animal,filtered_products):
     # Проверка по поиковой строке
@@ -47,20 +47,17 @@ def filter_product_function(filter_text,filter_max_price,filter_min_price,filter
 
 def show_main(request):
     context={
-        "products":Product.objects.all(),
         "is_authenticated":request.user.is_authenticated,
         "user_name":request.user.username,
     }
     return render(request,"Catalog/main.html", context)
 
 def show_catalog(request,page):
-
     context={
         "products":Product.objects.all(),
         "is_authenticated":request.user.is_authenticated,
         "user_name":request.user.username,
     }
-
 
     max_price = 0 
     min_price = 99999999
@@ -109,14 +106,93 @@ def show_catalog(request,page):
         if len(result) < index_page+1:
             index_page = 0
 
-        zero_product = False
-        if len(result[index_page]) == 0:
+        
+        context_product_list = {'products_filter': None,}
+        zero_product = False                        
+        if len(result) == 0:
             zero_product = True
+            context_product_list['products_filter'] = []
+        else:
+            context_product_list['products_filter'] = result[index_page]
 
-        print(len(result))
         data = {
-            'html_product_list': render_to_string("Catalog/list_product_filtrer.html", {'products_filter': result[index_page],"zero_product":zero_product}),
-            "count_page":len(result)
+            'html_product_list': render_to_string("Catalog/list_product_filtrer.html",context_product_list),
+            "count_page":len(result),
+            "zero_product":zero_product
+        }
+
+        return JsonResponse(data)
+    
+
+    return render(request,"Catalog/catalog.html", context)
+
+def show_discount(request,page):
+    context={
+        "products":Product.objects.filter(promotion__gt = 0),
+        "is_authenticated":request.user.is_authenticated,
+        "user_name":request.user.username,
+    }
+
+    max_price = 0 
+    min_price = 99999999
+    for product in context["products"]:
+        if product.price > max_price:
+            max_price = product.price
+        if product.price < min_price:
+            min_price = product.price
+    context["max_price"] = max_price
+    context["min_price"] = min_price
+
+    if len(context["products"]) // PRODUCT_IN_ONE_PAGE < len(context["products"]) / PRODUCT_IN_ONE_PAGE:
+        context["count_page"] = len(context["products"]) // PRODUCT_IN_ONE_PAGE + 1
+    else:
+        context["count_page"] = len(context["products"]) // PRODUCT_IN_ONE_PAGE
+
+
+    new_products = []
+    for index in range(PRODUCT_IN_ONE_PAGE):
+        if len(context["products"]) > index + PRODUCT_IN_ONE_PAGE*(int(page)-1):
+            new_products.append(context["products"][index + PRODUCT_IN_ONE_PAGE*(int(page)-1)])
+        
+    context["products"] = new_products
+    if request.method == 'POST':
+
+        # Получаем данные
+        kind = request.POST.get("kind")
+        animal = request.POST.get("animal")
+        text = request.POST.get("text")
+        weight = request.POST.get("weight")
+        max_price = request.POST.get("maxPrice")
+        min_price = request.POST.get("minPrice")
+
+
+        filtered_products = Product.objects.filter(promotion__gt = 0)
+        
+        
+        filtered_products = filter_product_function(filter_text=text,filter_max_price=max_price,filter_min_price=min_price,filter_weight=weight,filter_kind=kind,filter_animal=animal,filtered_products=filtered_products)
+        
+        result = []
+        for i in range(0, len(filtered_products), PRODUCT_IN_ONE_PAGE): 
+            chunk = filtered_products[i:i + PRODUCT_IN_ONE_PAGE]
+            result.append(chunk)
+
+        index_page = int(page)-1
+        if len(result) < index_page+1:
+            index_page = 0
+
+        
+        context_product_list = {'products_filter': None,}
+        zero_product = False                        
+        if len(result) == 0:
+            zero_product = True
+            context_product_list['products_filter'] = []
+        else:
+            context_product_list['products_filter'] = result[index_page]
+
+        data = {
+            'html_product_list': render_to_string("Catalog/list_product_filtrer.html",context_product_list),
+            "count_page":len(result),
+            "zero_product":zero_product
         }
 
         return JsonResponse(data)
@@ -128,12 +204,14 @@ def show_product(request, product_pk):
     context = {
         'product': get_object_or_404(Product, pk=product_pk),
         "is_authenticated":request.user.is_authenticated,
+        "product_pk":product_pk,
         "user_name":request.user.username,
     }
     return render(request,"Catalog/product.html",context)
 
-def show_product_review(request):
+def show_product_review(request, product_pk):
     context = {
+        "product_pk":product_pk,
         "user_name":request.user.username,
         "is_authenticated":request.user.is_authenticated
     }

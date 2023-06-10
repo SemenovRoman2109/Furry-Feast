@@ -20,14 +20,41 @@ main {
     margin: 1%;
 }
 
-.main-product-card-head a {
-    text-decoration: none;
+
+
+.main-product-card-head p{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 36px;
+
     color: #4B4B4B;
+    margin: 0;
 }
+
+.main-product-card-head a{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 36px;
+
+    color: #8C8C8C;
+    margin: 0;
+    text-decoration: none;
+
+}
+
+
+
+
 
 .main-product-card-head a:hover {
     color: #080808;
 }
+
+
 
 .main-product-card {
     display: flex;
@@ -61,8 +88,7 @@ main {
     font-family: 'Oswald regular', sans-serif;
     font-style: normal;
     font-size: 22px;
-    width: 50%;
-    height: 40%;
+    width: 35%;
     transition-duration: 0.5s;
 }
 
@@ -78,9 +104,10 @@ main {
     flex-direction: row;
     align-items: center;
     gap: 7%;
-    width: 15em;
-    font-style: bold !important;
+    width: 25em;
+    font-style: bold;
     color: #13097a;
+    margin: 0;
 }
 
 .main-product-add-bascet-button {

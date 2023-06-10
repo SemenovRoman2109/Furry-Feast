@@ -3,7 +3,8 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'Catalog/main/catalog.css' %}">
+    <link rel="stylesheet" href="{% static 'Catalog/css/main.css' %}">
+    
 {% endblock %}
 
 {% block js %}
@@ -13,5 +14,27 @@
 {% endblock %}
 
 {% block content %}
-    <p class="title">Головна</p>
+    <p class="title" >Головна</p>
+
+    <div class="first-line" >
+        <div class="welcome">
+            <div class="block-text" >
+                <p class="title-block" >Ласкаво просимо до Furry Feast</p>
+                <p class="content-block" >Ваш ідеальний вибір кормів для тварин! Ми пропонуємо широкий асортимент якісних кормів, піклуючись про здоров'я та щастя ваших вихованців. Приєднуйтесь до нас та забезпечте своїм улюбленцям оптимальне харчування від справжніх професіоналів!</p>
+            </div>
+            <img class="image" src="{% static 'Catalog/img/about_us_img.png' %}" alt="">
+        </div>
+    </div>
+
+    <div class="second-line" >
+        <div class="discount">
+            <div class="block-text" >
+                <p class="title-block" >Акція на корми до -40%</p>
+                <p class="content-block">У нас є чудова новина! Зараз у нас діє спеціальна акція на корми для ваших улюбленців. Отримайте ексклюзивні знижки на широкий асортимент якісних кормів, які забезпечать вашого улюбленця всім необхідним для здоров'я та щастя.</p>
+            </div>
+            <img class="image" src="{% static 'Catalog/img/discount_img.png' %}" alt="">
+        </div>
+    </div>
+
 {% endblock %}
+

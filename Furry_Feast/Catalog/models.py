@@ -24,5 +24,7 @@ class Product(models.Model):
     category = models.ManyToManyField(Category)
     
     promotion = models.IntegerField(default=0)
+    def discount_price(self):
+        return (int(self.price-(self.price*self.promotion/100))) #self.price-(self.price*self.promotion/100)-0.01
     def __str__(self):
         return self.name

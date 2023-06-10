@@ -15,10 +15,11 @@
 }
 
 .zero-product{
+    display: none;
     font-family: 'Oswald';
     font-style: normal;
-    display: none;
     position: absolute;
+    top: 50%;
     font-weight: bold;
     font-size: 40px;
 
@@ -100,10 +101,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
     
     gap: 10%;
     width: 80%;
-    height: 12%;
+    height: 24%;
 
 }
 
@@ -113,10 +115,12 @@
     align-items: center;
     background:#fbbb0c;
     text-decoration: none;
+    position: absolute;
+    right: 0;
     border: none;
-    width: 30%;
-    height: 100%;
+    padding: 10px;
     border-radius: 50px;
+    height: 50%;
     transition-duration: 0.5s;
     cursor: pointer;
 }
@@ -125,7 +129,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75%;
+    height: 100%;
+}
+
+.block-price{
+    display: flex;
+    flex-direction: column;
+}
+
+.old-price{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
+    position: absolute;
+    width: 100%;
+    gap: 6%;
+    top: 0;
+}
+
+.promotion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 5%;
+    background-color: #fb6c0c;
+    height: 100%;
+    border-radius: 25px;
+}
+
+.start-price{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-size: 18px;
+    color: rgb(5, 82, 52);
+    text-decoration-line:line-through;
 }
 
 .button-buy a{
@@ -145,7 +182,7 @@ button:hover:not(.disable){
 .description{
     display: flex;
     width: 75%;
-    height: 20%;
+    height: 18%;
     text-decoration: none;
     font-family: 'Oswald';
     font-style: normal;
@@ -164,7 +201,7 @@ button:hover:not(.disable){
     border: 3px solid #F0F0F0;
     border-radius: 14px;
     width: 75%;
-    height: 59%;
+    height: 168px;
 }
 
 .section .img-box a{
@@ -184,7 +221,7 @@ button:hover:not(.disable){
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    height: 290px;
+    height: 320px;
     width: 230px;
     background: #13BB89;
     padding-top: 1%;
