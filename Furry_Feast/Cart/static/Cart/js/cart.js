@@ -1,3 +1,10 @@
+function calculate_product_price(item) {
+    let priceOneProduct = item.querySelector(".price-one-product");
+    let countProduct = item.querySelector(".count-product");
+    let finalPriceObj = item.querySelector(".price");
+    finalPriceObj.textContent = `${Number(priceOneProduct.value)*Number(countProduct.textContent)} грн`;
+}
+
 function buttonMinus(event,button) {
     event.preventDefault();
     let quantity = this.closest(".quantity");
@@ -27,7 +34,6 @@ function buttonDelete(event, button){
     let blockItem = this.closest(".item");
     let quantity = this.closest("form");
     blockItem.remove();
-    console.log("SEEEEND");
     send(event, quantity, true);
 }
 
@@ -47,11 +53,18 @@ function send(event, quantity ,deleteProduct) {
             "product_pk": quantity.closest(".item").querySelector(".product_pk").value
         },
     });
+
+    if (! deleteProduct){
+        calculate_product_price(quantity.closest(".item"));
+    }
+    
+    
 }
 
 let minusButtons = document.querySelectorAll(".minus");
 let plusButtons = document.querySelectorAll(".plus");
-let deleteButtons = document.querySelectorAll(".bin")
+let deleteButtons = document.querySelectorAll(".bin");
+let itemList = document.querySelectorAll(".item")
 
 minusButtons.forEach(function (button) {
     if (String(button.closest(".quantity").querySelector(".count-product").textContent) == "1") {
@@ -67,3 +80,7 @@ plusButtons.forEach(function (button) {
 deleteButtons.forEach(function (button) {
     button.addEventListener("click", buttonDelete);
 });
+
+itemList.forEach(function(item){
+    calculate_product_price(item)
+})
