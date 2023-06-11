@@ -23,11 +23,11 @@
         </a>
         
         <div class = 'top-categories'>
+            <a href="{% url 'main' %}"><img src="{% static 'UserPages/img/side-menu/main.png' %}" alt="">Головна</a>
             <a class="catalog-side-menu" href="/animal_selection/"><img src="{% static 'UserPages/img/side-menu/catalog.png' %}" alt="">Товари</a>
             <a href="{% url 'cart' %}"><img src="{% static 'UserPages/img/side-menu/cart.png' %}" alt="">Кошик</a>
             <a href="{% url 'contact' %}"><img src="{% static 'UserPages/img/side-menu/contact.png' %}" alt="">Контакти</a>
         </div>
-
 
         {% block filter %}
         {% endblock %}
@@ -35,7 +35,9 @@
 
         <div class = 'bot-categories'>
             <input class="is-authenticated" type="hidden" value="{{ is_authenticated }}" name="" id="">
-
+            {% if is_authenticated %}
+                <p class="user-name">{{ user_name }}</p>
+            {% endif %}
             <form action="{% url 'logout' %}">
                 {% csrf_token %}
                 <a class="logout" href=""><img src="{% static 'UserPages/img/side-menu/logout.png' %}" alt="">Вийти</a>
@@ -58,9 +60,7 @@
         {% block content %}
         {% endblock %}
     </main> 
-    {% if is_authenticated %}
-        <p class="user-name">{{ user_name }}</p>
-    {% endif %}
+    
     <img id="button-up" src="{% static 'UserPages/img/button-up.png' %}" alt="">
 </body>
 </html>

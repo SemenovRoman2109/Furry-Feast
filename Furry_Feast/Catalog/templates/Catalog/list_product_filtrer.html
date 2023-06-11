@@ -5,9 +5,9 @@
         <div class="img-box">
             <a href="/product/{{ product.pk }}"><img src="{{ product.image.url }}" alt=""></a>
         </div>
-
+        
             <a href="/product/{{ product.pk }}" class = 'description'>{{ product.name }} </a>
-
+            
         <div class = group-button>
             {% if product.promotion == 0 %}
                 <p class ='price'>Ціна: {{ product.discount_price }} грн</p>
@@ -21,9 +21,12 @@
                     </div>
                     <p class="price">Ціна: {{ product.discount_price }} грн</p>
                 </div>
-
+                
             {% endif %}
-            <button class = 'button-basket'><img src="{% static 'Catalog/img/button-cart.png' %}"></button>
+            <div class="addToCart">
+                <input type="text" hidden class="product_pk" value="{{product.pk}}" name="product_pk">
+                <button class = 'button-basket'><img src="{% static 'Catalog/img/button-cart.png' %}"></button>
+            </div>
         </div>
     </div>
 {% endfor %}

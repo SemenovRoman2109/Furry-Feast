@@ -9,13 +9,11 @@
 }
 
 .user-name{
-    position: fixed;
-    right: 1vw;
-    top: 1vw;
     font-family: 'Oswald';
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
+    margin: 0;
     
     color: #0f5741;
 }
@@ -53,7 +51,7 @@
     height: 100%;
     left: 0;
     top: 0;
-    position: absolute;
+    position: fixed;
     z-index: 49;
     background: rgba(92, 92, 92,  0.2);
     backdrop-filter: blur(2px);

@@ -7,9 +7,11 @@
 {% endblock %}
 
 {% block js %}
-    
+    <script>
+        window.csrf_token = "{{ csrf_token }}";
+    </script>
     <script defer src="{% static 'Catalog/js/catalog.js' %}"></script>
-    
+    <script defer src="{% static 'Catalog/js/add_to_cart.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -45,7 +47,10 @@
                         </div>
                         
                     {% endif %}
-                    <button class = 'button-basket'><img src="{% static 'Catalog/img/button-cart.png' %}"></button>
+                    <div class="addToCart">
+                        <input type="hidden" class="product_pk" value="{{product.pk}}" name="product_pk">
+                        <button class = 'button-basket'><img src="{% static 'Catalog/img/button-cart.png' %}"></button>
+                    </div>
                 </div>
             </div>
         {% endfor %}

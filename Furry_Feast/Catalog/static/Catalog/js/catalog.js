@@ -7,6 +7,7 @@ else{
 }
     
 
+
 let listKind = document.querySelectorAll(".kind");
 let listAnimal = document.querySelectorAll(".animal");
 let listWeight = document.querySelectorAll(".weight");
@@ -139,10 +140,45 @@ function sendSelectCategory(){
             data: { csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,"animal":listSelectCategories[1],"kind":listSelectCategories[0],"weight":listSelectCategories[2],"minPrice":minPriceInput,"maxPrice":maxPriceInput,"text": text},
             success: function(response){
                 $(".goods").html(response.html_product_list);
+
+                let listButtonBasket = document.querySelectorAll(".button-basket");
+
+                listButtonBasket.forEach(function(buttonBasket,index,listButtonBasket){
+                    buttonBasket.addEventListener("click",function(event){
+                        event.preventDefault();
+                        let form = buttonBasket.closest("div");
+                        console.log(window.csrf_token);
+                        $.ajax({
+                            type: "POST",
+                            url: "/add_cart/",
+                            data: {
+                                csrfmiddlewaretoken: window.csrf_token,
+                                "product_pk":form.querySelector(".product_pk").value,
+                            },
+                            success: function(response){
+                                console.log(response.result);
+                                let modalWindow = document.querySelector(".modal-window-add-cart");
+                                let coverDiv = document.createElement('div'); 
+                                coverDiv.classList.add('cover-div'); 
+                                document.body.append(coverDiv);
+                                modalWindow.style.display = "flex";
+                                setTimeout(()=>{modalWindow.style.opacity = 1;},10)
+                
+                                coverDiv.addEventListener("click",function(event){
+                                    let coverdiv = document.querySelector('.cover-div');
+                                    coverdiv.remove();
+                                    modalWindow.style.opacity = 0;
+                                    setTimeout(()=>{modalWindow.style.display = "none";},1000)
+                                })
+                            }  
+                        });
+                    })
+                })
+
                 let countPage2 = document.querySelector(".count-page");
                 countPage2.value = response.count_page;
                 let page = window.location.href.split(`${pageName}/`)[1].split("/")[0];
-                
+
                 let countPage = response.count_page;
                 if (Number(response.count_page) != 0){
                     if (response.count_page < page){
@@ -159,10 +195,10 @@ function sendSelectCategory(){
                 }
                 generatePaginationButton(countPage,page)
             }
-            
-                    
+
+
         });
-        
+
     });
 }
 
@@ -232,27 +268,6 @@ $(document).ready(function () {
 
     })
 });
-
-let buttonsBasket = document.querySelectorAll(".button-basket");
-buttonsBasket.forEach(function(buttonBasket,index,buttonsBasket){
-    buttonBasket.addEventListener("click",function(event){
-        let modalWindow = document.querySelector(".modal-window-add-cart");
-        let coverDiv = document.createElement('div'); 
-        coverDiv.classList.add('cover-div'); 
-        document.body.append(coverDiv);
-        modalWindow.style.display = "flex";
-        setTimeout(()=>{modalWindow.style.opacity = 1;},10)
-
-        coverDiv.addEventListener("click",function(event){
-            let coverdiv = document.querySelector('.cover-div');
-            coverdiv.remove();
-            modalWindow.style.opacity = 0;
-            setTimeout(()=>{modalWindow.style.display = "none";},1000)
-        })
-        
-    })
-})
-
 
 
 
@@ -360,3 +375,5 @@ listParamInput.forEach(function(param,index,listParamInput) {
         }
     }
 })
+
+

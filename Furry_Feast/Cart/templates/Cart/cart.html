@@ -1,6 +1,40 @@
 {% extends 'UserPages/base.html' %}
 
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'Cart/css/cart.css' %}">
+{% endblock %}
+
+{% block js %}
+    <script defer src="{% static 'Cart/js/cart.js' %}"></script>
+{% endblock %}
+
 {% block content %}
-    <h1>Cart</h1>
+    <p class="title"> Мій кошик</p>
+    {% for product in product_in_cart %}
+        <div class="item">
+            <input type="hidden" class="product_pk" value="{{ product.product.pk }}">
+            <div class="item-icon">
+                <img src="{{ product.product.image.url }}" alt="">
+            </div>
+            <p class="display_name">{{ product.product.display_name }}</p>
+            <p class="price">{{ product.product.price }} грн</p>
+            <form action="{% url 'cart' %}" class="quantity">
+                {% csrf_token %}
+                <button type="submit" class="minus">&#8722;</button>
+                <p class="count-product">{{ product.count_product }}</p>
+                <button type="submit" class="plus">+</button>
+            </form>
+            <form action="{% url 'cart' %}" class="bin-block">
+                {% csrf_token %}
+                <img  src="{% static 'Cart/img/bin.png' %}" alt="" class="bin">
+            </form>
+        </div>
+    {% endfor %}
+    <div class="button-by-items">
+        <p class="button-text">Оформити замовлення</p>
+        <img src="{% static 'UserPages/img/side-menu/catalog.png' %}" alt="">
+    </div>
 {% endblock %}
     

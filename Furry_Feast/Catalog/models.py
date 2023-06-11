@@ -13,6 +13,7 @@ class Review(models.Model):
 
 
 class Product(models.Model):
+    display_name = models.CharField(max_length=65,blank=True)
     name = models.CharField(max_length=255)
     weight = models.FloatField(null=True)
     price = models.IntegerField()

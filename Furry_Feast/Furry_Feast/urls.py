@@ -34,9 +34,8 @@ urlpatterns = [
     path("registration/",show_registration, name = 'registration'),
     path("logout/",logout_function, name = 'logout'),
     path("cart/",show_cart, name = 'cart'),
-    path("order/",show_order, name = 'order')
-    
-
+    path("order/",show_order, name = 'order'),
+    path("add_cart/",add_cart, name = 'add_cart'),
 ]
 
 if DEBUG:
