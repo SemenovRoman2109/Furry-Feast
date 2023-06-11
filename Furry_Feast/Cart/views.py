@@ -17,6 +17,14 @@ def show_cart(request):
         print("count_product=",count_product)
         print("delete_product=",delete_product)
         print("product_pk=",product_pk)
+        if delete_product != "false":
+            ProductInCart.objects.filter(session_key=request.session.session_key).filter(product_id = product_pk)[0].delete()
+            return JsonResponse({"result":"delete"})
+        else:
+            product_in_cart = ProductInCart.objects.filter(session_key=request.session.session_key).filter(product_id = product_pk)[0]
+            product_in_cart.count_product = count_product
+            product_in_cart.save()
+            return JsonResponse({"result":"change_count"})
     return render(request,"Cart/cart.html",context)
 
 def show_order(request):

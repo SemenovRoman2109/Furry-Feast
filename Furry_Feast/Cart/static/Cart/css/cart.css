@@ -28,14 +28,23 @@ main{
     justify-content: space-between;
     width: 90%;
     background-color: #13BB89;
-    margin-bottom: 10px;
     border-radius: 14px;
     padding: 0px 15px ;
-    height: 12%;
+    height: 15%;
     
 }
 
-.item p {
+.colection-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 85%;
+    height: 100%;
+    gap: 2.5%;
+}
+
+.item .count-product {
     color: #DFDFDF;
     font-family: 'Oswald';
     font-style: normal;
@@ -44,17 +53,25 @@ main{
 
 .display_name {
     display: flex;
-    width: 80vh;
+    width: 42vh;
+    color: #DFDFDF;
+    font-family: 'Oswald';
+    font-style: normal;
+    font-size: 26px;
 }
 
 .item .price {
+    color: #DFDFDF;
+    font-family: 'Oswald';
+    font-style: normal;
     display: flex;
-    font-size: 2.2rem;
+    font-size: 28px;
 }
 
 .bin {
     display: flex;
     height: 5rem;
+    cursor: pointer;
 }
 
 
@@ -65,7 +82,7 @@ main{
     border-right: 3px solid #DFDFDF;
     border-radius: 14px;
     height: 100%;
-    width: 15.5%;
+    width: 16%;
     
     
 }
@@ -74,21 +91,19 @@ main{
 .item-icon img {
     display: flex;
     width:auto;
-    height: 95%;
+    height: 100%;
     
 }
 
 .button-by-items{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    padding: 0px;
-    gap: 2.8%;
-    width: 33.5%;
+    width: 45%;
+
     height: 7.2%;
-
-
+    margin-bottom: 20px;
+    cursor: pointer;
     background: #13BB89;
     border-radius: 14px;
 }
@@ -98,18 +113,16 @@ main{
        font-style: normal;
        font-weight: 400;
        font-size: 32px;
-       line-height: 47px;
-       width: 78.3%;
-       height: 78.3%;
+       /* line-height: 47px; */
+       /* width: 78.3%;
+       height: 78.3%; */
        color: #DFDFDF;
 
 }
 
 .button-by-items img{
        box-sizing: border-box;
-       
-       width: 14.4%; 
-       height: 78.3%;
+       height: 80%;
 }
 
 .minus {
@@ -123,12 +136,14 @@ main{
     border-radius: 25px;  
     font-size: 30px;
     border: 2px solid  #DFDFDF;
+    cursor: pointer;
     
 }
 
 .disable {
-    color: grey;
-    border: 2px solid  grey;
+    cursor: default;
+    color: #89cab7;
+    border: 2px solid  #89cab7;
 
 }
 
@@ -143,6 +158,7 @@ main{
     border-radius: 25px;  
     font-size: 30px;
     border: 2px solid  #DFDFDF;
+    cursor: pointer;
 }
 
 .quantity {

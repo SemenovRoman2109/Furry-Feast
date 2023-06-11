@@ -21,15 +21,15 @@ let selectWeight = "";
 let listSelectCategories = [selectKind,selectAnimal,selectWeight]
 
 
-function generatePaginationButton(countPage,userPage) {
-    const paginationBlock = document.querySelector(".pagination");
+function generatePaginationButton(countPage,userPage,pagination) {
+    const paginationBlock = document.querySelector(pagination);
     paginationBlock.style.display = "flex";
     if (countPage > 1){
         console.log(countPage,userPage);
-        const divNumberButtonPagination = document.querySelector(".number-pagination");
+        const divNumberButtonPagination = paginationBlock.querySelector(".number-pagination");
         divNumberButtonPagination.innerHTML = '';
-        const buutonBackPagination = document.querySelector(".back-pagination");
-        const buutonForwardPagination = document.querySelector(".forward-pagination");
+        const buutonBackPagination = paginationBlock.querySelector(".back-pagination");
+        const buutonForwardPagination = paginationBlock.querySelector(".forward-pagination");
         if (String(userPage) == "1"){
             buutonBackPagination.classList.add("disable");
         }
@@ -71,7 +71,7 @@ function generatePaginationButton(countPage,userPage) {
                 numberButtonPagination.classList.add("button-pagination");
                 divNumberButtonPagination.append(numberButtonPagination)
             }
-            const listNumberPaginationButton = document.querySelectorAll(".button-pagination");
+            const listNumberPaginationButton = paginationBlock.querySelectorAll(".button-pagination");
             listNumberPaginationButton[0].textContent = "1";
             listNumberPaginationButton[6].textContent = String(countPage);
             if (Number(userPage) >= 4){
@@ -114,7 +114,7 @@ function generatePaginationButton(countPage,userPage) {
     
 
 
-    const listNumberPaginationButton = document.querySelectorAll(".button-pagination");
+    const listNumberPaginationButton = paginationBlock.querySelectorAll(".button-pagination");
         listNumberPaginationButton.forEach(function(numberPaginationButton,index,listNumberPaginationButton){
             numberPaginationButton.addEventListener("click",function(event) {
                 if (numberPaginationButton.textContent != "..."){
@@ -124,7 +124,9 @@ function generatePaginationButton(countPage,userPage) {
         })
 
 }
-generatePaginationButton(document.querySelector(".count-page").value,window.location.href.split(`${pageName}/`)[1].split("/")[0])
+generatePaginationButton(document.querySelector(".count-page").value,window.location.href.split(`${pageName}/`)[1].split("/")[0],".pagination")
+generatePaginationButton(document.querySelector(".count-page").value,window.location.href.split(`${pageName}/`)[1].split("/")[0],".paginationTop")
+
 
 
 
@@ -146,13 +148,12 @@ function sendSelectCategory(){
                 listButtonBasket.forEach(function(buttonBasket,index,listButtonBasket){
                     buttonBasket.addEventListener("click",function(event){
                         event.preventDefault();
-                        let form = buttonBasket.closest("div");
-                        console.log(window.csrf_token);
+                        let form = buttonBasket.closest("form");
                         $.ajax({
                             type: "POST",
                             url: "/add_cart/",
                             data: {
-                                csrfmiddlewaretoken: window.csrf_token,
+                                csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,
                                 "product_pk":form.querySelector(".product_pk").value,
                             },
                             success: function(response){
@@ -193,7 +194,8 @@ function sendSelectCategory(){
                 else{
                     zeroProduct.style.display = "block";
                 }
-                generatePaginationButton(countPage,page)
+                generatePaginationButton(countPage,page,".pagination")
+                generatePaginationButton(countPage,page,".paginationTop")
             }
 
 

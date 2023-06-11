@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="{% static 'Catalog/css/product.css' %}">
 {% endblock %}
 
+{% block js %}
+    <script defer src="{% static 'Catalog/js/add_to_cart.js' %}"></script>
+{% endblock %}
+
 
 {% block content %}
     <div class = 'main-product-card-head'>
@@ -23,11 +27,23 @@
                     <p>{{ product.price }} грн / {{ product.weight }} кг</p>
                     <button class = 'main-product-button-buy' type = 'submit'>Купити <img id = 'img_c' src="{% static 'UserPages/img/side-menu/cart_black.png' %}" alt=""></button>
                 </div>
-                <button class = 'main-product-add-bascet-button'>Додати до кошику<img id = 'img_c' src="{% static 'UserPages/img/side-menu/catalog_black.png' %}" alt=""></button>
-        </div>
+                <form class="addToCart">
+                    {% csrf_token %}
+                    <input type="hidden" class="product_pk" value="{{ product_pk }}" name="product_pk">
+                    <button class = 'main-product-add-bascet-button button-basket'>Додати до кошику<img id = 'img_c' src="{% static 'UserPages/img/side-menu/catalog_black.png' %}" alt=""></button>
+                </form>
+            </div>
     </div>
     <div class = 'main-product-description'>
         <p>{{ product.info }}</p>
+    </div>
+    <div class="modal-window-add-cart">
+        <p>Товар успiшно додано</p>
+        <div class="go-to-cart">
+            <a href="{% url 'cart' %}"><img src="{% static 'Catalog/img/modal-window-button-cart.png' %}" alt=""></a>
+            <a class="text" href="{% url 'cart' %}">Перейти до кошику</a>
+        </div>
+        
     </div>
 
 

@@ -12,7 +12,8 @@
 
 {% block content %}
     <p class="title"> Мій кошик</p>
-    {% for product in product_in_cart %}
+    <div class = 'colection-items'>
+        {% for product in product_in_cart %}
         <div class="item">
             <input type="hidden" class="product_pk" value="{{ product.product.pk }}">
             <div class="item-icon">
@@ -32,9 +33,12 @@
             </form>
         </div>
     {% endfor %}
-    <div class="button-by-items">
-        <p class="button-text">Оформити замовлення</p>
-        <img src="{% static 'UserPages/img/side-menu/catalog.png' %}" alt="">
-    </div>
+    
+   
+        <div class="button-by-items">
+            <p class="button-text">Оформити замовлення</p>
+            <img src="{% static 'UserPages/img/side-menu/catalog.png' %}" alt="">
+        </div>
+    </div>  
 {% endblock %}
     

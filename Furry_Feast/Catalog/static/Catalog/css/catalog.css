@@ -69,6 +69,7 @@
     justify-content: center;
     flex-direction: row;
     width: 50%;
+    margin-bottom: 25px;
     height:5vh; 
 }
 
@@ -109,18 +110,22 @@
 
 }
 
+.addToCart{
+    position: absolute;
+    right: 0;
+    height: 50%;
+}
+
 .button-basket{
     display: flex;
     justify-content: center;
     align-items: center;
     background:#fbbb0c;
     text-decoration: none;
-    position: absolute;
-    right: 0;
     border: none;
     padding: 10px;
     border-radius: 50px;
-    height: 50%;
+    height: 100%;
     transition-duration: 0.5s;
     cursor: pointer;
 }
@@ -383,7 +388,7 @@ ul{
     transition-duration: 0.5s;
 }
 
-.pagination {
+.pagination,.paginationTop{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -392,7 +397,7 @@ ul{
     
 }
 
-.pagination button {
+.pagination button,.paginationTop button{
     font-family: 'Oswald';
     font-style: normal;
     font-size: 20px;
@@ -431,7 +436,7 @@ ul{
 }
 
 
-.pagination button:not(.disable):hover{
+.pagination button:not(.disable):hover,.paginationTop button:not(.disable):hover{
     background: rgb(143, 176, 214);
     transition: all 0.5s;
     transform: scale(1.12);
