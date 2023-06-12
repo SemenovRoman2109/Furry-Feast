@@ -5,13 +5,6 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class Review(models.Model):
-    date = models.DateField()
-    grade = models.FloatField()
-    autor_name = models.CharField(max_length=50)
-    content = models.TextField(blank=True)
-
-
 class Product(models.Model):
     display_name = models.CharField(max_length=65,blank=True)
     name = models.CharField(max_length=255)
@@ -21,7 +14,7 @@ class Product(models.Model):
     grade = models.FloatField(default=0.0)
     image = models.ImageField(upload_to="product",null=True)
 
-    reviews = models.ManyToManyField(Review, blank=True)
+    
     category = models.ManyToManyField(Category)
     
     promotion = models.IntegerField(default=0)
@@ -29,3 +22,10 @@ class Product(models.Model):
         return (int(self.price-(self.price*self.promotion/100))) #self.price-(self.price*self.promotion/100)-0.01
     def __str__(self):
         return self.name
+
+class Review(models.Model):
+    date = models.DateField()
+    grade = models.IntegerField()
+    autor_name = models.CharField(max_length=50)
+    content = models.TextField(blank=True)
+    product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)

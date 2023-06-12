@@ -1,0 +1,144 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+main{
+    box-sizing: border-box;
+    align-items: flex-start;
+    padding-left: 3%;
+    height: 100%;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    height: 100vh;
+    
+}
+
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 53px;
+    margin-bottom: 1%;
+    color: #8C8C8C;
+}
+
+.small-title {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-size: 22px;
+    line-height: 30px;
+    color: #282828;
+}
+
+.text-data {
+    color: #0b4a37;
+    font-family: 'Oswald';
+    font-style: medium;
+    font-size: 20px;
+    padding-left: 4%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+form textarea{
+    padding: 5px;
+    background: none;
+    border: 3px solid #13BB89;
+    border-radius: 15px;
+    margin-bottom: 1%;
+    resize: none;
+    font-family: 'Oswald';
+    color: #0b4a37;
+    font-size: 20px;
+}
+
+
+form button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:#fbbb0c;
+    padding: 9px 0px;
+    color: #4B4B4B;
+    margin-top: 3%;
+    width: 50%;
+    height: 16%;
+
+    border-radius: 14px ;
+
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 21px;
+    transition-duration: 0.5s;
+}
+
+
+
+form button:hover{
+    background: #fb6c0c;
+    transition: all 0.5s;
+    transform: scale(1.08);
+    
+    
+}
+
+
+
+.social-net{
+    width: 100%;
+    height: 12%;
+}
+
+.social-net-img{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 4%;
+}
+
+.social-net-img a{
+    display: flex;
+    height: 100%;
+}
+
+.social-net-img a img{
+    height: 100%;
+}
+
+.messanger{
+    width: 100%;
+    height: 12%;
+}
+.messanger-img{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 4%;
+}
+
+.messanger-img a{
+    display: flex;
+    height: 100%;
+}
+
+.messanger-img a img{
+    height: 100%;
+}

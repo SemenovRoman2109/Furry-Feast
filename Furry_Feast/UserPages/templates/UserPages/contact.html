@@ -1,5 +1,46 @@
 {% extends 'UserPages/base.html' %}
 
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'UserPages/css/contact.css' %}">
+{% endblock %}
+
 {% block content %}
-    <h1>{{ is_authenticated }}</h1>
+    <p class="title">Контакти</p>
+    <div class="information">
+        <p class="small-title">Ви можете зв'язатися з нами будь-яким зручним для вас способом:</p>
+        <div class="phone-number">
+            <p class="small-title">Номери телефонів:</p>
+            <p class="text-data">+380978218594</p>
+            <p class="text-data">+380508552049</p>
+        </div>
+        <div class="email">
+            <p class="small-title">Електронна Адреса:</p>
+            <p class="text-data">tim.jennings@example.com</p>
+        </div>
+        <div class="messanger">
+            <p class="small-title">Месенджери:</p>
+            <div class="messanger-img">
+                <a href="https://web.telegram.org"><img src="{% static 'UserPages/img/Telegram.png' %}" alt=""></a>
+                <a href="https://www.whatsapp.com/?lang=ru"><img src="{% static 'UserPages/img/WhatsApp.png' %}" alt=""></a>
+                <a href="https://www.viber.com"><img src="{% static 'UserPages/img/Viber.png' %}" alt=""></a>
+            </div>
+        </div>
+        <div class="social-net">
+            <p class="small-title">Соцiальнi Мережi:</p>
+            <div class="social-net-img">
+                <a href="https://www.instagram.com"><img src="{% static 'UserPages/img/Instagram.png' %}" alt=""></a>
+                <a href="https://uk-ua.facebook.com"><img src="{% static 'UserPages/img/FaceBook.png' %}" alt=""></a>
+                <a href="https://twitter.com"><img src="{% static 'UserPages/img/Twitter.png' %}" alt=""></a>
+            </div>
+        </div>
+        <form class="feedback">
+            <p class="small-title">Залишити повiдомлення на сайті:</p>
+            <textarea name="" id="" cols="45" rows="12"></textarea>
+            <button>Залишити повiдомлення</button>
+        </form>
+    </div>
+        
+    
 {% endblock %}

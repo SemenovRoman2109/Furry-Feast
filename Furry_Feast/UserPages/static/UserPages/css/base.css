@@ -146,13 +146,13 @@ html,body{
 
 body::-webkit-scrollbar {
     width: 10px;  
-    background: #5C9886;                /* ширина всей полосы прокрутки */
+    background: #5C9886;
 }
   
 
 body::-webkit-scrollbar-thumb {
-    background-color: #13BB89;    /* цвет бегунка */
-    border-radius: 20px;       /* округлось бегунка */
+    background-color: #13BB89;
+    border-radius: 20px;
 }
 
 main{
@@ -231,4 +231,8 @@ main{
     height: 8%;
     left: 23%;
     top: 80%;
+}
+
+.side-menu a:hover{
+    color: #c7cccb;
 }

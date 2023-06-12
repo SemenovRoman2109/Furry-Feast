@@ -3,6 +3,7 @@ from .models import *
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from datetime import date
 
 PRODUCT_IN_ONE_PAGE = 20
 
@@ -212,9 +213,16 @@ def show_product(request, product_pk):
 def show_product_review(request, product_pk):
     context = {
         "product_pk":product_pk,
+        "reviews":Review.objects.filter(product_id = product_pk),
         "user_name":request.user.username,
         "is_authenticated":request.user.is_authenticated
     }
+    if request.method == 'POST':
+        content = request.POST.get("content")
+        count_star = request.POST.get("count_star")
+        review = Review.objects.create(product_id=product_pk, grade=count_star, content=content, autor_name=request.user.username, date=date.today())
+        review.save()
+
     return render(request,"Catalog/product-review.html",context)
 
 def show_animal_selection(request):
