@@ -102,7 +102,7 @@ form button:hover{
 }
 
 .social-net-img{
-    height: 60%;
+    height: 50%;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -125,7 +125,7 @@ form button:hover{
     height: 12%;
 }
 .messanger-img{
-    height: 60%;
+    height: 50%;
     width: 100%;
     display: flex;
     flex-direction: row;

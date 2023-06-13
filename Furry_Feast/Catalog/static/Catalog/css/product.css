@@ -1,8 +1,6 @@
 *{
     font-family: 'Oswald';
     font-style: normal;
-    font-weight: 500;
-    font-size: 26px;
 }
 
 main {
@@ -62,7 +60,7 @@ main {
     justify-content: flex-start;
 
     width: 98%;
-    height: 15em;
+    height: 35vh;
     gap: 2%;
     
 }
@@ -82,7 +80,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background:#fbbb0c;
+    background:#0be6a4;
     border-radius: 14px ;
     border: none;
     font-family: 'Oswald regular', sans-serif;
@@ -93,7 +91,7 @@ main {
 }
 
 .main-product-button-buy:hover {
-    background: #fb6c0c;
+    background: #01fdb1;
     transition: all 0.5s;
     transform: scale(1.08);
     
@@ -103,10 +101,11 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
+    font-weight: bold;
+    font-size: 28px;
     gap: 7%;
     width: 25em;
-    font-style: bold;
-    color: #13097a;
+    color: #0D825F;
     margin: 0;
 }
 
@@ -118,7 +117,7 @@ main {
     font-style: normal;
     font-size: 22px;
     color: #4B4B4B;
-    background: #0CFB5D;
+    background: #fbbb0c;
     border-radius: 14px ;
     border: none;
     width: 45%;
@@ -128,7 +127,7 @@ main {
 }
 
 .main-product-add-bascet-button:hover {
-    background: #1bcb26;
+    background: #fb6c0c;
     transition: all 0.5s;
     transform: scale(1.08);
     
@@ -138,7 +137,9 @@ main {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    color: #0b4a37;
+    color: #0D825F;
+    font-size: 28px;
+    margin: 0;
 }
 
 
@@ -160,10 +161,11 @@ main {
 
 .main-product-description {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    color: #0b4a37;
+    color: #0D825F;
     width: 97%;
+    font-size: 28px;
 
 }
 

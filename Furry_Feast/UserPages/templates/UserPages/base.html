@@ -36,7 +36,10 @@
         <div class = 'bot-categories'>
             <input class="is-authenticated" type="hidden" value="{{ is_authenticated }}" name="" id="">
             {% if is_authenticated %}
-                <p class="user-name">{{ user_name }}</p>
+                <div class="user-name">
+                    <img src="{% static 'UserPages/img/side-menu/user.png' %}" alt="">
+                    <p>{{ user_name }}</p>
+                </div>
             {% endif %}
             <form action="{% url 'logout' %}">
                 {% csrf_token %}

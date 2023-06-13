@@ -9,13 +9,20 @@
 }
 
 .user-name{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    box-sizing: border-box;
+}
+
+.user-name p{
     font-family: 'Oswald';
     font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
+    color: #DFDFDF;
+    padding: 0;
     margin: 0;
-    
-    color: #0f5741;
 }
 .modal-window-logout{
     z-index: 55;
@@ -233,6 +240,6 @@ main{
     top: 80%;
 }
 
-.side-menu a:hover{
+.side-menu a:hover:not(.user-name){
     color: #c7cccb;
 }

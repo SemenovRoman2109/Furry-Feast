@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import *
 from django.http import JsonResponse
+from .telegram import bot_send
+from Furry_Feast.settings import TELEGRAM_BOT_TOKEN, TELEGRAM_BOT_CHAT_ID
 
 # Create your views here.
 
@@ -14,9 +16,6 @@ def show_cart(request):
         count_product = request.POST.get("count_product")
         delete_product = request.POST.get("delete_product")
         product_pk = request.POST.get("product_pk")
-        print("count_product=",count_product)
-        print("delete_product=",delete_product)
-        print("product_pk=",product_pk)
         if delete_product != "false":
             ProductInCart.objects.filter(session_key=request.session.session_key).filter(product_id = product_pk)[0].delete()
             return JsonResponse({"result":"delete"})
@@ -29,9 +28,42 @@ def show_cart(request):
 
 def show_order(request):
     context = {
+        "products":ProductInCart.objects.filter(session_key=request.session.session_key),
         "user_name":request.user.username,
         "is_authenticated":request.user.is_authenticated
     }
+    if request.method == 'POST':
+        change_count = request.POST.get("change_count")
+        print(change_count)
+        if change_count == "true":
+            count_product = request.POST.get("count_product")
+            product_pk = request.POST.get("product_pk")
+            product_in_cart = ProductInCart.objects.filter(session_key=request.session.session_key).filter(product_id = product_pk)[0]
+            product_in_cart.count_product = count_product
+            product_in_cart.save()
+            return JsonResponse({"result":"change_count"})
+        else:
+            phone_number = request.POST.get("phone_number")
+            name_surname = request.POST.get("name_surname")
+            city = request.POST.get("city")
+            number_mail = request.POST.get("number_mail")
+            payment_method = request.POST.get("payment_method")
+            
+
+            products = ProductInCart.objects.filter(session_key=request.session.session_key)
+
+            order_text = ""
+            full_price = 0
+
+            for product_in_cart in products:
+                order_text += f"{product_in_cart.product.name} - {product_in_cart.count_product} шт id товара:{product_in_cart.product.pk}; \n" 
+                full_price += product_in_cart.product.price * product_in_cart.count_product
+
+            message = f"Замовлення вiд: {name_surname} \n \n Вiн замовив: \n{order_text} \n Номер телефону користувача: {phone_number} \n \n Мicто в якому мешкає користувач: {city} \n \n Вiддiлення нової пошти: {number_mail} \n \n Спосiб оплати: {payment_method}  \n \n \n Сумарна цiна: {full_price} грн"
+            
+            print(message)
+            bot_send(TELEGRAM_BOT_TOKEN, TELEGRAM_BOT_CHAT_ID, message)
+            return JsonResponse({"result":"Удачная отправка"})
     return render(request,"Cart/order.html",context)
 
 def add_cart(request):

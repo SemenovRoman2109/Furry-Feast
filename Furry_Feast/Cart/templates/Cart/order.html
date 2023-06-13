@@ -1,6 +1,68 @@
 {% extends 'UserPages/base.html' %}
 
-{% block content %}
-    <h1>Order</h1>
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'Cart/css/order.css' %}">
 {% endblock %}
+
+{% block js %}
+    <script defer src="{% static 'Cart/js/order.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <p class="title">Оформлення замовлення</p>
+    <div class="block-by">
+        <div class="user-data">
+            <p class="small-title">Вашi даннi</p>
+            <form action="{% url 'order' %}" class="by-form">
+                {% csrf_token %}
+                <input type="text" name="phone-number" id="phone-number" placeholder="Номер телефону" required>
+                <input type="text" name="name-surname" id="name-surname" placeholder="Iм`я та прiзвище" required>
+                <input type="text" name="city" id="city" placeholder="Мiсто" required>
+                <input type="number" name="number-mail" id="number-mail" placeholder="Номер нової пошти" required>
+                <div class = 'pay-area'>
+                    <p class = 'pay'>Спосiб оплати:</p>
+                <div class = 'input-field'>
+                    <input type="checkbox" checked class = "method"> 
+                    <p>Готiвка</p>
+                </div>
+                <div class = 'input-field'>
+                    <input type="checkbox" class = "method"> 
+                    <p>Картка</p>
+                </div>
+                </div>
+                
+                <button class = 'to-order-button'>Оформити замовлення</button>
+            </form>
+        </div>
+        <div class="goods">
+            <p class="small-title">Вашi товари</p>
+            {% for product_in_cart in products %}
+                <div class="item">
+                    <input type="hidden" class="product_pk" value="{{ product_in_cart.product.pk }}">
+                    <input type="hidden" class="price-one-product" value="{{ product_in_cart.product.price }}">
+                    <p class="name">{{ product_in_cart.product.name }}</p>
+                    <div class="img-price-block">
+                        <div class="item-img">
+                            <img src="{{ product_in_cart.product.image.url }}" alt="">
+                        </div>
+                        <div class = 'pr'>
+                            <p class="price">{{ product_in_cart.product.price }}</p>
+                        <form action="{% url 'order' %}" class="quantity">
+                            {% csrf_token %}
+                            <button class="minus">&minus;</button>
+                            <p class="count-product">{{ product_in_cart.count_product }}</p>
+                            <button class="plus">&plus;</button>
+                        </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+
     
