@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="{% static 'UserPages/css/contact.css' %}">
 {% endblock %}
 
+{% block js %}
+<script defer src="{% static 'UserPages/js/contact.js' %}"></script>
+{% endblock %}
+
 {% block content %}
     <p class="title">Контакти</p>
     <div class="information">
@@ -35,12 +39,24 @@
                 <a href="https://twitter.com"><img src="{% static 'UserPages/img/Twitter.png' %}" alt=""></a>
             </div>
         </div>
-        <form class="feedback">
-            <p class="small-title">Зворотнiй звязок:</p>
-            <textarea name="" id="" cols="45" rows="12"></textarea>
-            <button>Залишити повiдомлення</button>
-        </form>
-    </div>
+        {% if is_authenticated %} 
+            <form class="feedback" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <p class="small-title">Зворотнiй звязок:</p>
+                <textarea name="feedback-text" id="" cols="45" rows="12"></textarea>
+                <button>Залишити повiдомлення</button>
+            </form>   
+        {% else %}
+            <div class="auth-block">
+                <p>Увiйдiть в акаунт щоб залишити вiдгук</p>
+                <button class="login-button"><a href="/login/">Авторизуватися</a></button>
+            </div>
+        {% endif %}
         
+    </div>
+    <div class="modal-window">
+        <p class="title">Дякуємо вам за зворотний зв'язок!</p>
+        <p class="message">Ваше повідомлення успішно надіслано</p>
+    </div>    
     
 {% endblock %}

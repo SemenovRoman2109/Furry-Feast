@@ -6,7 +6,26 @@ else{
     pageName = "discount";
 }
     
-
+function countStar() {
+    let listStarProductBlock = document.querySelectorAll(".stars");
+    listStarProductBlock.forEach(function(starProductBlock,index,listStarProductBlock) {
+        let countStarInBlock = starProductBlock.querySelector("input").value
+        let imgStarPath = document.querySelector(".imgStarPath").value;
+        let step;
+        for (step = 0; step < 5; step++) {
+            let img = document.createElement("img");
+            img.classList.add("star-product")
+            img.src = imgStarPath
+            starProductBlock.append(img)
+        }
+        step = 0;
+        let listImg = starProductBlock.querySelectorAll("img");
+        for (step = 0; step < countStarInBlock; step++) {
+            listImg[step].src = listImg[step].src.split("star")[0] + "select-star.png"
+        }
+    })
+}
+countStar()
 
 let listKind = document.querySelectorAll(".kind");
 let listAnimal = document.querySelectorAll(".animal");
@@ -142,6 +161,7 @@ function sendSelectCategory(){
             data: { csrfmiddlewaretoken: document.getElementsByName("csrfmiddlewaretoken")[0].value,"animal":listSelectCategories[1],"kind":listSelectCategories[0],"weight":listSelectCategories[2],"minPrice":minPriceInput,"maxPrice":maxPriceInput,"text": text},
             success: function(response){
                 $(".goods").html(response.html_product_list);
+                countStar()
 
                 let listButtonBasket = document.querySelectorAll(".button-basket");
 

@@ -84,3 +84,9 @@ deleteButtons.forEach(function (button) {
 itemList.forEach(function(item){
     calculate_product_price(item)
 })
+
+let buttonOrder = document.querySelector(".button-by-items");
+
+buttonOrder.addEventListener("click",function(event) {
+    window.location.href = window.location.href.split("cart")[0] + "order/"
+})

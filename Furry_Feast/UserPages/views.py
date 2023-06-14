@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.http import JsonResponse,HttpResponseGone
+from Cart.telegram import bot_send
+from Furry_Feast.settings import TELEGRAM_BOT_TOKEN, TELEGRAM_BOT_CHAT_ID
 
 # Create your views here.
 def show_contact(request):
@@ -9,6 +11,12 @@ def show_contact(request):
         "user_name":request.user.username,
         "is_authenticated":request.user.is_authenticated
     }
+    if request.method =='POST':
+        feedback_text = request.POST.get("feedback-text")
+        message = f"Звертання користувача - {request.user.username}: \n \n {feedback_text}"
+        print(message)
+        bot_send(TELEGRAM_BOT_TOKEN, TELEGRAM_BOT_CHAT_ID, message)
+        return JsonResponse({"result":"true"})
     return render(request, 'UserPages/contact.html',context)
 
 def logout_function(request):

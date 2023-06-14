@@ -133,6 +133,8 @@ TELEGRAM_BOT_TOKEN = ""
 
 TELEGRAM_BOT_CHAT_ID = -1001602507837
 
+# TELEGRAM_BOT_CHAT_ID = 1109319864
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

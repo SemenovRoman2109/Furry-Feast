@@ -40,7 +40,6 @@ p{
 }
 
 
-
 .pay{
     font-family: 'Oswald';
     font-style: normal;
@@ -72,10 +71,11 @@ p{
 .by-form{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    /* height: 100%; */
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 65%;
+    position: relative;
+    height: 90%;
 
 
 }
@@ -116,12 +116,16 @@ p{
 
 .item-img img{
     display: flex;
-    width: 100%;
+    width: 40%;
+    border: 2px solid #F0F0F0;
+    border-radius: 14px;
 }
 
 .item-img{
     display: flex;
     width: 80%;
+    align-items: center;
+    justify-content: center;
 }
 
 .pr{
@@ -206,6 +210,10 @@ p{
     border: 1px solid #4B4B4B;
     width: 100%;
     height: 6vh;
+    background: #DFDFDF;
+    color: #8C8C8C;
+    font-size: 14px;
+    padding-left: 3%;
 }
 
 
@@ -220,8 +228,17 @@ p{
     height: 100%;
     padding-top: 2%;
     gap: 2%;
+    
 }
 
+.items-list{
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+
+.items-list ::-webkit-scrollbar{
+    background-color: #fbbb0c;
+}
 
 .to-order-button {
     display: flex;
@@ -234,10 +251,11 @@ p{
     background: #fbbb0c;
     border-radius: 14px ;
     border: none;
-    width: 95%;
-    height: 18%;
+    width: 100%;
+    height: 10%;
     transition-duration: 0.5s;
-
+    position: absolute;
+    bottom: 0;
 }
 
 .pay-area{
@@ -256,3 +274,61 @@ p{
     
 }
 
+.modal-window{
+    z-index: 55;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 40%;
+    height: 24%;
+    opacity: 0;
+    transition: all 1s;
+    right: 22.5%;
+    top: 38%;
+    gap: 10%;
+    background: #F0F0F0;
+    border-radius: 60px;
+}
+
+.modal-window .title{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    
+    color: #13BB89;
+    margin: 0;
+}
+.modal-window .message{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-size: 22px;
+    
+    color: #13BB89;
+    margin: 0;
+}
+
+.cover-div {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 49;
+    background: rgba(92, 92, 92,  0.2);
+    backdrop-filter: blur(2px);
+}
+
+.method{
+    background: #A3D5C6;
+    border: 1px #A3D5C6;
+    border-radius: 50px;
+}
+
+.select-input{
+    background: #A3D5C6;
+    border: 1px #fbbb0c;
+    border-radius: 50px;
+}

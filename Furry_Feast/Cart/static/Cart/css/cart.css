@@ -1,7 +1,3 @@
-main{
-    height: 100%;
-}
-
 *{
     padding: 0%;
     margin: 0%;
@@ -30,7 +26,7 @@ main{
     background-color: #13BB89;
     border-radius: 14px;
     padding: 0px 15px ;
-    height: 15%;
+    height: 13vh;
     
 }
 
@@ -40,8 +36,8 @@ main{
     justify-content: flex-start;
     align-items: center;
     width: 85%;
-    height: 100%;
-    gap: 2.5%;
+    height: 80%;
+    gap: 2.5vh;
 }
 
 .item .count-product {
@@ -104,8 +100,9 @@ main{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 45%;
-
+    width: auto;
+    padding: 10px 30px;
+    gap: 15px;
     height: 7.2%;
     margin-bottom: 20px;
     cursor: pointer;
@@ -115,13 +112,14 @@ main{
 
 .button-text{
      font-family: 'Oswald';
-       font-style: normal;
-       font-weight: 400;
-       font-size: 32px;
-       /* line-height: 47px; */
-       /* width: 78.3%;
-       height: 78.3%; */
-       color: #DFDFDF;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    /* line-height: 47px; */
+    /* width: 78.3%;
+    height: 78.3%; */
+    color: #DFDFDF;
+    text-decoration: none;
 
 }
 

@@ -27,14 +27,16 @@
     </div>
     
     <div class="goods">
+        <input type="hidden" value="{% static 'Catalog/img/star.png' %}" class="imgStarPath">
         {% for product in products %}
             <div class = 'section' id="section-{{ product.pk }}">
                 <div class="img-box">
                     <a href="/product/{{ product.pk }}"><img src="{{ product.image.url }}" alt=""></a>
                 </div>
-                
-                    <a href="/product/{{ product.pk }}" class = 'description'>{{ product.name }} </a>
-                    
+                <a href="/product/{{ product.pk }}" class = 'description'>{{ product.display_name }} </a>
+                <div class="stars">
+                    <input type="hidden" class="count-star" value="{{ product.grade }}">
+                </div>    
                 <div class = group-button>
                     {% if product.promotion == 0 %}
                         <p class ='price'>Ціна: {{ product.discount_price }} грн</p>

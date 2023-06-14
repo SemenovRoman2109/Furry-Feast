@@ -14,7 +14,9 @@ def filter_product_function(filter_text,filter_max_price,filter_min_price,filter
 
     # Фильтр по цене
     if filter_max_price != None and filter_min_price != None:
-        filtered_products = filtered_products.filter(price__gte=filter_min_price, price__lte=filter_max_price)
+        for product in filtered_products:
+            if product.discount_price() < int(filter_min_price) or product.discount_price() > int(filter_max_price):
+                filtered_products = filtered_products.exclude(id=product.id)
 
     # Проверка по весу
     if filter_weight != "" and filter_weight != None:
@@ -63,10 +65,10 @@ def show_catalog(request,page):
     max_price = 0 
     min_price = 99999999
     for product in context["products"]:
-        if product.price > max_price:
-            max_price = product.price
-        if product.price < min_price:
-            min_price = product.price
+        if product.discount_price() > max_price:
+            max_price = product.discount_price()
+        if product.discount_price() < min_price:
+            min_price = product.discount_price()
     context["max_price"] = max_price
     context["min_price"] = min_price
 
@@ -82,6 +84,16 @@ def show_catalog(request,page):
             new_products.append(context["products"][index + PRODUCT_IN_ONE_PAGE*(int(page)-1)])
         
     context["products"] = new_products
+    for product in context["products"]:
+        list_reviws_product = Review.objects.filter(product_id = product.pk)
+        if len(list_reviws_product) > 0:
+            final_grade = 0
+            for reviw in list_reviws_product:
+             final_grade += reviw.grade
+            final_grade = final_grade/len(list_reviws_product)
+            product.grade = round(final_grade)
+        else:
+            product.grade = len(list_reviws_product)
     if request.method == 'POST':
 
         # Получаем данные
@@ -92,12 +104,22 @@ def show_catalog(request,page):
         max_price = request.POST.get("maxPrice")
         min_price = request.POST.get("minPrice")
 
-
         filtered_products = Product.objects.all()
         
         
         filtered_products = filter_product_function(filter_text=text,filter_max_price=max_price,filter_min_price=min_price,filter_weight=weight,filter_kind=kind,filter_animal=animal,filtered_products=filtered_products)
         
+        for product in filtered_products:
+            list_reviws_product = Review.objects.filter(product_id = product.pk)
+            if len(list_reviws_product) > 0:
+                final_grade = 0
+                for reviw in list_reviws_product:
+                    final_grade += reviw.grade
+                final_grade = final_grade/len(list_reviws_product)
+                product.grade = round(final_grade)
+            else:
+                product.grade = len(list_reviws_product)
+
         result = []
         for i in range(0, len(filtered_products), PRODUCT_IN_ONE_PAGE): 
             chunk = filtered_products[i:i + PRODUCT_IN_ONE_PAGE]
@@ -137,10 +159,10 @@ def show_discount(request,page):
     max_price = 0 
     min_price = 99999999
     for product in context["products"]:
-        if product.price > max_price:
-            max_price = product.price
-        if product.price < min_price:
-            min_price = product.price
+        if product.discount_price() > max_price:
+            max_price = product.discount_price()
+        if product.discount_price() < min_price:
+            min_price = product.discount_price()
     context["max_price"] = max_price
     context["min_price"] = min_price
 
@@ -165,6 +187,7 @@ def show_discount(request,page):
         weight = request.POST.get("weight")
         max_price = request.POST.get("maxPrice")
         min_price = request.POST.get("minPrice")
+        
 
 
         filtered_products = Product.objects.filter(promotion__gt = 0)
@@ -208,6 +231,16 @@ def show_product(request, product_pk):
         "product_pk":product_pk,
         "user_name":request.user.username,
     }
+    
+    list_reviws_product = Review.objects.filter(product_id = context["product"].pk)
+    if len(list_reviws_product) > 0:
+        final_grade = 0
+        for reviw in list_reviws_product:
+            final_grade += reviw.grade
+        final_grade = final_grade/len(list_reviws_product)
+        context["product"].grade = round(final_grade)
+    else:
+        context["product"].grade = len(list_reviws_product)
     return render(request,"Catalog/product.html",context)
 
 def show_product_review(request, product_pk):

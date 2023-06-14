@@ -187,7 +187,6 @@ button:hover:not(.disable){
 .description{
     display: flex;
     width: 75%;
-    height: 18%;
     text-decoration: none;
     font-family: 'Oswald';
     font-style: normal;
@@ -226,7 +225,7 @@ button:hover:not(.disable){
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    height: 320px;
+    height: 360px;
     width: 230px;
     background: #13BB89;
     padding-top: 1%;
@@ -459,3 +458,16 @@ ul{
 .disable:hover {
     background-color: rgb(228, 228, 228);
 } 
+
+.stars{
+    width: 80%;
+    height: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.stars img{
+    height: 100%;
+}
