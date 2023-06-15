@@ -243,3 +243,12 @@ main{
 .side-menu a:hover:not(.user-name){
     color: #c7cccb;
 }
+
+@media screen and (max-width: 1000px) {
+    .side-menu{
+        width: 20%;
+    }
+    main{
+        width: 80%;
+    }
+}

@@ -55,14 +55,14 @@
             {% for product_in_cart in products %}
                 <div class="item">
                     <input type="hidden" class="product_pk" value="{{ product_in_cart.product.pk }}">
-                    <input type="hidden" class="price-one-product" value="{{ product_in_cart.product.price }}">
+                    <input type="hidden" class="price-one-product" value="{{ product_in_cart.product.discount_price }}">
                     <p class="name">{{ product_in_cart.product.display_name }}</p>
                     <div class="img-price-block">
                         <div class="item-img">
                             <img src="{{ product_in_cart.product.image.url }}" alt="">
                         </div>
                         <div class = 'pr'>
-                            <p class="price">{{ product_in_cart.product.price }}</p>
+                            <p class="price">{{ product_in_cart.product.discount_price }}</p>
                         <form action="{% url 'order' %}" class="quantity">
                             {% csrf_token %}
                             <button class="minus">&minus;</button>

@@ -20,8 +20,8 @@
                 <img src="{{ product.product.image.url }}" alt="">
             </div>
             <p class="display_name">{{ product.product.display_name }}</p>
-            <input type="hidden" class="price-one-product" value="{{ product.product.price }}">
-            <p class="price">{{ product.product.price }} грн</p>
+            <input type="hidden" class="price-one-product" value="{{ product.product.discount_price }}">
+            <p class="price">{{ product.product.discount_price }} грн</p>
             <form action="{% url 'cart' %}" class="quantity">
                 {% csrf_token %}
                 <button type="submit" class="minus">&#8722;</button>

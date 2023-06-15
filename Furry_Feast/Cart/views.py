@@ -91,7 +91,7 @@ def show_order(request):
 
                 for product_in_cart in products:
                     order_text += f"{product_in_cart.product.name} - {product_in_cart.count_product} шт id товара:{product_in_cart.product.pk}; \n" 
-                    full_price += product_in_cart.product.price * product_in_cart.count_product
+                    full_price += product_in_cart.product.discount_price() * product_in_cart.count_product
 
                 message = f"Замовлення вiд: {name_surname} \n \n Вiн замовив: \n{order_text} \n Номер телефону користувача: {phone_number} \n \n Мicто в якому мешкає користувач: {city} \n \n Вiддiлення нової пошти: {number_mail} \n \n Спосiб оплати: {payment_method}  \n \n \n Сумарна цiна: {full_price} грн"
 
