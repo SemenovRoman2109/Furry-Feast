@@ -56,8 +56,8 @@ function validation(input) {
         }
     }
     else if (input.name == "password" || input.name == "confirm-password"){
-        if (input.value.length < 3 || input.value.length > 16){
-            eror(false,`Довжина поролю повинна бути від 3 до 16 символів`,"Неправильне введення даних");
+        if (input.value.length < 8){
+            eror(false,`Довжина поролю повинна бути від 8 символів`,"Неправильне введення даних");
             return false;
         }
         for (let symbol of input.value) {

@@ -79,10 +79,10 @@ toOrderButton.addEventListener("click",function(event){
     let inputs = document.querySelectorAll(".method");
     let payment_method
     if (inputs[0].checked){
-        payment_method = inputs[0].closest("div").querySelector("p").textContent
+        payment_method = inputs[0].closest(".input-field").querySelector("p").textContent
     }
     else{
-        payment_method = inputs[1].closest("div").querySelector("p").textContent
+        payment_method = inputs[1].closest(".input-field").querySelector("p").textContent
     }
 
     data = {
