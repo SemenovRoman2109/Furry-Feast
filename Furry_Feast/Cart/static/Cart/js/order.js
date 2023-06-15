@@ -1,3 +1,5 @@
+$('#phone-number').inputmask("+380 99 999 9999");
+
 function calculate_product_price(item) {
     let priceOneProduct = item.querySelector(".price-one-product");
     let countProduct = item.querySelector(".count-product");
@@ -94,12 +96,17 @@ toOrderButton.addEventListener("click",function(event){
         "change_count":false
     }
     let result = true
-    if (data["phone_number"] == "" || data["name_surname"] == "" || data["city"] == "" || data["number_mail"] == "" || data["name_surname"].trim().split(" ").length != 2){
+
+    if (data["phone_number"][data["phone_number"].length-1] == "_" || data["phone_number"] == "" || data["name_surname"] == "" || data["city"] == "" || data["number_mail"] == "" || data["name_surname"].trim().split(" ").length != 2){
         let modalWindow = document.querySelector(".modal-window");
         let modalWindowTitle = modalWindow.querySelector(".title");
         modalWindowTitle.textContent = "Невiрний ввiд данних"
         let modalWindowMessage = modalWindow.querySelector(".message");
         
+        if (data["phone_number"][data["phone_number"].length-1] == "_"){
+            modalWindowMessage.textContent = "Номер телефону повинен відповідати шаблону"
+        }
+
         console.log(data["name_surname"].trim().split(" "));
         console.log(data["name_surname"].trim().split(" ").length);
         if (data["name_surname"].trim().split(" ").length != 2){
