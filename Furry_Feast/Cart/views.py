@@ -35,7 +35,7 @@ def show_cart(request):
 
 def show_order(request):
 
-    key_np = 'dc77379c4abe49acc38b5951ea8d782e'
+    key_np = ''
     url = 'https://api.novaposhta.ua/v2.0/json/'
     request_dict = {
         "apiKey": key_np,
@@ -67,7 +67,7 @@ def show_order(request):
         if select_city == "true":
             city = request.POST.get("city")
 
-            key_np = 'dc77379c4abe49acc38b5951ea8d782e'
+            key_np = ''
             url = 'https://api.novaposhta.ua/v2.0/json/'
             request_dict = {
             "apiKey": key_np,
