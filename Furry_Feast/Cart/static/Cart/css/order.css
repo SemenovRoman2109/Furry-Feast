@@ -372,3 +372,67 @@ p{
     width: 1vh;
     height: 1vh;
 }
+
+.back-to-cart{
+    display: none;
+}
+
+
+
+@media screen and (max-width: 1280px) {
+    .block-by{
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+    .to-order-button{
+        font-size: 20px;
+    }
+    .title{
+        font-size: 30px;
+    }
+    .by-form input{
+        font-size: 18px;
+    }
+    .block-by{
+        width: 70%;
+    }
+
+    .goods{
+        display: none;
+    }
+
+    .user-data{
+        width: 100%;
+        position: relative;
+    }
+
+    .back-to-cart{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 5px;
+        top: 5px;
+        width: 5vw;
+        height: 5vw;
+    }
+
+    .back-to-cart img{
+        width: 90%;
+        height: 90%;
+    }
+
+
+}
+
+@media screen and (max-width: 500px) {
+    .to-order-button{
+        font-size: 15px;
+    }
+    .title{
+        font-size: 24px;
+    }
+}

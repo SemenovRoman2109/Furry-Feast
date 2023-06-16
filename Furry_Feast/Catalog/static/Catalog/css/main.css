@@ -36,7 +36,7 @@ main{
     padding: 20px;
     gap: 1.5%;
 
-    width: 55%;
+    width: 65%;
     height: 100%;
 
     /* color2 */
@@ -93,7 +93,7 @@ main{
 
     cursor: pointer;
 
-    width: 60%;
+    width: 65%;
     height: 100%;
 
     /* color2 */
@@ -108,4 +108,42 @@ main{
 
 .welcome .image{
     width: 36%;
+}
+
+@media screen and (max-width: 1280px) {
+  .welcome{
+     width: 75%;
+  }
+  .discount{
+     width: 75%;
+  }
+
+  .block-text .content-block{
+    font-size: 18px;
+  }
+  .block-text .title-block{
+    font-size: 24px;
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
+  main{
+    gap: 25px;
+  }
+  .first-line,.second-line{
+    height: 40vh;
+  }
+  .welcome,.discount{
+    width: 90%;
+ }
+   block-text .content-block{
+    font-size: 16px;
+  }
+  .block-text .title-block{
+    font-size: 20px;
+  }
+  .discount .image{
+    height: 75%;
+  }
 }

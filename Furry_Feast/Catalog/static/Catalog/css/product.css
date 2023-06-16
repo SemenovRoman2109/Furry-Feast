@@ -53,7 +53,9 @@ main {
     color: #080808;
 }
 
-
+.main-product-card-img-box img{
+    height: 95%;
+}
 
 .main-product-card {
     display: flex;
@@ -70,6 +72,7 @@ main {
 .main-product-card-img-box {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 35%;
     height: 100%;
     background: #13BB89;
@@ -77,26 +80,6 @@ main {
     border: none;
 }
 
-.main-product-button-buy {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background:#0be6a4;
-    border-radius: 14px ;
-    border: none;
-    font-family: 'Oswald regular', sans-serif;
-    font-style: normal;
-    font-size: 22px;
-    width: 35%;
-    transition-duration: 0.5s;
-}
-
-.main-product-button-buy:hover {
-    background: #01fdb1;
-    transition: all 0.5s;
-    transform: scale(1.08);
-    
-}
 
 .main-product-info-price {
     display: flex;
@@ -108,6 +91,7 @@ main {
     width: 25em;
     color: #0D825F;
     margin: 0;
+    width: 100%;
 }
 
 .main-product-add-bascet-button {
@@ -121,7 +105,7 @@ main {
     background: #fbbb0c;
     border-radius: 14px ;
     border: none;
-    width: 45%;
+    width: auto;
     height: auto;
     transition-duration: 0.5s;
 
@@ -141,6 +125,7 @@ main {
     color: #0D825F;
     font-size: 28px;
     margin: 0;
+    width: 100%;
 }
 
 
@@ -148,7 +133,8 @@ main {
     display: flex;
     flex-direction: column;
     height: 100%;
-    gap: 10%;
+    width: 60%;
+    gap: 5%;
 
 }
 
@@ -165,11 +151,10 @@ main {
     justify-content: flex-start;
     align-items: center;
     color: #0D825F;
-    width: 97%;
+    width: 100%;
     font-size: 28px;
 
 }
-
 
 .modal-window-add-cart{
     z-index: 50;
@@ -235,4 +220,51 @@ main {
 
 .stars img{
     height: 100%;
+}
+
+@media screen and (max-width: 1100px) {
+    .main-product-card-img-box img{
+        height: 28vh;
+    }
+    /* .star-product{
+        height: 7vh;
+    } */
+}
+@media screen and (max-width: 960px) {
+    .main-product-card-img-box img{
+        height: 26vh;
+    }
+    /* .star-product{
+        height: 7vh;
+    } */
+}
+
+@media screen and (max-width: 760px) {
+    .main-product-card{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 80%;
+    }
+    .main-product-card-img-box{
+        width: 100%;
+    }
+
+    .main-product-card-img-box img{
+        height: 40vh;
+    }
+
+    .main-product-description{
+        text-align: center;
+        width: 90%;
+    }
+    .stars{
+        height: 5vh;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .main-product-card-head{
+        margin-left: 8%;
+    }
 }

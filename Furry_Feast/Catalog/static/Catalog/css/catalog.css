@@ -177,7 +177,7 @@
     color: #4B4B4B;
 }
 
-button:hover:not(.disable){
+button:hover:not(.disable,.select-button-pagination){
     background: #fb6c0c;
     transition: all 0.5s;
     transform: scale(1.12);
@@ -401,7 +401,7 @@ ul{
     font-style: normal;
     font-size: 20px;
     transition-duration: 0.18s;
-    background-color: rgb(228, 228, 228);
+    background-color: #bfe7da;
 }
 
 .number-pagination {
@@ -411,15 +411,14 @@ ul{
 }
 
 .button-pagination {
-    width: 3vw;
-    height: 3vw;
+    padding: 10px 15px;
 
 }
 
 
 .select-button-pagination {
-    color: #131082;
-    border: 3px solid #131082;
+    color: #0e9368;
+    border: 4px solid #0e9368;
     font-weight: bold;
 
 }
@@ -428,15 +427,14 @@ ul{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 7vw;
-    height: 3vw;
+    padding: 10px 15px;
 
 
 }
 
 
-.pagination button:not(.disable):hover,.paginationTop button:not(.disable):hover{
-    background: rgb(143, 176, 214);
+.pagination button:not(.disable,.select-button-pagination):hover,.paginationTop button:not(.disable,.select-button-pagination):hover{
+    background: #8bcab7;
     transition: all 0.5s;
     transform: scale(1.12);
     
@@ -446,18 +444,15 @@ ul{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 7vw;
-    height: 3vw;
+    padding: 10px 15px;
 }
 
 .disable {
+    
     color: #8C8C8C;
     
 }
 
-.disable:hover {
-    background-color: rgb(228, 228, 228);
-} 
 
 .stars{
     width: 80%;
@@ -479,9 +474,24 @@ ul{
     main{
         width: 80%;
     }
+    .section{
+        width: 200px;
+        height: 340px;
+    }
+    .section .description{
+        font-size: 14px;
+    }
+
+    .pagination button, .paginationTop button{
+        padding: 6px 10px;
+        
+    }
 }
 
 @media screen and (max-width: 800px) {
+    .pagination button, .paginationTop button{
+        font-size: 16px;
+    }
     .side-menu{
         width: 30%;
     }
@@ -492,4 +502,13 @@ ul{
         justify-content: center;
         left: 0;
     }
+
+    .section{
+        width: 180px;
+    }
+    .section .description{
+        font-size: 13px;
+    }
+
+    
 }

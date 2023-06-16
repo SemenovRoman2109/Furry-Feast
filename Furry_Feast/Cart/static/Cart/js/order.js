@@ -97,12 +97,24 @@ toOrderButton.addEventListener("click",function(event){
     }
     let result = true
 
-    if (data["phone_number"][data["phone_number"].length-1] == "_" || data["phone_number"] == "" || data["name_surname"] == "" || data["city"] == "" || data["number_mail"] == "" || data["name_surname"].trim().split(" ").length != 2){
+    let options = document.querySelector("#number-mail-datalist").querySelectorAll("option");
+    let resultOption = true
+    options.forEach(function(option){
+        if (option.textContent == data["number_mail"]){
+            resultOption = false
+        }
+    })
+
+    if (data["phone_number"][data["phone_number"].length-1] == "_" || data["phone_number"] == "" || data["name_surname"] == "" || data["city"] == "" || data["number_mail"] == "" || data["name_surname"].trim().split(" ").length != 2 || resultOption){
         let modalWindow = document.querySelector(".modal-window");
         let modalWindowTitle = modalWindow.querySelector(".title");
         modalWindowTitle.textContent = "Невiрний ввiд данних"
         let modalWindowMessage = modalWindow.querySelector(".message");
         
+        if (resultOption){
+            modalWindowMessage.textContent = "Оберiть підходяще вам відділення зі списку"
+        }
+
         if (data["phone_number"][data["phone_number"].length-1] == "_"){
             modalWindowMessage.textContent = "Номер телефону повинен відповідати шаблону"
         }
@@ -170,6 +182,7 @@ toOrderButton.addEventListener("click",function(event){
                     coverdiv.remove();
                     modalWindow.style.opacity = 0;
                     setTimeout(()=>{modalWindow.style.display = "none";},1000)
+                    window.location.href = window.location.href.split("order")[0]
                 },3000)
             }
         });  
@@ -200,6 +213,18 @@ inputCity.addEventListener("blur",function(event) {
         datalist.innerHTML = ""
     }
     else{
+        let modalWindow = document.querySelector(".modal-window");
+        let modalWindowTitle = modalWindow.querySelector(".title");
+        modalWindowTitle.textContent = "Шукаемо вiддiлення у вашому мiстi"
+        let modalWindowMessage = modalWindow.querySelector(".message");
+        modalWindowMessage.textContent = ""
+        let coverDiv = document.createElement('div'); 
+        coverDiv.classList.add('cover-div'); 
+        let main = document.querySelector("main");
+        main.append(coverDiv);
+        modalWindow.style.display = "flex";
+        setTimeout(()=>{modalWindow.style.opacity = 1;},10)
+    
         $.ajax({
             type: "POST",
             url: "/order/",
@@ -209,7 +234,12 @@ inputCity.addEventListener("blur",function(event) {
                 "city":event.target.value,
             },
             success: function(response){
+                
                 if (response.list_branches.length != 0){
+                    let coverdiv = document.querySelector('.cover-div');
+                    coverdiv.remove();
+                    modalWindow.style.opacity = 0;
+                    setTimeout(()=>{modalWindow.style.display = "none";},1000)
                     let numberMail = document.querySelector("#number-mail");
                     numberMail.type =  "text";
                     let datalist = document.querySelector("#number-mail-datalist");
@@ -221,6 +251,14 @@ inputCity.addEventListener("blur",function(event) {
                     })
                 }
                 else{
+                    modalWindowTitle.textContent = "Ми не знайшли вiддiлень у вашому мiстi"
+                    modalWindowMessage.textContent = "Перевiрте правильнiсть назви мiста"
+                    setTimeout(function(){
+                        let coverdiv = document.querySelector('.cover-div');
+                        coverdiv.remove();
+                        modalWindow.style.opacity = 0;
+                        setTimeout(()=>{modalWindow.style.display = "none";},1000)
+                    },3000)
                     let numberMail = document.querySelector("#number-mail");
                     numberMail.type = "hidden";
                     let datalist = document.querySelector("#number-mail-datalist");

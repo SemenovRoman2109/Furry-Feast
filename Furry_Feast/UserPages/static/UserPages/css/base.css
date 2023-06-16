@@ -252,3 +252,42 @@ main{
         width: 80%;
     }
 }
+
+@media only screen and (min-width: 651px) {
+    .open-side-menu{
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 650px) {
+    .cover-div-side-menu {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+        z-index: 150;
+        background: rgba(92, 92, 92,  0.1);
+        backdrop-filter: blur(2px);
+    }
+    .open-side-menu{
+        z-index: 48;
+        cursor: pointer;
+        position: absolute;
+        left: 2vw;
+        top: 2vw;
+        width: 5vw;
+        height: 5vw;
+    }
+    .side-menu{
+        opacity: 0;
+        transition: all 0.5s;
+        width: 40%;
+        z-index: 151;
+    }
+    main{
+        left: 0;
+        width: 100%;
+    }
+}

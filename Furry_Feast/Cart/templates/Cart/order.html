@@ -20,6 +20,7 @@
     <p class="title">Оформлення замовлення</p>
     <div class="block-by">
         <div class="user-data">
+            <a href="/cart/" class="back-to-cart"><img src="{% static 'Cart/img/back.png' %}" alt=""></a>
             <p class="small-title">Вашi даннi</p>
             <form action="{% url 'order' %}" class="by-form">
                 {% csrf_token %}

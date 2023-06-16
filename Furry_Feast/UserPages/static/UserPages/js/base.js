@@ -18,7 +18,6 @@ else{
     logout.style.display = "none"
     login.style.display = "flex"
     registration.style.display = "flex"
-    userName.style.display = "none"
 }
 
 
@@ -71,3 +70,49 @@ arrowTopButton.addEventListener("click",(event) => {
       });
 })
 
+
+
+let buttonOpenSideMenu = document.querySelector(".open-side-menu");
+let sideMenu = document.querySelector(".side-menu");
+
+buttonOpenSideMenu.addEventListener("click",function(event){
+    let coverDiv = document.createElement('div'); 
+    coverDiv.style.zIndex
+    coverDiv.classList.add('cover-div-side-menu'); 
+    document.body.append(coverDiv);
+    sideMenu.style.display = "flex";
+    setTimeout(() =>  sideMenu.style.opacity = 1, 1)
+    console.log(1);
+
+    coverDiv.addEventListener("click",function(event){
+        let coverdiv = document.querySelector('.cover-div-side-menu');
+        coverdiv.remove();
+        sideMenu.style.opacity = 0;
+        setTimeout(() => sideMenu.style.display = "none", 500)
+    })
+})
+
+let coverdiv = document.querySelector('.cover-div-side-menu');
+if (coverdiv != null){coverdiv.remove();}
+if (document.documentElement.clientWidth >= 651){
+    sideMenu.style.display = "flex";
+    sideMenu.style.opacity = 1;
+}
+else{
+    sideMenu.style.display = "none";
+    sideMenu.style.opacity = 0;
+}
+
+window.addEventListener("resize",function() {
+    let sideMenu = document.querySelector(".side-menu");
+    let coverdiv = document.querySelector('.cover-div-side-menu');
+    if (coverdiv != null){coverdiv.remove();}
+    if (document.documentElement.clientWidth >= 651){
+        sideMenu.style.display = "flex";
+        sideMenu.style.opacity = 1;
+    }
+    else{
+        sideMenu.style.display = "none";
+        sideMenu.style.opacity = 0;
+    }
+})

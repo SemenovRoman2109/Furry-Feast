@@ -9,11 +9,16 @@ import json
 # Create your views here.
 
 def show_cart(request):
+
     context = {
         "product_in_cart":ProductInCart.objects.filter(session_key=request.session.session_key),
         "user_name":request.user.username,
-        "is_authenticated":request.user.is_authenticated
+        "is_authenticated":request.user.is_authenticated,
+        "empty_cart":True
+        
     }
+    if len(context["product_in_cart"]) == 0:
+        context["empty_cart"] = False
     if request.method == 'POST':
         count_product = request.POST.get("count_product")
         delete_product = request.POST.get("delete_product")
@@ -29,21 +34,40 @@ def show_cart(request):
     return render(request,"Cart/cart.html",context)
 
 def show_order(request):
+
+    key_np = 'dc77379c4abe49acc38b5951ea8d782e'
+    url = 'https://api.novaposhta.ua/v2.0/json/'
+    request_dict = {
+        "apiKey": key_np,
+        "modelName": "Address",
+        "calledMethod": "getCities",
+        "methodProperties": {},
+        "Limit":"60"
+    }
+    request_json = json.dumps(request_dict, indent = 5)
+    request_response = requests.post(url, data = request_json)
+    response = json.loads(request_response.text)
+    data = response['data']
+    
+    list_city = []
+    for i in data:
+        list_city.append(i["Description"])
+
     context = {
         "products":ProductInCart.objects.filter(session_key=request.session.session_key),
         "user_name":request.user.username,
         "is_authenticated":request.user.is_authenticated,
-        "list_city":["Київ","Дніпро","Харків","Запоріжжя","Одеса","Кривий Ріг","Львів","Вінниця","Миколаїв","Полтава"]
+        "list_city":list_city,
     }
+
+    
     if request.method == 'POST':
         change_count = request.POST.get("change_count")
         select_city = request.POST.get("select_city")
         if select_city == "true":
             city = request.POST.get("city")
 
-            print(city)
-
-            key_np = ''
+            key_np = 'dc77379c4abe49acc38b5951ea8d782e'
             url = 'https://api.novaposhta.ua/v2.0/json/'
             request_dict = {
             "apiKey": key_np,
@@ -62,8 +86,7 @@ def show_order(request):
             
             new_data = []
             for i in data:
-                if "Відділення" == i['Description'].split(" ")[0]:
-                    new_data.append(i['Description'])
+                new_data.append(i['Description'])
                 
 
             return JsonResponse({"list_branches":new_data})
@@ -89,16 +112,28 @@ def show_order(request):
                 order_text = ""
                 full_price = 0
 
+                count = 1
+
+                
+
                 for product_in_cart in products:
-                    order_text += f"{product_in_cart.product.name} - {product_in_cart.count_product} шт id товара:{product_in_cart.product.pk}; \n" 
+                    count_number = 1
+                    for number in str(count):
+                        list_symbol = ["0️⃣","1️⃣","2️⃣","3️⃣","4️⃣","5️⃣","6️⃣","7️⃣","8️⃣","9️⃣"]
+                        order_text += list_symbol[int(number)]
+                        if count_number == len(str(count)):
+                            order_text += " - "
+                        count_number += 1
+
+                    count += 1 
+                    order_text += f"{product_in_cart.product.name} - {product_in_cart.count_product} шт id товара:{product_in_cart.product.pk}; \n \n" 
                     full_price += product_in_cart.product.discount_price() * product_in_cart.count_product
 
-                message = f"Замовлення вiд: {name_surname} \n \n Вiн замовив: \n{order_text} \n Номер телефону користувача: {phone_number} \n \n Мicто в якому мешкає користувач: {city} \n \n Вiддiлення нової пошти: {number_mail} \n \n Спосiб оплати: {payment_method}  \n \n \n Сумарна цiна: {full_price} грн"
+                message = f"Замовлення вiд: {name_surname} \n \n Вiн замовив: \n \n{order_text} \n Номер телефону користувача: {phone_number} \n \n Мicто в якому мешкає користувач: {city} \n \n Вiддiлення нової пошти: {number_mail} \n \n Спосiб оплати: {payment_method}  \n \n \n Сумарна цiна: {full_price} грн"
 
                 for product_in_cart in products:
                     product_in_cart.delete()
 
-                print(message)
                 bot_send(TELEGRAM_BOT_TOKEN, TELEGRAM_BOT_CHAT_ID, message)
                 return JsonResponse({"result":"Удачная отправка"})
     return render(request,"Cart/order.html",context)

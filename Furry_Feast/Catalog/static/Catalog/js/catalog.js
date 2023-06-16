@@ -5,7 +5,15 @@ if (window.location.href.includes("catalog")){
 else{
     pageName = "discount";
 }
-    
+
+let paginationTop = document.querySelector(".paginationTop")
+if (document.querySelector("main").clientHeight > document.documentElement.clientHeight){
+    paginationTop.style.display = "flex"
+}
+else{
+    paginationTop.style.display = "none"
+}
+
 function countStar() {
     let listStarProductBlock = document.querySelectorAll(".stars");
     listStarProductBlock.forEach(function(starProductBlock,index,listStarProductBlock) {
@@ -44,7 +52,6 @@ function generatePaginationButton(countPage,userPage,pagination) {
     const paginationBlock = document.querySelector(pagination);
     paginationBlock.style.display = "flex";
     if (countPage > 1){
-        console.log(countPage,userPage);
         const divNumberButtonPagination = paginationBlock.querySelector(".number-pagination");
         divNumberButtonPagination.innerHTML = '';
         const buutonBackPagination = paginationBlock.querySelector(".back-pagination");
@@ -177,7 +184,6 @@ function sendSelectCategory(){
                                 "product_pk":form.querySelector(".product_pk").value,
                             },
                             success: function(response){
-                                console.log(response.result);
                                 let modalWindow = document.querySelector(".modal-window-add-cart");
                                 let coverDiv = document.createElement('div'); 
                                 coverDiv.classList.add('cover-div'); 
@@ -207,15 +213,24 @@ function sendSelectCategory(){
                     }
                 }
                 const zeroProduct = document.querySelector(".zero-product");
-                console.log(response.zero_product);
                 if (! response.zero_product){
                     zeroProduct.style.display = "none";
                 }
                 else{
                     zeroProduct.style.display = "block";
                 }
+
+                
                 generatePaginationButton(countPage,page,".pagination")
                 generatePaginationButton(countPage,page,".paginationTop")
+                let paginationTop = document.querySelector(".paginationTop")
+                console.log(document.querySelector("main").clientHeight);
+                if (document.querySelector("main").clientHeight > document.documentElement.clientHeight){
+                    paginationTop.style.display = "flex"
+                }
+                else{
+                    paginationTop.style.display = "none"
+                }
             }
 
 

@@ -11,6 +11,7 @@ main{
 }
 
 .information {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 2%;
@@ -145,16 +146,15 @@ form button:hover{
 }
 
 .auth-block{
-    position: fixed;
+    position: absolute;
     display: flex;
-    width: 84%;
+    width: 100%;
     gap: 10%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 30%;
     bottom: 0;
-    right: 0;
 }
 
 .auth-block p{
@@ -170,7 +170,8 @@ form button:hover{
     justify-content: center;
     align-items: center;
     background:#fbbb0c;
-    width: 18%;
+    width: auto;
+    padding: 0 15px;
     height: 20%;
     border-radius: 14px ;
     transition-duration: 0.5s;
@@ -244,3 +245,20 @@ form button:hover{
     backdrop-filter: blur(2px);
 }
 
+@media screen and (max-width: 650px) {
+    main{
+        padding: 0 10px;
+    }
+    .small-title{
+        font-size: 18px;
+    }
+    .auth-block p{
+        font-size: 19px;
+    }
+    .login-button{
+        padding: 2px 10px;
+    }
+    .login-button a{
+        font-size: 18px;
+    }
+}

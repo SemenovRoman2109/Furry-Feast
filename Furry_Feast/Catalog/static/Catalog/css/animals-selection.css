@@ -53,7 +53,11 @@
     }
 
     .start-animal{
-        width: 50vw;
-        height: 50vw;
+        width: 45vw;
+        height: 45vw;
+    }
+    .select-animal .start-animal:hover{
+        width: 42vw;
+        height: 42vw;
     }
 }
