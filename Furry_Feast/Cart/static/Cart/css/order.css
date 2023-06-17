@@ -156,7 +156,7 @@ p{
     font-family: 'Oswald';
     font-style: normal;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 
@@ -310,41 +310,7 @@ p{
     
 }
 
-.modal-window{
-    z-index: 55;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    width: 40%;
-    height: 24%;
-    opacity: 0;
-    transition: all 1s;
-    right: 22.5%;
-    top: 38%;
-    gap: 10%;
-    background: #F0F0F0;
-    border-radius: 60px;
-}
 
-.modal-window .title{
-    font-family: 'Oswald';
-    font-style: normal;
-    font-weight: bold;
-    font-size: 28px;
-    
-    color: #13BB89;
-    margin: 0;
-}
-.modal-window .message{
-    font-family: 'Oswald';
-    font-style: normal;
-    font-size: 22px;
-    
-    color: #13BB89;
-    margin: 0;
-}
 
 .cover-div {
     width: 100%;
@@ -382,6 +348,10 @@ p{
 @media screen and (max-width: 1280px) {
     .block-by{
         width: 90%;
+    }
+
+    .name{
+        font-size: 17px;
     }
 
 }

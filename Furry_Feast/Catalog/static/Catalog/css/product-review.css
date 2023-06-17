@@ -390,6 +390,12 @@ main {
 }
 
 @media screen and (max-width: 650px) {
+
+    .main-product_review-card{
+        left: 0;
+        width: 95%;
+    }
+
     main{
         width: 100%;
     }
@@ -397,6 +403,7 @@ main {
     .reviews{
         width: 100%;
         height: 70%;
+        margin-top: 2%;
     }
 
     .product_review-block{
@@ -450,6 +457,10 @@ main {
 
     .auth-block p{
         font-size: 20px;
+        width: auto;
+        left: 0;
+        
+        display: flex;
     }
 
     .login-button a{

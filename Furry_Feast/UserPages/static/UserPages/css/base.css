@@ -1,3 +1,41 @@
+.modal-window,.modal-window-logout{
+    z-index: 55;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 40%;
+    height: 24%;
+    opacity: 0;
+    transition: all 1s;
+    right: 30%;
+    top: 38%;
+    gap: 10%;
+    background: #F0F0F0;
+    border-radius: 60px;
+}
+
+.modal-window .title,.modal-window-logout .title{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    
+    color: #13BB89;
+    margin: 0;
+}
+.modal-window .message{
+    font-family: 'Oswald';
+    font-style: normal;
+    font-size: 22px;
+    
+    color: #13BB89;
+    margin: 0;
+}
+
+
+
 #button-up{
     cursor: pointer;
     width: 3vw;
@@ -24,34 +62,7 @@
     padding: 0;
     margin: 0;
 }
-.modal-window-logout{
-    z-index: 55;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    width: 40%;
-    height: 24%;
-    opacity: 0;
-    transition: all 1s;
-    left: 30%;
-    top: 38%;
-    gap: 10%;
-    background: #F0F0F0;
-    border-radius: 60px;
-    
-}
 
-.modal-window-logout .title{
-    font-family: 'Oswald';
-    font-style: normal;
-    font-weight: bold;
-    font-size: 28px;
-    
-    color: #13BB89;
-    margin: 0;
-}
 
 .cover-div {
     width: 100%;
@@ -268,20 +279,42 @@ main{
     }
 }
 
+@media only screen and (max-width: 900px) {
+    .modal-window,.modal-window-logout{
+        width: 65%;
+        height: 16%;
+        top: 42%;
+        border-radius: 30px;
+        left: 17.5%;
+    }
+    .modal-window .title,.modal-window-logout .title{
+        font-size: 24px;
+    }
+    .modal-window .message{
+        font-size: 19px;
+    }
+}
 
 @media only screen and (max-width: 650px) {
+    .top-categories img, .bot-categories img{
+        width: 6%;
+    }
+    .modal-window,.modal-window-logout{
+        width: 85%;
+        left: 7.5%;
+    }
     .cover-div-side-menu {
         width: 100%;
         height: 100%;
         left: 0;
         top: 0;
         position: absolute;
-        z-index: 150;
+        z-index: 39;
         background: rgba(92, 92, 92,  0.1);
         backdrop-filter: blur(2px);
     }
     .open-side-menu{
-        z-index: 48;
+        z-index: 28;
         cursor: pointer;
         position: absolute;
         left: 2vw;
@@ -293,7 +326,7 @@ main{
         opacity: 0;
         transition: all 0.5s;
         width: 40%;
-        z-index: 151;
+        z-index: 40;
     }
     main{
         left: 0;
@@ -308,4 +341,10 @@ main{
         bottom: 2vw;
         display: none;
     }
+}
+
+@media only screen and (max-width: 500px) {
+    .top-categories img, .bot-categories img{
+        width: 8%;
+    }    
 }

@@ -2,6 +2,10 @@
     margin: 0;
 }
 
+.img-block{
+    height: 100%;
+}
+
 
 .title-page{
     font-family: 'Oswald';
@@ -461,6 +465,12 @@ ul{
 }
 
 @media screen and (max-width: 1200px) {
+    
+    .modal-window-add-cart{
+        padding: 0;
+        width: 50%;
+        left: 25%;
+    }
     .side-menu{
         width: 20%;
     }
@@ -521,6 +531,20 @@ ul{
 }
 
 @media only screen and (max-width: 650px){
+    .modal-window-add-cart{
+        width: 85%;
+        padding: 0;
+        left: 15%;
+    }
+    .modal-window-add-cart p{
+        font-size: 24px;
+    }
+    .img-block{
+        height: 75%;
+    }
+    .modal-window-add-cart .go-to-cart .text{
+        font-size: 20px;
+    }
     .section{
         width: 165px;
         height: 290px;
@@ -542,6 +566,15 @@ ul{
     }
     .section .description{
         font-size: 12px;
+    }
+    .title-page{
+        font-size: 26px;
+    }
+    .input-search{
+        width: 75%;
+    }
+    .input-search button{
+        width: 20%;
     }
     
 }

@@ -61,3 +61,28 @@
         height: 35vh;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .start-animal{
+        width: 30vh;
+        height: 30vh;
+    }
+    .select-animal .start-animal:hover{
+        width: 29vh;
+        height: 29vh;
+    }
+    .select-animal p{
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .start-animal{
+        width: 25vh;
+        height: 25vh;
+    }
+    .select-animal .start-animal:hover{
+        width: 23vh;
+        height: 23vh;
+    }
+}

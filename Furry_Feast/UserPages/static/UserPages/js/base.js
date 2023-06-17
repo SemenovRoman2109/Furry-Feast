@@ -96,7 +96,7 @@ let coverdiv = document.querySelector('.cover-div-side-menu');
 if (coverdiv != null){coverdiv.remove();}
 let mobile_size = 651 
 if (document.querySelector("main").clientHeight > document.documentElement.clientHeight){
-        mobile_size = 641
+        mobile_size = 651
     }
 if (document.documentElement.clientWidth >= mobile_size){
     sideMenu.style.display = "flex";
@@ -113,7 +113,7 @@ window.addEventListener("resize",function() {
     if (coverdiv != null){coverdiv.remove();}
     let mobile_size = 651 
     if (document.querySelector("main").clientHeight > document.documentElement.clientHeight){
-        mobile_size = 641
+        mobile_size = 651
     }
     if (document.documentElement.clientWidth >= mobile_size){
         sideMenu.style.display = "flex";
