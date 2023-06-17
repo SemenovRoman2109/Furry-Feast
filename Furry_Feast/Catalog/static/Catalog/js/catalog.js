@@ -413,4 +413,42 @@ listParamInput.forEach(function(param,index,listParamInput) {
     }
 })
 
+let mobileSize = 651 
+if (document.querySelector("main").clientHeight > document.documentElement.clientHeight){
+    mobileSize = 641
+}
+let paginationForward = document.querySelectorAll(".forward-pagination");
+let paginationBack = document.querySelectorAll(".back-pagination");
+if (document.documentElement.clientWidth >= mobileSize){
+    paginationForward[0].textContent = "Вперед→"
+    paginationBack[0].textContent = "←Назад"
+    paginationForward[1].textContent = "Вперед→"
+    paginationBack[1].textContent = "←Назад"
+}
+else{
+    paginationForward[0].textContent = "→"
+    paginationBack[0].textContent = "←"
+    paginationForward[1].textContent = "→"
+    paginationBack[1].textContent = "←"
+}
 
+window.addEventListener("resize",function() {
+    let mobileSize = 651 
+    if (document.querySelector("main").clientHeight > document.documentElement.clientHeight){
+        mobileSize = 641
+    }
+    let paginationForward = document.querySelectorAll(".forward-pagination");
+    let paginationBack = document.querySelectorAll(".back-pagination");
+    if (document.documentElement.clientWidth >= mobileSize){
+        paginationForward[0].textContent = "Вперед→"
+        paginationBack[0].textContent = "←Назад"
+        paginationForward[1].textContent = "Вперед→"
+        paginationBack[1].textContent = "←Назад"
+    }
+    else{
+        paginationForward[0].textContent = "→"
+        paginationBack[0].textContent = "←"
+        paginationForward[1].textContent = "→"
+        paginationBack[1].textContent = "←"
+    }
+})

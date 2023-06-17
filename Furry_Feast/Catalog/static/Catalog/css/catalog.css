@@ -102,18 +102,19 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    position: relative;
-    
+    justify-content: flex-start;
+    position: absolute;
+    bottom: 0;
     gap: 10%;
     width: 80%;
-    height: 24%;
+    height: 15%;
 
 }
 
 .addToCart{
     position: absolute;
     right: 0;
-    height: 50%;
+    height: 80%;
 }
 
 .button-basket{
@@ -137,26 +138,18 @@
     height: 100%;
 }
 
-.block-price{
-    display: flex;
-    flex-direction: column;
-}
-
 .old-price{
     display: flex;
     flex-direction: row;
-    margin-bottom: 5%;
-    position: absolute;
-    width: 100%;
+    width: 80%;
     gap: 6%;
-    top: 0;
 }
 
 .promotion{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3px 5%;
+    padding: 1px 5px;
     background-color: #fb6c0c;
     height: 100%;
     border-radius: 25px;
@@ -197,6 +190,7 @@ button:hover:not(.disable,.select-button-pagination){
 }
 
 .section .img-box{
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -221,6 +215,7 @@ button:hover:not(.disable,.select-button-pagination){
 
 
 .section{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -448,9 +443,7 @@ ul{
 }
 
 .disable {
-    
-    color: #8C8C8C;
-    
+    color: #8C8C8C;   
 }
 
 
@@ -505,10 +498,61 @@ ul{
 
     .section{
         width: 180px;
+        height: 290px;
+    }
+    .group-button .price{
+        font-size: 15px;
     }
     .section .description{
         font-size: 13px;
     }
 
+    .start-price{
+        font-size: 15px;
+    }
+    .promotion-percent{
+        font-size: 15px;
+    }
+    .section .img-box{
+        height: 130px;
+    }
+
     
+}
+
+@media only screen and (max-width: 650px){
+    .section{
+        width: 165px;
+        height: 290px;
+    }
+    .goods{
+        width: 100%;
+    }
+    main{
+        width: 100%;
+    }
+    .side-menu {
+        opacity: 0;
+        transition: all 0.5s;
+        width: 75%;
+        z-index: 151;
+    }
+    .group-button .price{
+        font-size: 14px;
+    }
+    .section .description{
+        font-size: 12px;
+    }
+    
+}
+
+@media only screen and (max-height: 950px){
+    .side-menu {
+        overflow-y: scroll;
+    }
+    .bot-categories{
+        margin-top: 15px;
+        position: relative;
+
+    }
 }

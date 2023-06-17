@@ -1,8 +1,6 @@
 {% load static %}
-
+<input type="hidden" value="{% static 'Catalog/img/star.png' %}" class="imgStarPath">
 {% for product in products_filter %}
-    <input type="hidden" value="{% static 'Catalog/img/star.png' %}" class="imgStarPath">
-    <input type="hidden" value="{{ product.grade }}" class="grade">
     <div class = 'section' id="section-{{ product.pk }}">
         <div class="img-box">
             <a href="/product/{{ product.pk }}"><img src="{{ product.image.url }}" alt=""></a>
@@ -10,22 +8,17 @@
         <a href="/product/{{ product.pk }}" class = 'description'>{{ product.display_name }} </a>
         <div class="stars">
             <input type="hidden" class="count-star" value="{{ product.grade }}">
-        </div>   
-        <div class = group-button>
-            {% if product.promotion == 0 %}
-                <p class ='price'>Ціна: {{ product.discount_price }} грн</p>      
-            {% else %}
-                <div class="block-price">
-                    <div class="old-price">
-                        <p class ='start-price'>{{ product.price }} грн</p>
-                        <div class="promotion">
-                            <p class="promotion-percent">{{ product.promotion }}%</p>
-                        </div>
-                    </div>
-                    <p class="price">Ціна: {{ product.discount_price }} грн</p>
+        </div>    
+        {% if product.promotion != 0 %}
+            <div class="old-price">
+                <p class ='start-price'>{{ product.price }} грн</p>
+                <div class="promotion">
+                    <p class="promotion-percent">{{ product.promotion }}%</p>
                 </div>
-                
-            {% endif %}
+            </div>
+        {% endif %}
+        <div class = group-button>
+            <p class ='price'>Ціна: {{ product.discount_price }} грн</p>
             <form class="addToCart">
                 {% csrf_token %}
                 <input type="hidden" class="product_pk" value="{{product.pk}}" name="product_pk">

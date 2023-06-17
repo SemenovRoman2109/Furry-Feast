@@ -178,6 +178,16 @@ def show_discount(request,page):
             new_products.append(context["products"][index + PRODUCT_IN_ONE_PAGE*(int(page)-1)])
         
     context["products"] = new_products
+    for product in context["products"]:
+        list_reviws_product = Review.objects.filter(product_id = product.pk)
+        if len(list_reviws_product) > 0:
+            final_grade = 0
+            for reviw in list_reviws_product:
+             final_grade += reviw.grade
+            final_grade = final_grade/len(list_reviws_product)
+            product.grade = round(final_grade)
+        else:
+            product.grade = len(list_reviws_product)
     if request.method == 'POST':
 
         # Получаем данные
@@ -195,6 +205,17 @@ def show_discount(request,page):
         
         filtered_products = filter_product_function(filter_text=text,filter_max_price=max_price,filter_min_price=min_price,filter_weight=weight,filter_kind=kind,filter_animal=animal,filtered_products=filtered_products)
         
+        for product in filtered_products:
+            list_reviws_product = Review.objects.filter(product_id = product.pk)
+            if len(list_reviws_product) > 0:
+                final_grade = 0
+                for reviw in list_reviws_product:
+                    final_grade += reviw.grade
+                final_grade = final_grade/len(list_reviws_product)
+                product.grade = round(final_grade)
+            else:
+                product.grade = len(list_reviws_product)
+
         result = []
         for i in range(0, len(filtered_products), PRODUCT_IN_ONE_PAGE): 
             chunk = filtered_products[i:i + PRODUCT_IN_ONE_PAGE]

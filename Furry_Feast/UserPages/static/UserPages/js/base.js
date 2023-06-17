@@ -94,7 +94,11 @@ buttonOpenSideMenu.addEventListener("click",function(event){
 
 let coverdiv = document.querySelector('.cover-div-side-menu');
 if (coverdiv != null){coverdiv.remove();}
-if (document.documentElement.clientWidth >= 651){
+let mobile_size = 651 
+if (document.querySelector("main").clientHeight > document.documentElement.clientHeight){
+        mobile_size = 641
+    }
+if (document.documentElement.clientWidth >= mobile_size){
     sideMenu.style.display = "flex";
     sideMenu.style.opacity = 1;
 }
@@ -107,7 +111,11 @@ window.addEventListener("resize",function() {
     let sideMenu = document.querySelector(".side-menu");
     let coverdiv = document.querySelector('.cover-div-side-menu');
     if (coverdiv != null){coverdiv.remove();}
-    if (document.documentElement.clientWidth >= 651){
+    let mobile_size = 651 
+    if (document.querySelector("main").clientHeight > document.documentElement.clientHeight){
+        mobile_size = 641
+    }
+    if (document.documentElement.clientWidth >= mobile_size){
         sideMenu.style.display = "flex";
         sideMenu.style.opacity = 1;
     }

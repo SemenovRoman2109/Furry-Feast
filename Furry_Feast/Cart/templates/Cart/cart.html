@@ -28,20 +28,20 @@
                     <input type="hidden" class="price-one-product" value="{{ product.product.discount_price }}">
                     <p class="price">{{ product.product.discount_price }} грн</p>
                     <form action="{% url 'cart' %}" class="quantity">
-        
-                
                         {% csrf_token %}
                         <button type="submit" class="minus">&#8722;</button>
                         <p class="count-product">{{ product.count_product }}</p>
                         <button type="submit" class="plus">+</button>
                     </form>
+                    <form action="{% url 'cart' %}" class="bin-block">
+                        {% csrf_token %}
+                        <img  src="{% static 'Cart/img/bin.png' %}" alt="" class="bin">
+                    </form>
                 </div>
-            <form action="{% url 'cart' %}" class="bin-block">
-                {% csrf_token %}
-                <img  src="{% static 'Cart/img/bin.png' %}" alt="" class="bin">
-            </form>
-        </div>
+                
             </div>
+            
+        </div>
             
     {% endfor %}
         {% if empty_cart %}

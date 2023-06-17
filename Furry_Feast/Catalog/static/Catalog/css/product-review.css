@@ -442,4 +442,18 @@ main {
     .star-product{
         height: 2vh;
     }
+
+    .auth-block{
+        width: 100%;
+        
+    }
+
+    .auth-block p{
+        font-size: 20px;
+    }
+
+    .login-button a{
+        font-size: 20px;
+    }
 }
+

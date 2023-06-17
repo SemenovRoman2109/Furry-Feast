@@ -251,6 +251,15 @@ main{
     main{
         width: 80%;
     }
+    #button-up{
+        cursor: pointer;
+        width: 5vw;
+        height: 5vw;
+        position: fixed;
+        right: 1vw;
+        bottom: 1vw;
+        display: none;
+    }
 }
 
 @media only screen and (min-width: 651px) {
@@ -289,5 +298,14 @@ main{
     main{
         left: 0;
         width: 100%;
+    }
+    #button-up{
+        cursor: pointer;
+        width: 8vw;
+        height: 8vw;
+        position: fixed;
+        right: 2vw;
+        bottom: 2vw;
+        display: none;
     }
 }
