@@ -20,13 +20,18 @@ listButtonBasket.forEach(function(buttonBasket,index,listButtonBasket){
                 coverDiv.classList.add('cover-div'); 
                 document.body.append(coverDiv);
                 modalWindow.style.display = "flex";
-                setTimeout(()=>{modalWindow.style.opacity = 1;},10)
+                setTimeout(()=>{modalWindow.style.opacity = 1;},100)
 
                 coverDiv.addEventListener("click",function(event){
                     let coverdiv = document.querySelector('.cover-div');
-                    coverdiv.remove();
                     modalWindow.style.opacity = 0;
-                    setTimeout(()=>{modalWindow.style.display = "none";},1000)
+                    setTimeout(function(){
+                        coverdiv.remove();
+                    },500)  
+                    setTimeout(function(){
+                        modalWindow.style.display = "none";
+                        
+                    },1000)  
                 })
             }  
         });

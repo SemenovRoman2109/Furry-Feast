@@ -12,6 +12,12 @@
 
 {% block content %}
     <p class="title"> Мій кошик</p>
+    {% if empty_cart %}
+        <div class="final-price-block">
+            <p class="text">Загальна цiна:</p>
+            <p class="price"></p>
+        </div>
+    {% endif %}
     <div class = 'colection-items'>
         {% for product in product_in_cart %}
         <div class="item">

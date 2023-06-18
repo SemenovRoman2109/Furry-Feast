@@ -82,6 +82,7 @@
 
 
 .item-icon {
+    margin-right: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,6 +112,31 @@
     width: 45%;
     height: 100%;
 
+}
+
+.final-price-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+.text { 
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    
+    color: #5a5858;
+}
+
+.final-price-block .price {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    
+    color: rgb(8, 145, 104);
 }
 
 .button-by-items{

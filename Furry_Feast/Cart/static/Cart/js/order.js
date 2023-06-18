@@ -1,5 +1,16 @@
 $('#phone-number').inputmask("+380 99 999 9999");
 
+function calculate_all_product_sum() {
+    let items = document.querySelectorAll(".item");
+    let finalPrice = 0
+    items.forEach(function(item){
+        let itemPrice = item.querySelector(".price").textContent.split(" ")[0]
+        finalPrice += Number(itemPrice)
+    })
+    let priceObj = document.querySelector(".final-price-block").querySelector(".price")
+    priceObj.textContent = `${finalPrice} грн`
+}
+
 function calculate_product_price(item) {
     let priceOneProduct = item.querySelector(".price-one-product");
     let countProduct = item.querySelector(".count-product");
@@ -48,6 +59,7 @@ function send(event, quantity) {
         
     });
     calculate_product_price(quantity.closest(".item"));
+    calculate_all_product_sum()
 }  
 
 
@@ -269,3 +281,5 @@ inputCity.addEventListener("blur",function(event) {
     }
     
 })
+
+calculate_all_product_sum()

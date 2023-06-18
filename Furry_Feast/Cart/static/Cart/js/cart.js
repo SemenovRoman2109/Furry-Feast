@@ -1,3 +1,14 @@
+function calculate_all_product_sum() {
+    let items = document.querySelectorAll(".item");
+    let finalPrice = 0
+    items.forEach(function(item){
+        let itemPrice = item.querySelector(".price").textContent.split(" ")[0]
+        finalPrice += Number(itemPrice)
+    })
+    let priceObj = document.querySelector(".final-price-block").querySelector(".price")
+    priceObj.textContent = `${finalPrice} грн`
+}
+
 function calculate_product_price(item) {
     let priceOneProduct = item.querySelector(".price-one-product");
     let countProduct = item.querySelector(".count-product");
@@ -56,7 +67,27 @@ function send(event, quantity ,deleteProduct) {
 
     if (! deleteProduct){
         calculate_product_price(quantity.closest(".item"));
+        calculate_all_product_sum()
     }
+    else{
+        let items = document.querySelectorAll(".item");
+        if (items.length == 0){
+            let finalPriceBlock = document.querySelector(".final-price-block");
+            let buttonByItems = document.querySelector(".button-by-items");
+            let emptyCart = document.createElement("p");
+            finalPriceBlock.remove();
+            buttonByItems.remove();
+            emptyCart.textContent = "Ваш кошик порожнiй"
+            emptyCart.classList.add("empty-cart");
+            let colectionItems = document.querySelector(".colection-items");
+            colectionItems.append(emptyCart)
+
+        }
+        else{
+            calculate_all_product_sum()
+        }
+    }
+    
     
     
 }
@@ -90,3 +121,4 @@ let buttonOrder = document.querySelector(".button-by-items");
 buttonOrder.addEventListener("click",function(event) {
     window.location.href = window.location.href.split("cart")[0] + "order/"
 })
+calculate_all_product_sum()
