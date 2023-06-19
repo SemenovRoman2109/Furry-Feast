@@ -1,3 +1,7 @@
+if (document.querySelectorAll(".item").length == 0){
+    window.location.href = window.location.href.split("order")[0] + "cart/"
+}
+
 $('#phone-number').inputmask("+380 99 999 9999");
 
 function calculate_all_product_sum() {
@@ -130,9 +134,6 @@ toOrderButton.addEventListener("click",function(event){
         if (data["phone_number"][data["phone_number"].length-1] == "_"){
             modalWindowMessage.textContent = "Номер телефону повинен відповідати шаблону"
         }
-
-        console.log(data["name_surname"].trim().split(" "));
-        console.log(data["name_surname"].trim().split(" ").length);
         if (data["name_surname"].trim().split(" ").length != 2){
             modalWindowMessage.textContent = "Поле iм`я та прiзвище повинно мiстити два слова"
         }

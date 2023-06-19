@@ -1,3 +1,41 @@
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background: #A3D5C6;
+    z-index: 1001;
+  }
+
+.preloader__image {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: -35px;
+    margin-left: -35px;
+    text-align: center;
+    animation: preloader-rotate 2s infinite linear;
+}
+
+@keyframes preloader-rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+.loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+}
+
+.loaded .preloader {
+    display: none;
+}
+
 *{
     margin: 0;
 }
@@ -342,6 +380,7 @@ ul{
 }
 
 .modal-window-add-cart p{
+    margin: 0;
     font-family: 'Oswald';
     font-style: normal;
     font-size: 30px;
@@ -534,7 +573,7 @@ ul{
     .modal-window-add-cart{
         width: 85%;
         padding: 0;
-        left: 15%;
+        left: 7.5%;
     }
     .modal-window-add-cart p{
         font-size: 24px;

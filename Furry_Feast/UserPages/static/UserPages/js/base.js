@@ -82,7 +82,6 @@ buttonOpenSideMenu.addEventListener("click",function(event){
     document.body.append(coverDiv);
     sideMenu.style.display = "flex";
     setTimeout(() =>  sideMenu.style.opacity = 1, 1)
-    console.log(1);
 
     coverDiv.addEventListener("click",function(event){
         let coverdiv = document.querySelector('.cover-div-side-menu');

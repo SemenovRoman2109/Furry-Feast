@@ -5,6 +5,7 @@ from .telegram import bot_send
 from Furry_Feast.settings import TELEGRAM_BOT_TOKEN, TELEGRAM_BOT_CHAT_ID
 import requests
 import json
+import telepot
 
 # Create your views here.
 
@@ -138,7 +139,7 @@ def show_order(request):
 
                 for product_in_cart in products:
                     product_in_cart.delete()
-
+                telepot.api.set_proxy('http://proxy.server:3128')
                 bot_send(TELEGRAM_BOT_TOKEN, TELEGRAM_BOT_CHAT_ID, message)
                 return JsonResponse({"result":"Удачная отправка"})
     return render(request,"Cart/order.html",context)

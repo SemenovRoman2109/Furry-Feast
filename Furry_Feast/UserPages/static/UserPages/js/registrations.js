@@ -1,3 +1,7 @@
+if (document.querySelector(".is-authenticated").value == "True"){
+    window.location.href = window.location.href.split("registration")[0]
+}
+    
 function eror(result,text,resultText="") {
     let modalWindow = document.querySelector(".modal-window");
     let registrationTitle = modalWindow.querySelector(".title");
@@ -33,7 +37,7 @@ function eror(result,text,resultText="") {
 }
 
 const bannedWords = [
-    "%","^","&","*",,"!","@","?","#","№"
+    "%","^","&","*","!","@","?","#","№"
 ]
 
 function validation(input) {
@@ -44,20 +48,32 @@ function validation(input) {
     if (input.name == 'username') {
         for (let symbol of input.value) {
             if (bannedWords.includes(symbol)) {
-                eror(false,`Им\`я містить заборонений символ: ${symbol}`,"Неправильне введення даних");
+                eror(false,`Iм'я містить заборонений символ: ${symbol}`,"Неправильне введення даних");
+                return false;
+            }
+            if (input.value.length > 16){
+                eror(false,`Довжина iменi повинна бути до 16 символів`,"Неправильне введення даних");
                 return false;
             }
         }
     }
     else if (input.name == "email"){
         if (!input.value.includes("@")) {
-            eror(false,"Email адреса повинна містити символ @","Неправильне введення даних");
+            eror(false,"Електронна адреса повинна містити символ @","Неправильне введення даних");
+            return false;
+        }
+        if (input.value.length > 30){
+            eror(false,`Довжина електронної адресси повинна бути до 30 символів`,"Неправильне введення даних");
             return false;
         }
     }
     else if (input.name == "password" || input.name == "confirm-password"){
         if (input.value.length < 8){
             eror(false,`Довжина поролю повинна бути від 8 символів`,"Неправильне введення даних");
+            return false;
+        }
+        if (input.value.length > 16){
+            eror(false,`Довжина поролю повинна бути до 16 символів`,"Неправильне введення даних");
             return false;
         }
         for (let symbol of input.value) {
@@ -71,10 +87,10 @@ function validation(input) {
 }
 
 
-let result = true
 
 $(document).ready(function () {
     $(".form").on("submit", function (event) {
+        let result = true
         event.preventDefault();
         let inputs = document.querySelectorAll('input');
         for (let input of inputs){

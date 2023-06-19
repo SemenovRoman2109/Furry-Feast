@@ -1,3 +1,7 @@
+if (document.querySelector(".is-authenticated").value == "True"){
+    window.location.href = window.location.href.split("login")[0]
+}
+
 function eror(result,text,resultText="") {
     let modalWindow = document.querySelector(".modal-window");
     modalWindow.style.display = "flex"

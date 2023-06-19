@@ -423,6 +423,9 @@
 
 
 @media screen and (max-width: 900px) {
+    .empty-cart{
+        font-size: 28px;
+    }
     .display_name{
         font-size: 22px;
     }
@@ -571,7 +574,7 @@
     }
 
     .empty-cart{
-        font-size: 38px;
+        font-size: 26px;
     }
 }
 

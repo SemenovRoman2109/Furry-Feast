@@ -1,7 +1,6 @@
 $(document).ready(function () {
     $(".feedback").on("submit", function (event) {
         event.preventDefault();
-        console.log(document.querySelector(".feedback").getAttribute("action"));
         $.ajax({
             type: "POST",
             url: document.querySelector(".feedback").getAttribute("action"),

@@ -37,9 +37,8 @@ $(document).ready(function () {
 function countStar() {
     let listStarProductBlock = document.querySelectorAll(".stars");
     listStarProductBlock.forEach(function(starProductBlock,index,listStarProductBlock) {
-        console.log("ето текст должен вывестись столько раз сколько коментариев на сайте");
         let countStarInBlock = starProductBlock.querySelector("input").value
-        let imgStarPath = document.querySelector(".star").src;
+        let imgStarPath = document.querySelector(".starPath").value;
         let step;
         for (step = 0; step < 5; step++) {
             let img = document.createElement("img");

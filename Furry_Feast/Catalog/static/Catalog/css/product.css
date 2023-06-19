@@ -179,6 +179,7 @@ main {
 }
 
 .modal-window-add-cart p{
+    margin: 0;
     font-family: 'Oswald';
     font-style: normal;
     font-size: 30px;
@@ -221,6 +222,15 @@ main {
 
 .stars img{
     height: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+    
+    .modal-window-add-cart{
+        padding: 0;
+        width: 50%;
+        left: 25%;
+    }
 }
 
 @media screen and (max-width: 1100px) {
@@ -274,6 +284,22 @@ main {
 }
 
 @media screen and (max-width: 650px) {
+    
+    .modal-window-add-cart{
+        width: 85%;
+        padding: 0;
+        left: 7.5%;
+    }
+    
+    .modal-window-add-cart p{
+        font-size: 24px;
+    }
+    .img-block{
+        height: 75%;
+    }
+    .modal-window-add-cart .go-to-cart .text{
+        font-size: 20px;
+    }
     .main-product-card-head{
         margin-left: 8%;
     }

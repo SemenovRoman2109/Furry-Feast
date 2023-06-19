@@ -419,6 +419,15 @@ p{
 
 
 @media screen and (max-width: 1000px) {
+    .small-title {
+        font-size: 20px;
+    }
+    .pay{
+        font-size: 20px;
+    }
+    p{
+        font-size: 18px;
+    }
     .to-order-button{
         font-size: 20px;
     }
@@ -460,11 +469,41 @@ p{
 
 }
 
+@media screen and (max-width: 650px) {
+    .by-form{
+        width: 85%;
+    }
+    .text { 
+        font-size: 18px;
+    }
+    
+    .final-price-block .price {
+        font-size: 18px;
+    }
+    .small-title {
+        font-size: 18px;
+    }
+    .pay{
+        font-size: 17px;
+    }
+    p{
+        font-size: 15px;
+    }
+    .by-form input{
+        font-size: 15px;
+    }
+}
 @media screen and (max-width: 500px) {
     .to-order-button{
         font-size: 15px;
     }
     .title{
         font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .to-order-button{
+        font-size: 14px;
     }
 }

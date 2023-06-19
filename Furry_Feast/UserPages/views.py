@@ -4,7 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.http import JsonResponse,HttpResponseGone
 from Cart.telegram import bot_send
 from Furry_Feast.settings import TELEGRAM_BOT_TOKEN, TELEGRAM_BOT_CHAT_ID
-
+import telepot
 # Create your views here.
 def show_contact(request):
     context = {
@@ -14,7 +14,7 @@ def show_contact(request):
     if request.method =='POST':
         feedback_text = request.POST.get("feedback-text")
         message = f"Звертання користувача - {request.user.username}: \n \n {feedback_text}"
-        print(message)
+        telepot.api.set_proxy('http://proxy.server:3128')
         bot_send(TELEGRAM_BOT_TOKEN, TELEGRAM_BOT_CHAT_ID, message)
         return JsonResponse({"result":"true"})
     return render(request, 'UserPages/contact.html',context)
@@ -61,6 +61,24 @@ def show_registration(request):
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm-password')
 
+        bannedWords = ["%","^","&","*","!","@","?","#","№"]
+
+        if len(password) < 8 or len(confirm_password) < 8:
+            return JsonResponse({"text":"Довжина поролю повинна бути від 8 символів","result":False})
+        if len(password) > 16 or len(confirm_password) > 16:
+            return JsonResponse({"text":"Довжина поролю повинна бути до 16 символів","result":False})
+        for symbol in bannedWords:
+            if symbol in password or symbol in confirm_password:
+                return JsonResponse({"text":f"Пароль містить заборонений символ: {symbol}","result":False})
+            if symbol in username:
+                return JsonResponse({"text":f"Iм'я містить заборонений символ: {symbol}","result":False})
+        if len(username) > 16:
+            return JsonResponse({"text":"Довжина iменi повинна бути до 16 символів","result":False})
+        if "@" not in email:
+            return JsonResponse({"text":"Електронна адреса повинна містити символ @","result":False})
+        if len(email) > 30:
+            return JsonResponse({"text":"Довжина електронної адресси повинна бути до 30 символів","result":False})
+        
         if password == confirm_password:
             if not User.objects.filter(username=username):
                 if not User.objects.filter(email=email):
