@@ -500,10 +500,20 @@ p{
     .title{
         font-size: 24px;
     }
+    .modal-window .title, .modal-window-logout .title{
+        text-align: center;
+        font-size: 20px;
+    }
 }
 
 @media screen and (max-width: 420px) {
     .to-order-button{
         font-size: 14px;
+    }
+    .modal-window .title, .modal-window-logout .title{
+        font-size: 18px;
+    }
+    .modal-window .message{
+        font-size: 15px;
     }
 }

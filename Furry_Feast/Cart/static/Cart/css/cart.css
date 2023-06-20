@@ -53,6 +53,7 @@
 }
 
 .display_name {
+    text-decoration: none;
     display: flex;
     width: 32vw;
     color: #DFDFDF;

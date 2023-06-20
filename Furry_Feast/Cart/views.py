@@ -135,7 +135,7 @@ def show_order(request):
                     order_text += f"{product_in_cart.product.name} - {product_in_cart.count_product} шт id товара:{product_in_cart.product.pk}; \n \n" 
                     full_price += product_in_cart.product.discount_price() * product_in_cart.count_product
 
-                message = f"Замовлення вiд: {name_surname} \n \n Вiн замовив: \n \n{order_text} \n Номер телефону користувача: {phone_number} \n \n Мicто в якому мешкає користувач: {city} \n \n Вiддiлення нової пошти: {number_mail} \n \n Спосiб оплати: {payment_method}  \n \n \n Сумарна цiна: {full_price} грн"
+                message = f"Замовлення вiд: {name_surname} \n \n Вiн замовив: \n \n{order_text} \n Номер телефону користувача: \n {phone_number} \n \n Мicто в якому мешкає користувач: \n {city} \n \n Вiддiлення нової пошти: \n {number_mail} \n \n Спосiб оплати: \n {payment_method}  \n \n \n Сумарна цiна: {full_price} грн"
 
                 for product_in_cart in products:
                     product_in_cart.delete()

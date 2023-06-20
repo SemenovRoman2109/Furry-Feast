@@ -38,6 +38,7 @@ main{
   gap: 1.5%;
 
   width: 65%;
+  min-height: 30vh;
   height: auto;
 
   /* color2 */
@@ -96,6 +97,7 @@ main{
 
   width: 65%;
   height: auto;
+  min-height: 30vh;
 
   /* color2 */
 

@@ -82,12 +82,14 @@ buttonOpenSideMenu.addEventListener("click",function(event){
     document.body.append(coverDiv);
     sideMenu.style.display = "flex";
     setTimeout(() =>  sideMenu.style.opacity = 1, 1)
+    document.body.style.overflow = "hidden";
 
     coverDiv.addEventListener("click",function(event){
         let coverdiv = document.querySelector('.cover-div-side-menu');
         coverdiv.remove();
         sideMenu.style.opacity = 0;
         setTimeout(() => sideMenu.style.display = "none", 500)
+        document.body.style.overflow = "auto";
     })
 })
 

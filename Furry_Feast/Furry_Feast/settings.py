@@ -140,4 +140,3 @@ TELEGRAM_BOT_CHAT_ID = -1001602507837
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-

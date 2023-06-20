@@ -15,7 +15,7 @@ Registration
 {% block content %}
 <div class = 'card'>
     <h1 class = 'title-card'>Реєстрація</h1>
-    <form action="{% url 'registration' %}" method="post" class="form">
+    <form novalidate  action="{% url 'registration' %}" method="post" class="form">
         {% csrf_token %}
         <p>Логін</p>
         <input type="text" name="username" required>

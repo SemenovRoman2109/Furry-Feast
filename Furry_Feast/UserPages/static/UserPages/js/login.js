@@ -39,7 +39,7 @@ function eror(result,text,resultText="") {
 
 function validation(input) {
     if (input.value == '') {
-        createError(`Введіть данні в порожнє поле`);
+        eror(false,`Введіть данні в порожнє поле`,"Неправильне введення даних");
         return false;
     }
     return true
@@ -55,6 +55,7 @@ $(document).ready(function () {
         for (let input of inputs){
             if (validation(input) == false){
                 result = false;
+                break
             }
         }
         if (result == true){

@@ -128,14 +128,30 @@ toOrderButton.addEventListener("click",function(event){
         let modalWindowMessage = modalWindow.querySelector(".message");
         
         if (resultOption){
-            modalWindowMessage.textContent = "Оберiть підходяще вам відділення зі списку"
+            if (document.documentElement.clientWidth > 530){
+                modalWindowMessage.textContent = "Оберiть відповідне вам відділення зі списку"
+            }
+            else{
+                modalWindowMessage.textContent = "Оберiть бажане відділення зі списку"
+            }
         }
 
         if (data["phone_number"][data["phone_number"].length-1] == "_"){
-            modalWindowMessage.textContent = "Номер телефону повинен відповідати шаблону"
+            if (document.documentElement.clientWidth > 530){
+                modalWindowMessage.textContent = "Номер телефону повинен відповідати шаблону"
+            }
+            else{
+                modalWindowMessage.textContent = "Номер телефону має відповідати шаблону"
+            }
         }
         if (data["name_surname"].trim().split(" ").length != 2){
-            modalWindowMessage.textContent = "Поле iм`я та прiзвище повинно мiстити два слова"
+            if (document.documentElement.clientWidth > 530){
+                modalWindowMessage.textContent = "Поле iм'я та прiзвище повинно мiстити два слова"
+            }
+            else{
+                modalWindowMessage.textContent = "Поле iменi повинно мiстити два слова"
+            }
+            
         }
 
         let array = [form.querySelector("#phone-number"),form.querySelector("#name-surname"),form.querySelector("#city")];
@@ -218,6 +234,8 @@ inputs.forEach(function(input) {
 
 let inputCity = document.querySelector("#city");
 
+let inputCityValue = inputCity.value
+
 inputCity.addEventListener("blur",function(event) {
     if (event.target.value == ""){
         let numberMail = document.querySelector("#number-mail");
@@ -225,7 +243,7 @@ inputCity.addEventListener("blur",function(event) {
         let datalist = document.querySelector("#number-mail-datalist");
         datalist.innerHTML = ""
     }
-    else{
+    else if (inputCityValue != inputCity.value){
         let modalWindow = document.querySelector(".modal-window");
         let modalWindowTitle = modalWindow.querySelector(".title");
         modalWindowTitle.textContent = "Шукаемо вiддiлення у вашому мiстi"
@@ -264,7 +282,12 @@ inputCity.addEventListener("blur",function(event) {
                     })
                 }
                 else{
-                    modalWindowTitle.textContent = "Ми не знайшли вiддiлень у вашому мiстi"
+                    if (document.documentElement.clientWidth > 530){
+                        modalWindowTitle.textContent = "Ми не знайшли вiддiлень у вашому мiстi"
+                    }
+                    else{
+                        modalWindowTitle.textContent = "Не має у вашому мiстi"
+                    }     
                     modalWindowMessage.textContent = "Перевiрте правильнiсть назви мiста"
                     setTimeout(function(){
                         let coverdiv = document.querySelector('.cover-div');
@@ -280,7 +303,7 @@ inputCity.addEventListener("blur",function(event) {
             }
         });
     }
-    
+    inputCityValue = inputCity.value
 })
 
 calculate_all_product_sum()

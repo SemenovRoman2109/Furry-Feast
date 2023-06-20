@@ -42,7 +42,7 @@ const bannedWords = [
 
 function validation(input) {
     if (input.value == '') {
-        createError(`Поле пусте`);
+        eror(false,`Введіть данні в порожнє поле`,"Неправильне введення даних");
         return false;
     }
     if (input.name == 'username') {
@@ -96,6 +96,7 @@ $(document).ready(function () {
         for (let input of inputs){
             if (validation(input) == false){
                 result = false;
+                break
             }
         }
         if (result == true){

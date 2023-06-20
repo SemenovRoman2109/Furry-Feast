@@ -619,8 +619,18 @@ ul{
 }
 
 @media only screen and (max-height: 950px){
+    .side-menu::-webkit-scrollbar {
+        width: 5px;  
+        background: #5daf96;
+    }
+    .side-menu::-webkit-scrollbar-thumb {
+        background-color: #1ccf9a;
+        border-radius: 10px;
+    }
     .side-menu {
-        overflow-y: scroll;
+        border-radius: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
     .bot-categories{
         margin-top: 15px;

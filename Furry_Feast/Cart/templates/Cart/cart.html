@@ -22,14 +22,14 @@
         {% for product in product_in_cart %}
         <div class="item">
             
-            <div class="item-icon">
+            <a href="/product/{{ product.product.pk }}" class="item-icon">
                 <img src="{{ product.product.image.url }}" alt="">
-            </div>
+            </a>
 
             <div class = 'information'>
                 <input type="hidden" class="product_pk" value="{{ product.product.pk }}">
             
-                <p class="display_name">{{ product.product.display_name }}</p>
+                <a href="/product/{{ product.product.pk }}" class="display_name">{{ product.product.display_name }}</a>
                 <div class = 'item-information'>
                     <input type="hidden" class="price-one-product" value="{{ product.product.discount_price }}">
                     <p class="price">{{ product.product.discount_price }} грн</p>
