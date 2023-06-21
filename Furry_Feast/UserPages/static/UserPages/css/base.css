@@ -326,8 +326,8 @@ main{
         position: absolute;
         left: 2vw;
         top: 2vw;
-        width: 5vw;
-        height: 5vw;
+        width: 7vw;
+        height: 7vw;
     }
     .side-menu{
         opacity: 0;
@@ -354,4 +354,8 @@ main{
     .top-categories img, .bot-categories img{
         width: 8%;
     }    
+    .open-side-menu{
+        width: 9vw;
+        height: 9vw;
+    }
 }

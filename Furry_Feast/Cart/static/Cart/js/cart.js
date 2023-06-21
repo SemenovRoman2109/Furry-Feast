@@ -6,7 +6,7 @@ function calculate_all_product_sum() {
         finalPrice += Number(itemPrice)
     })
     let priceObj = document.querySelector(".final-price-block").querySelector(".price")
-    priceObj.textContent = `${finalPrice} грн`
+    priceObj.textContent = ` ${finalPrice} грн`
 }
 
 function calculate_product_price(item) {

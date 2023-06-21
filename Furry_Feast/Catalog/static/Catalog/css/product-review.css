@@ -300,6 +300,7 @@ main {
     opacity: 0;
     transition: all 1s;
     right: 22.5%;
+    left: auto;
     top: 38%;
     gap: 10%;
     background: #F0F0F0;
@@ -333,6 +334,13 @@ main {
     z-index: 49;
     background: rgba(92, 92, 92,  0.2);
     backdrop-filter: blur(2px);
+}
+
+@media screen and (max-width: 1100px) {
+    .modal-window{
+        width: 60%;
+        right: 12.5%;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -389,7 +397,34 @@ main {
     }
 }
 
+@media screen and (max-width: 900px) {
+    .modal-window{
+        height: 16%;
+        top: 42%;
+    }
+    .modal-window .title{
+        font-size: 25px;
+    }
+    .modal-window .message{
+        font-size: 20px;
+    }
+}
+
 @media screen and (max-width: 650px) {
+    .main-product_review-card-head{
+        left: 15%;
+    }
+    .modal-window{
+        width: 80%;
+        right: 10%;
+    }
+
+    .modal-window .title{
+        font-size: 23px;
+    }
+    .modal-window .message{
+        font-size: 18px;
+    }
 
     .main-product_review-card{
         left: 0;
@@ -468,3 +503,16 @@ main {
     }
 }
 
+@media screen and (max-width: 450px) {
+    #review{
+        font-size: 16px;
+    }
+    .modal-window .title{
+        font-size: 20px;
+        text-align: center;
+    }
+    .modal-window .message{
+        font-size: 16px;
+        text-align: center;
+    }
+}

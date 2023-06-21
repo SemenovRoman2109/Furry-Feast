@@ -7,7 +7,6 @@ main{
     box-sizing: border-box;
     align-items: flex-start;
     padding-left: 3%;
-    height: 100%;
 }
 
 .information {
@@ -73,7 +72,7 @@ form button{
     background:#fbbb0c;
     padding: 9px 0px;
     color: #4B4B4B;
-    margin-top: 3%;
+    margin: 3% 0;
     width: 50%;
     height: 16%;
 

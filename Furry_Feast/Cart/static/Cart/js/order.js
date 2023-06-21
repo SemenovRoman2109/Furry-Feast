@@ -179,35 +179,48 @@ toOrderButton.addEventListener("click",function(event){
         main.append(coverDiv);
         modalWindow.style.display = "flex";
         setTimeout(()=>{modalWindow.style.opacity = 1;},10)
-    
-        setTimeout(function(){
-            let coverdiv = document.querySelector('.cover-div');
+        let coverdiv = document.querySelector('.cover-div');
+        let closed = false
+        coverdiv.addEventListener("click",function(event){
             coverdiv.remove();
             modalWindow.style.opacity = 0;
             setTimeout(()=>{modalWindow.style.display = "none";},1000)
+            closed = true
+        })
+        setTimeout(function(){
+            if (closed != true){
+                coverdiv.remove();
+                modalWindow.style.opacity = 0;
+                setTimeout(()=>{modalWindow.style.display = "none";},1000)
+            }
         },3000)
     }
     if (result){
+        let modalWindow = document.querySelector(".modal-window");
+        let modalWindowTitle = modalWindow.querySelector(".title");
+        modalWindowTitle.textContent = "Успiшне замовлення"
+        let modalWindowMessage = modalWindow.querySelector(".message");
+        modalWindowMessage.textContent = ""
+        let coverDiv = document.createElement('div'); 
+        coverDiv.classList.add('cover-div'); 
+        let main = document.querySelector("main");
+        main.append(coverDiv);
+        modalWindow.style.display = "flex";
+        setTimeout(()=>{modalWindow.style.opacity = 1;},10)
         $.ajax({
             type: "POST",
             url: form.getAttribute("action"),
             data:data,
             success: function(response){
-                console.log(response);
+                let coverdiv = document.querySelector('.cover-div');
                 let modalWindow = document.querySelector(".modal-window");
-                let modalWindowTitle = modalWindow.querySelector(".title");
-                modalWindowTitle.textContent = "Успiшне замовлення"
-                let modalWindowMessage = modalWindow.querySelector(".message");
-                modalWindowMessage.textContent = ""
-                let coverDiv = document.createElement('div'); 
-                coverDiv.classList.add('cover-div'); 
-                let main = document.querySelector("main");
-                main.append(coverDiv);
-                modalWindow.style.display = "flex";
-                setTimeout(()=>{modalWindow.style.opacity = 1;},10)
-            
+                coverdiv.addEventListener("click",function(event){
+                    coverdiv.remove();
+                    modalWindow.style.opacity = 0;
+                    setTimeout(()=>{modalWindow.style.display = "none";},1000)
+                    window.location.href = window.location.href.split("order")[0]
+                })
                 setTimeout(function(){
-                    let coverdiv = document.querySelector('.cover-div');
                     coverdiv.remove();
                     modalWindow.style.opacity = 0;
                     setTimeout(()=>{modalWindow.style.display = "none";},1000)
