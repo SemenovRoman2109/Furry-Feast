@@ -14,7 +14,7 @@ main{
     display: flex;
     flex-direction: column;
     gap: 2%;
-    height: 100vh;
+    height: auto;
     
 }
 
@@ -99,7 +99,7 @@ form button:hover{
 
 .social-net{
     width: auto;
-    height: 12%;
+    height: 12vh;
 }
 
 .social-net-img{
@@ -123,7 +123,7 @@ form button:hover{
 
 .messanger{
     width: auto;
-    height: 12%;
+    height: 12vh;
 }
 .messanger-img{
     height: 50%;
@@ -145,22 +145,23 @@ form button:hover{
 }
 
 .auth-block{
-    position: absolute;
+    margin: 50px 0;
     display: flex;
-    width: 100%;
+    width: fit-content;
     gap: 10%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 30%;
-    bottom: 0;
+    height:auto;
+    gap: 20px;
 }
 
 .auth-block p{
+    text-align: center;
     font-family: 'Oswald';
     font-style: normal;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 26px;
     color: rgb(5, 82, 52);
 }
 
@@ -170,8 +171,8 @@ form button:hover{
     align-items: center;
     background:#fbbb0c;
     width: auto;
-    padding: 0 15px;
-    height: 20%;
+    padding: 10px 15px;
+    height: auto;
     border-radius: 14px ;
     transition-duration: 0.5s;
 }
@@ -218,9 +219,6 @@ form button:hover{
     }
     .auth-block p{
         font-size: 19px;
-    }
-    .login-button{
-        padding: 2px 10px;
     }
     .login-button a{
         font-size: 18px;

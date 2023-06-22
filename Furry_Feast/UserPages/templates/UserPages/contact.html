@@ -46,14 +46,15 @@
                 <textarea name="feedback-text" id="" cols="45" rows="12"></textarea>
                 <button>Залишити повiдомлення</button>
             </form>   
-        {% else %}
-            <div class="auth-block">
-                <p>Увiйдiть в акаунт щоб залишити вiдгук</p>
-                <button class="login-button"><a href="/login/">Авторизуватися</a></button>
-            </div>
         {% endif %}
         
     </div>
+    {% if is_authenticated == False %}
+        <div class="auth-block">
+            <p>Увiйдiть в акаунт щоб залишити вiдгук</p>
+            <button class="login-button"><a href="/login/">Авторизуватися</a></button>
+        </div>
+    {% endif %}
     <div class="modal-window">
         <p class="title">Дякуємо вам за зворотний зв'язок!</p>
         <p class="message">Ваше повідомлення успішно надіслано</p>

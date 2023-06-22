@@ -185,6 +185,7 @@ main{
 }
 
 .paw1{
+    display: block;
     position: fixed;
     z-index: -1;
     width: 20%;
@@ -197,6 +198,7 @@ main{
 }
 
 .paw2{
+    display: block;
     position: fixed;
     z-index: -1;
     width: 12%;
@@ -208,6 +210,7 @@ main{
 }
 
 .paw3{
+    display: block;
     position: fixed;
     z-index: -1;
     width: 10%;
@@ -218,6 +221,7 @@ main{
 }
 
 .paw4{
+    display: block;
     position: fixed;
     z-index: -1;
     left: 30.3%;
@@ -229,6 +233,7 @@ main{
 }
 
 .paw5{
+    display: block;
     position: fixed;
     z-index: -1;
     transform: rotate(14deg);
@@ -239,6 +244,7 @@ main{
 }
 
 .paw6{
+    display: block;
     position: fixed;
     z-index: -1;
     transform: rotate(-14deg);
@@ -249,6 +255,7 @@ main{
 }
 
 .paw7{
+    display: block;
     position: fixed;
     z-index: -1;
     transform: rotate(10deg);
@@ -303,6 +310,65 @@ main{
 }
 
 @media only screen and (max-width: 650px) {
+    .paw1{
+        display: block;
+        position: fixed;
+        z-index: -1;
+        width: 20%;
+        min-width: 170px;
+        right: 1%;
+        top: 15%;
+        transform: rotate(25deg);
+        
+        
+    }
+    
+    .paw2{
+        display: block;
+        position: fixed;
+        z-index: -1;
+        width: 12%;
+        min-width: 120px;
+        left: 15%;
+        top: 36%;
+        transform: rotate(25deg);
+        
+    }
+    
+    .paw3{
+        display: none;
+    }
+    
+    .paw4{
+        display: block;
+        position: fixed;
+        z-index: -1;
+        left: 30.3%;
+        top: 7%;
+        width: 6%;
+        min-width: 70px;
+        transform: rotate(-30deg);
+        
+    }
+    
+    .paw5{
+        display: none;
+    }
+    
+    .paw6{
+        display: block;
+        position: fixed;
+        z-index: -1;
+        transform: rotate(-14deg);
+        width: 25%;
+        left: 43%;
+        top: 75%;
+        min-width: 200px;
+    }
+    
+    .paw7{
+        display: none;
+    }
     .bot-categories{
         bottom: 10%;
     }
@@ -329,8 +395,8 @@ main{
         position: absolute;
         left: 2vw;
         top: 2vw;
-        width: 7vw;
-        height: 7vw;
+        width: 6vw;
+        height: 6vw;
     }
     .side-menu{
         opacity: 0;

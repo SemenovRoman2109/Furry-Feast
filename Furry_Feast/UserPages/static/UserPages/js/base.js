@@ -45,7 +45,11 @@ logout.addEventListener("click",function(event){
                     registration.style.display = "flex"
                     logout.style.display = "none"
                     userName.style.display = "none"
+                    if (window.location.href.includes("contact")){
+                        location.reload()
+                    }
                 },1000)
+                
             },1000)
 
         }
